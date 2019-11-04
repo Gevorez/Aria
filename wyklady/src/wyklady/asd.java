@@ -1,12 +1,19 @@
 package wyklady;
 
+import java.sql.*;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class asd {
 
@@ -75,6 +82,22 @@ public class asd {
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnLoginIn = new JButton("Login in");
+		btnLoginIn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+					String sql="Select * from login where Login='"+textField.getText()+"'and Haslo='"+textField_1.getText().toString()+ "'";
+					ResultSet rs=stmt.executeQuery(sql);
+					if(rs.next())
+						JOptionPane.showMessageDialog(null, "Uda³o sie zalogowac");
+					else 
+						JOptionPane.showMessageDialog(null, "B³êdny login lub haslo");
+					con.close();
+				} catch(Exception e1){System.out.println(e1);}
+			}
+		});
 		btnLoginIn.setBounds(558, 236, 85, 21);
 		frame.getContentPane().add(btnLoginIn);
 		
