@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class asd {
+public class main {
 
 	private JFrame frame;
 	private JTextField user;
@@ -28,7 +28,7 @@ public class asd {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					asd window = new asd();
+					main window = new main();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +40,7 @@ public class asd {
 	/**
 	 * Create the application.
 	 */
-	public asd() {
+	public main() {
 		initialize();
 	}
 

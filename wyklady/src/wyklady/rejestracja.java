@@ -7,22 +7,28 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JProgressBar;
+import javax.swing.JPasswordField;
 
 public class rejestracja extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField imie;
+	private JTextField nazwisko;
+	private JTextField email;
+	private JTextField telefon;
+	private JTextField login;
+	private JPasswordField haslo;
 
 	/**
 	 * Launch the application.
@@ -65,35 +71,34 @@ public class rejestracja extends JFrame {
 		btnCreator.setBounds(72, 10, 110, 21);
 		contentPane.add(btnCreator);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 105, 275, 19);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		imie = new JTextField();
+		imie.setBounds(10, 105, 275, 19);
+		contentPane.add(imie);
+		imie.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(10, 151, 275, 19);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		nazwisko = new JTextField();
+		nazwisko.setBounds(10, 151, 275, 19);
+		contentPane.add(nazwisko);
+		nazwisko.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(10, 195, 275, 19);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		email = new JTextField();
+		email.setBounds(10, 195, 275, 19);
+		contentPane.add(email);
+		email.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(10, 247, 275, 19);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		telefon = new JTextField();
+		telefon.setBounds(10, 247, 275, 19);
+		contentPane.add(telefon);
+		telefon.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(10, 292, 275, 19);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
+		login = new JTextField();
+		login.setBounds(10, 292, 275, 19);
+		contentPane.add(login);
+		login.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(10, 344, 275, 19);
-		contentPane.add(textField_5);
-		textField_5.setColumns(10);
+		haslo = new JPasswordField();
+		haslo.setBounds(10, 344, 275, 19);
+		contentPane.add(haslo);
 		
 		JLabel lblName = new JLabel("Name");
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, 19));
@@ -133,6 +138,28 @@ public class rejestracja extends JFrame {
 		lblPasswordStrength.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPasswordStrength.setBounds(10, 373, 184, 21);
 		contentPane.add(lblPasswordStrength);
+		
+		JButton btnRegister = new JButton("Register");
+		btnRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+					String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko) "
+							+ "VALUES('"+login.getText()+"','"+haslo.getText()+"','"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"')";
+					int rs=stmt.executeUpdate(sql);
+					
+					if(rs == 1)
+						JOptionPane.showMessageDialog(null, "Uda³o sie zarejestrowaæ");
+					else 
+						JOptionPane.showMessageDialog(null, "Nie uda³o sie zarejestrowaæ");
+					con.close();
+				} catch(Exception e1){System.out.println(e1);}
+			}
+		});
+		btnRegister.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		btnRegister.setBounds(246, 444, 115, 42);
+		contentPane.add(btnRegister);
 	}
-
 }
