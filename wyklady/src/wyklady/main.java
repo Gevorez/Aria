@@ -101,6 +101,12 @@ public class main {
 		frame.getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Register");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				rejestracja okno = new rejestracja();
+				okno.setVisible(true);
+			}
+		});
 		btnNewButton_3.setBounds(558, 266, 85, 21);
 		frame.getContentPane().add(btnNewButton_3);
 		
