@@ -88,7 +88,7 @@ public class login {
 					if(rs.next())
 						JOptionPane.showMessageDialog(null, "Uda³o sie zalogowac");
 					else 
-						JOptionPane.showMessageDialog(null, "B³êdny login lub has³o");
+						JOptionPane.showMessageDialog(null, "B³êdny login lub haslo");
 					con.close();
 				} catch(Exception e1){System.out.println(e1);}
 			}
