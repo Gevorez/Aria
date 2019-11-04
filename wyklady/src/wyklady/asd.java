@@ -45,7 +45,7 @@ public class asd {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the frame
 	 */
 	private void initialize() {
 		frame = new JFrame();

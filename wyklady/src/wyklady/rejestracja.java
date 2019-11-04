@@ -31,7 +31,7 @@ public class rejestracja extends JFrame {
 	private JPasswordField haslo;
 
 	/**
-	 * Launch the application.
+	 * Launch the application
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
