@@ -18,8 +18,8 @@ import java.awt.event.ActionEvent;
 public class asd {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField user;
+	private JPasswordField pass;
 
 	/**
 	 * Launch the application.
@@ -53,15 +53,10 @@ public class asd {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(503, 112, 108, 19);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(503, 173, 108, 19);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		user = new JTextField();
+		user.setBounds(503, 112, 108, 19);
+		frame.getContentPane().add(user);
+		user.setColumns(10);
 		
 		JLabel lblLogin = new JLabel("Login");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 19));
@@ -88,7 +83,7 @@ public class asd {
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
-					String sql="Select * from login where Login='"+textField.getText()+"'and Haslo='"+textField_1.getText().toString()+ "'";
+					String sql="Select * from login where Login='"+user.getText()+"'and Haslo='"+pass.getText().toString()+ "'";
 					ResultSet rs=stmt.executeQuery(sql);
 					if(rs.next())
 						JOptionPane.showMessageDialog(null, "Uda³o sie zalogowac");
@@ -108,5 +103,9 @@ public class asd {
 		JButton btnNewButton_3 = new JButton("Register");
 		btnNewButton_3.setBounds(558, 266, 85, 21);
 		frame.getContentPane().add(btnNewButton_3);
+		
+		pass = new JPasswordField();
+		pass.setBounds(503, 188, 108, 19);
+		frame.getContentPane().add(pass);
 	}
 }
