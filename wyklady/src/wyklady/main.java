@@ -80,7 +80,7 @@ public class main {
 		btnLoginIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Class.forName("com.mysql.jdbc.Driver");
+					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
 					String sql="Select * from login where Login='"+user.getText()+"'and Haslo='"+pass.getText().toString()+ "'";

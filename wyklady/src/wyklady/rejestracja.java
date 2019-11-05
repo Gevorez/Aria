@@ -19,6 +19,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JProgressBar;
 import javax.swing.JPasswordField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class rejestracja extends JFrame {
 
@@ -95,8 +97,28 @@ public class rejestracja extends JFrame {
 		login.setBounds(10, 292, 275, 19);
 		contentPane.add(login);
 		login.setColumns(10);
-		
+		JProgressBar progressBar = new JProgressBar();
+		JButton btnNewButton = new JButton("New button");
+		JButton btnRegister = new JButton("Register");
 		haslo = new JPasswordField();
+		haslo.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int s= haslo.getText().length();
+				progressBar.setValue(s);
+				btnNewButton.doClick();
+				
+				
+			}
+		});
+		haslo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int s= haslo.getText().length();
+				progressBar.setValue(s);
+				btnRegister.doClick();
+				
+			}
+		});
 		haslo.setBounds(10, 344, 275, 19);
 		contentPane.add(haslo);
 		
@@ -130,7 +152,8 @@ public class rejestracja extends JFrame {
 		lblPassword.setBounds(10, 321, 97, 19);
 		contentPane.add(lblPassword);
 		
-		JProgressBar progressBar = new JProgressBar();
+		
+		progressBar.setMaximum(20);
 		progressBar.setBounds(10, 396, 275, 11);
 		contentPane.add(progressBar);
 		
@@ -139,11 +162,11 @@ public class rejestracja extends JFrame {
 		lblPasswordStrength.setBounds(10, 373, 184, 21);
 		contentPane.add(lblPasswordStrength);
 		
-		JButton btnRegister = new JButton("Register");
+		
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Class.forName("com.mysql.jdbc.Driver");
+					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
 					String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko) "
@@ -161,5 +184,10 @@ public class rejestracja extends JFrame {
 		btnRegister.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		btnRegister.setBounds(246, 444, 115, 42);
 		contentPane.add(btnRegister);
+		
+		btnNewButton.setVisible(false);
+		btnNewButton.setEnabled(false);
+		btnNewButton.setBounds(372, 14, 0, 21);
+		contentPane.add(btnNewButton);
 	}
 }
