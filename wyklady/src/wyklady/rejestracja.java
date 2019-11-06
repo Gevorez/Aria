@@ -49,7 +49,7 @@ public class rejestracja extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the frame
 	 */
 	public rejestracja() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
