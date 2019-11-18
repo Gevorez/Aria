@@ -173,7 +173,10 @@ public class rejestracja extends JFrame {
 							+ "VALUES('"+login.getText()+"','"+haslo.getText()+"','"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"')";
 					int rs=stmt.executeUpdate(sql);
 					
-					if(rs == 1)
+					String sql2="Select Login from login";
+					ResultSet rs2=stmt.executeQuery(sql2);
+					
+					if(sql2==login.getText())
 						JOptionPane.showMessageDialog(null, "Uda³o sie zarejestrowaæ");
 					else 
 						JOptionPane.showMessageDialog(null, "Nie uda³o sie zarejestrowaæ");
