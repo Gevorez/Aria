@@ -179,7 +179,7 @@ public class rejestracja extends JFrame {
 					if(sql2==login.getText())
 						JOptionPane.showMessageDialog(null, "Uda³o sie zarejestrowaæ");
 					else 
-						JOptionPane.showMessageDialog(null, "Nie uda³o sie zarejestrowaæ");
+						JOptionPane.showMessageDialog(null, "Nie uda³o siê zarejestrowaæ");
 					con.close();
 				} catch(Exception e1){System.out.println(e1);}
 			}
