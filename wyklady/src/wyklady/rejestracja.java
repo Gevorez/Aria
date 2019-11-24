@@ -31,6 +31,8 @@ public class rejestracja extends JFrame {
 	private JTextField telefon;
 	private JTextField login;
 	private JPasswordField haslo;
+	private JTextField pomocnicze;
+	private JTextField pytan_pomoc;
 
 	/**
 	 * Launch the application
@@ -53,7 +55,7 @@ public class rejestracja extends JFrame {
 	 */
 	public rejestracja() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 396, 533);
+		setBounds(100, 100, 396, 575);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -74,27 +76,27 @@ public class rejestracja extends JFrame {
 		contentPane.add(btnCreator);
 		
 		imie = new JTextField();
-		imie.setBounds(10, 105, 275, 19);
+		imie.setBounds(10, 74, 275, 19);
 		contentPane.add(imie);
 		imie.setColumns(10);
 		
 		nazwisko = new JTextField();
-		nazwisko.setBounds(10, 151, 275, 19);
+		nazwisko.setBounds(10, 120, 275, 19);
 		contentPane.add(nazwisko);
 		nazwisko.setColumns(10);
 		
 		email = new JTextField();
-		email.setBounds(10, 195, 275, 19);
+		email.setBounds(10, 172, 275, 19);
 		contentPane.add(email);
 		email.setColumns(10);
 		
 		telefon = new JTextField();
-		telefon.setBounds(10, 247, 275, 19);
+		telefon.setBounds(10, 224, 275, 19);
 		contentPane.add(telefon);
 		telefon.setColumns(10);
 		
 		login = new JTextField();
-		login.setBounds(10, 292, 275, 19);
+		login.setBounds(10, 269, 275, 19);
 		contentPane.add(login);
 		login.setColumns(10);
 		JProgressBar progressBar = new JProgressBar();
@@ -119,47 +121,49 @@ public class rejestracja extends JFrame {
 				
 			}
 		});
-		haslo.setBounds(10, 344, 275, 19);
+		haslo.setBounds(10, 321, 275, 19);
 		contentPane.add(haslo);
 		
 		JLabel lblName = new JLabel("Name");
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblName.setBounds(10, 78, 68, 21);
+		lblName.setBounds(10, 47, 68, 21);
 		contentPane.add(lblName);
 		
 		JLabel lblSurname = new JLabel("Surname");
 		lblSurname.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblSurname.setBounds(10, 128, 97, 21);
+		lblSurname.setBounds(10, 97, 97, 21);
 		contentPane.add(lblSurname);
 		
 		JLabel lblEmail = new JLabel("E-mail");
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblEmail.setBounds(10, 172, 97, 21);
+		lblEmail.setBounds(10, 149, 97, 21);
 		contentPane.add(lblEmail);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone number");
 		lblPhoneNumber.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblPhoneNumber.setBounds(10, 224, 147, 21);
+		lblPhoneNumber.setBounds(10, 201, 147, 21);
 		contentPane.add(lblPhoneNumber);
 		
 		JLabel lblLogin = new JLabel("Login");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblLogin.setBounds(10, 261, 97, 31);
+		lblLogin.setBounds(10, 238, 97, 31);
 		contentPane.add(lblLogin);
 		
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblPassword.setBounds(10, 321, 97, 19);
+		lblPassword.setBounds(10, 298, 97, 19);
 		contentPane.add(lblPassword);
 		
 		
-		progressBar.setMaximum(20);
-		progressBar.setBounds(10, 396, 275, 11);
+		progressBar.setMaximum(15);
+		progressBar.setBounds(10, 370, 275, 11);
 		contentPane.add(progressBar);
 		
+		pomocnicze = new JTextField();
+		pytan_pomoc = new JTextField();
 		JLabel lblPasswordStrength = new JLabel("Password strength");
 		lblPasswordStrength.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblPasswordStrength.setBounds(10, 373, 184, 21);
+		lblPasswordStrength.setBounds(10, 349, 184, 21);
 		contentPane.add(lblPasswordStrength);
 		
 		
@@ -169,28 +173,51 @@ public class rejestracja extends JFrame {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
-					String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko) "
-							+ "VALUES('"+login.getText()+"','"+haslo.getText()+"','"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"')";
-					int rs=stmt.executeUpdate(sql);
-					
+					/*	String x = login.getText();					 
 					String sql2="Select Login from login";
 					ResultSet rs2=stmt.executeQuery(sql2);
-					
-					if(sql2==login.getText())
-						JOptionPane.showMessageDialog(null, "Uda³o sie zarejestrowaæ");
+					String sql4="Select Login from login where Login="+x;
+					ResultSet rs4=stmt.executeQuery(sql4);
+					rs*/
+					String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc) "
+							+ "VALUES('"+login.getText()+"','"+haslo.getText()+"','"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"')";               
+					int rs=stmt.executeUpdate(sql);
+					if(rs == 1)
+						JOptionPane.showMessageDialog(null, "UdaÅ‚o sie zarejestrowaÄ‰");
 					else 
-						JOptionPane.showMessageDialog(null, "Nie uda³o siê zarejestrowaæ");
-					con.close();
-				} catch(Exception e1){System.out.println(e1);}
+					
+						JOptionPane.showMessageDialog(null, "Nie udaÅ‚o sie zarejestrowaÄ‰");
+							con.close();
+				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Prosze wybraÄ‡ inny login");}
 			}
 		});
 		btnRegister.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		btnRegister.setBounds(246, 444, 115, 42);
+		btnRegister.setBounds(267, 496, 115, 42);
 		contentPane.add(btnRegister);
 		
 		btnNewButton.setVisible(false);
 		btnNewButton.setEnabled(false);
 		btnNewButton.setBounds(372, 14, 0, 21);
 		contentPane.add(btnNewButton);
+		
+		JLabel lblPyranie = new JLabel("Auxiliary question");
+		lblPyranie.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		lblPyranie.setBounds(10, 385, 253, 21);
+		contentPane.add(lblPyranie);
+		
+		
+		pomocnicze.setBounds(11, 475, 274, 19);
+		contentPane.add(pomocnicze);
+		pomocnicze.setColumns(10);
+		
+		
+		pytan_pomoc.setBounds(10, 416, 275, 19);
+		contentPane.add(pytan_pomoc);
+		pytan_pomoc.setColumns(10);
+		
+		JLabel label = new JLabel("Answer Auxiliary question");
+		label.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		label.setBounds(10, 445, 253, 21);
+		contentPane.add(label);
 	}
 }
