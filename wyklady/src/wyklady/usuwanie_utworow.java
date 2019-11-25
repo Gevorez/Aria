@@ -51,32 +51,32 @@ public class usuwanie_utworow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 680, 180);
+		frame.setBounds(100, 100, 250, 372);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblUsuwanieUtworu = new JLabel("Usuwanie uworu");
+		JLabel lblUsuwanieUtworu = new JLabel("     Usuwanie uworu");
 		lblUsuwanieUtworu.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblUsuwanieUtworu.setBounds(25, 11, 260, 51);
+		lblUsuwanieUtworu.setBounds(10, 11, 260, 51);
 		frame.getContentPane().add(lblUsuwanieUtworu);
 		
 		tytu = new JTextField();
-		tytu.setBounds(25, 94, 86, 20);
+		tytu.setBounds(48, 84, 123, 20);
 		frame.getContentPane().add(tytu);
 		tytu.setColumns(10);
 		
 		wyko = new JTextField();
-		wyko.setBounds(163, 94, 86, 20);
+		wyko.setBounds(48, 135, 123, 20);
 		frame.getContentPane().add(wyko);
 		wyko.setColumns(10);
 		
 		albu = new JTextField();
-		albu.setBounds(302, 94, 86, 20);
+		albu.setBounds(48, 185, 123, 20);
 		frame.getContentPane().add(albu);
 		albu.setColumns(10);
 		
 		data_publi = new JTextField();
-		data_publi.setBounds(440, 94, 86, 20);
+		data_publi.setBounds(48, 236, 123, 20);
 		frame.getContentPane().add(data_publi);
 		data_publi.setColumns(10);
 		
@@ -103,23 +103,23 @@ public class usuwanie_utworow {
 			}
 		});
 		
-		btnUsun.setBounds(550, 93, 89, 23);
+		btnUsun.setBounds(64, 286, 89, 23);
 		frame.getContentPane().add(btnUsun);
 		
 		JLabel tyt = new JLabel("Tytu\u0142");
-		tyt.setBounds(25, 73, 86, 14);
+		tyt.setBounds(48, 67, 123, 20);
 		frame.getContentPane().add(tyt);
 		
 		JLabel wyk = new JLabel("Wykonawca");
-		wyk.setBounds(163, 73, 86, 14);
+		wyk.setBounds(48, 116, 123, 20);
 		frame.getContentPane().add(wyk);
 		
 		JLabel alb = new JLabel("Album");
-		alb.setBounds(302, 73, 86, 14);
+		alb.setBounds(48, 166, 123, 20);
 		frame.getContentPane().add(alb);
 		
 		JLabel dat_pub = new JLabel("Data publikacji");
-		dat_pub.setBounds(440, 73, 99, 14);
+		dat_pub.setBounds(48, 216, 123, 20);
 		frame.getContentPane().add(dat_pub);
 	}
 }
