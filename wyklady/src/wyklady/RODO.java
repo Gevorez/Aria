@@ -35,7 +35,7 @@ public class RODO extends JFrame {
 	public RODO() {
 		
 		JPanel middlePanel = new JPanel ();
-	    middlePanel.setBorder ( new TitledBorder ( new EtchedBorder (), "Display Area" ) );
+	    middlePanel.setBorder ( new TitledBorder ( new EtchedBorder (), "RODO" ) );
 
 	    // create the middle panel components
 

@@ -13,6 +13,8 @@ import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.SwingConstants;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.imageio.ImageIO;
@@ -59,8 +61,9 @@ public class main {
 	 */
 	private void initialize() throws IOException {
 		
-		Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
-		Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+		//PRÓBUJE ZMIENIÆ KURSOR NA GUZIKACH - KAMIL
+		//Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
+		//Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 		
 		ImageIcon loginguzik = new ImageIcon("guziczek.png");
 		ImageIcon tlo = new ImageIcon("tlo.png");
