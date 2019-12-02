@@ -1,6 +1,8 @@
 package wyklady;
 
 import java.sql.*;
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,11 +10,17 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class main {
@@ -39,42 +47,51 @@ public class main {
 
 	/**
 	 * Create the application.
+	 * @throws IOException 
 	 */
-	public main() {
+	public main() throws IOException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws IOException 
 	 */
-	private void initialize() {
+	private void initialize() throws IOException {
+		
+		Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
+		Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+		
+		ImageIcon loginguzik = new ImageIcon("guziczek.png");
+		ImageIcon tlo = new ImageIcon("tlo.png");
+		Image ikona = ImageIO.read(new File("logo.png"));
+		
+		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 690, 427);
+		frame.setBounds(100, 100, 1280, 720);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setIconImage(ikona);
+		frame.setResizable(false);
+		frame.setBackground(Color.BLACK);
+		
 		
 		user = new JTextField();
-		user.setBounds(503, 112, 108, 19);
+		user.setBounds(1028, 181, 181, 29);
 		frame.getContentPane().add(user);
 		user.setColumns(10);
 		
 		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setForeground(Color.WHITE);
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblLogin.setBounds(503, 73, 68, 29);
+		lblLogin.setBounds(1028, 153, 68, 29);
 		frame.getContentPane().add(lblLogin);
 		
 		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setForeground(Color.WHITE);
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblPassword.setBounds(503, 141, 88, 29);
+		lblPassword.setBounds(1028, 238, 88, 29);
 		frame.getContentPane().add(lblPassword);
-		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(503, 26, 46, 37);
-		frame.getContentPane().add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(558, 26, 46, 37);
-		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnLoginIn = new JButton("Login in");
 		btnLoginIn.addActionListener(new ActionListener() {
@@ -86,32 +103,42 @@ public class main {
 					String sql="Select * from login where Login='"+user.getText()+"'and Haslo='"+pass.getText().toString()+ "'";
 					ResultSet rs=stmt.executeQuery(sql);
 					if(rs.next())
-						JOptionPane.showMessageDialog(null, "Uda³o sie zalogowac");
+						JOptionPane.showMessageDialog(null, "Udalo sie zalogowac");
 					else 
-						JOptionPane.showMessageDialog(null, "B³êdny login lub haslo");
+						JOptionPane.showMessageDialog(null, "Bledny login lub haslo");
 					con.close();
 				} catch(Exception e1){System.out.println(e1);}
 			}
 		});
-		btnLoginIn.setBounds(558, 236, 85, 21);
+		btnLoginIn.setBounds(1128, 336, 108, 29);
+		btnLoginIn.setIcon(loginguzik);
+		btnLoginIn.setBorderPainted(false);
+		btnLoginIn.setFocusPainted(false);
+		btnLoginIn.setContentAreaFilled(false);
 		frame.getContentPane().add(btnLoginIn);
 		
-		JButton btnNewButton_2 = new JButton("logo");
-		btnNewButton_2.setBounds(53, 52, 352, 269);
-		frame.getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Register");
+		btnNewButton_3.setForeground(Color.WHITE);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				rejestracja okno = new rejestracja();
 				okno.setVisible(true);
 			}
 		});
-		btnNewButton_3.setBounds(558, 266, 85, 21);
+		btnNewButton_3.setBounds(1151, 376, 85, 21);
+		btnNewButton_3.setBorderPainted(false);
+		btnNewButton_3.setFocusPainted(false);
+		btnNewButton_3.setContentAreaFilled(false);
 		frame.getContentPane().add(btnNewButton_3);
 		
 		pass = new JPasswordField();
-		pass.setBounds(503, 188, 108, 19);
+		pass.setBounds(1028, 268, 181, 29);
 		frame.getContentPane().add(pass);
+		
+		JLabel tlolabel = new JLabel("");
+		tlolabel.setBounds(0, 0, 1280, 720);
+		tlolabel.setIcon(tlo);
+		frame.getContentPane().add(tlolabel);
 	}
 }

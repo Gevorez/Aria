@@ -8,8 +8,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,6 +24,12 @@ import javax.swing.JProgressBar;
 import javax.swing.JPasswordField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+
+import javax.swing.JEditorPane;
+import javax.swing.JTextPane;
+import javax.swing.JCheckBox;
+import java.awt.Color;
 
 public class rejestracja extends JFrame {
 
@@ -49,31 +58,25 @@ public class rejestracja extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the framee
-	 */
+	
 	public rejestracja() {
+		
+		
+		ImageIcon rejtlo = new ImageIcon("rej_tlo.png");
+		
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 396, 575);
+		setBounds(1000, 100, 500, 800);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblUser = new JLabel("User");
+		lblUser.setForeground(Color.WHITE);
 		lblUser.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblUser.setBounds(10, 10, 52, 21);
 		contentPane.add(lblUser);
-		
-		JButton btnCreator = new JButton("Creator");
-		btnCreator.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		btnCreator.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnCreator.setBounds(72, 10, 110, 21);
-		contentPane.add(btnCreator);
 		
 		imie = new JTextField();
 		imie.setBounds(10, 74, 275, 19);
@@ -125,31 +128,37 @@ public class rejestracja extends JFrame {
 		contentPane.add(haslo);
 		
 		JLabel lblName = new JLabel("Name");
+		lblName.setForeground(Color.WHITE);
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblName.setBounds(10, 47, 68, 21);
 		contentPane.add(lblName);
 		
 		JLabel lblSurname = new JLabel("Surname");
+		lblSurname.setForeground(Color.WHITE);
 		lblSurname.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblSurname.setBounds(10, 97, 97, 21);
 		contentPane.add(lblSurname);
 		
 		JLabel lblEmail = new JLabel("E-mail");
+		lblEmail.setForeground(Color.WHITE);
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblEmail.setBounds(10, 149, 97, 21);
 		contentPane.add(lblEmail);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone number");
+		lblPhoneNumber.setForeground(Color.WHITE);
 		lblPhoneNumber.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPhoneNumber.setBounds(10, 201, 147, 21);
 		contentPane.add(lblPhoneNumber);
 		
 		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setForeground(Color.WHITE);
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblLogin.setBounds(10, 238, 97, 31);
 		contentPane.add(lblLogin);
 		
 		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setForeground(Color.WHITE);
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPassword.setBounds(10, 298, 97, 19);
 		contentPane.add(lblPassword);
@@ -162,6 +171,7 @@ public class rejestracja extends JFrame {
 		pomocnicze = new JTextField();
 		pytan_pomoc = new JTextField();
 		JLabel lblPasswordStrength = new JLabel("Password strength");
+		lblPasswordStrength.setForeground(Color.WHITE);
 		lblPasswordStrength.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPasswordStrength.setBounds(10, 349, 184, 21);
 		contentPane.add(lblPasswordStrength);
@@ -192,7 +202,7 @@ public class rejestracja extends JFrame {
 			}
 		});
 		btnRegister.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		btnRegister.setBounds(267, 496, 115, 42);
+		btnRegister.setBounds(341, 673, 115, 42);
 		contentPane.add(btnRegister);
 		
 		btnNewButton.setVisible(false);
@@ -201,6 +211,7 @@ public class rejestracja extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JLabel lblPyranie = new JLabel("Auxiliary question");
+		lblPyranie.setForeground(Color.WHITE);
 		lblPyranie.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPyranie.setBounds(10, 385, 253, 21);
 		contentPane.add(lblPyranie);
@@ -216,8 +227,44 @@ public class rejestracja extends JFrame {
 		pytan_pomoc.setColumns(10);
 		
 		JLabel label = new JLabel("Answer Auxiliary question");
+		label.setForeground(Color.WHITE);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		label.setBounds(10, 445, 253, 21);
 		contentPane.add(label);
+		
+		JButton btnRodo = new JButton("RODO");
+		btnRodo.setForeground(Color.CYAN);
+		btnRodo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnRodo.setBounds(225, 586, 89, 23);
+		btnRodo.setBorderPainted(false);
+		btnRodo.setFocusPainted(false);
+		btnRodo.setContentAreaFilled(false);
+		btnRodo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				RODO okno = new RODO();
+				okno.setVisible(true);
+			}
+		});
+		contentPane.add(btnRodo);
+		
+		JLabel lblIAcceptThe = new JLabel("I ACCEPT THE TERMS AND CONDITIONS OF");
+		lblIAcceptThe.setForeground(Color.WHITE);
+		lblIAcceptThe.setBounds(10, 590, 253, 14);
+		contentPane.add(lblIAcceptThe);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("");
+		chckbxNewCheckBox.setBounds(6, 567, 97, 23);
+		contentPane.add(chckbxNewCheckBox);
+		
+		JLabel rej_tlo = new JLabel("");
+		rej_tlo.setBounds(0, 0, 484, 761);
+		rej_tlo.setIcon(rejtlo);
+		contentPane.add(rej_tlo);
+		
+		
+		
 	}
 }
