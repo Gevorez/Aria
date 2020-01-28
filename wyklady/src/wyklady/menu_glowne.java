@@ -28,12 +28,17 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.JTextField;
 
 
 
 public class menu_glowne {
 
 	JFrame frame;
+	private JTextField tytu;
+	private JTextField wyko;
+	private JTextField albu;
+	private JTextField data_publi;
 
 	/**
 	 * Launch the application.
@@ -147,6 +152,68 @@ public class menu_glowne {
 		STUDIO.setBackground(Color.DARK_GRAY);
 		STUDIO.setOpaque(true);
 		STUDIO.setLayout(null);
+		
+		tytu = new JTextField();
+		tytu.setBounds(52, 187, 152, 20);
+		STUDIO.add(tytu);
+		tytu.setColumns(10);
+		
+		wyko = new JTextField();
+		wyko.setBounds(52, 263, 152, 20);
+		STUDIO.add(wyko);
+		wyko.setColumns(10);
+		
+		albu = new JTextField();
+		albu.setBounds(52, 338, 152, 20);
+		STUDIO.add(albu);
+		albu.setColumns(10);
+		
+		data_publi = new JTextField();
+		data_publi.setBounds(52, 405, 152, 20);
+		STUDIO.add(data_publi);
+		data_publi.setColumns(10);
+		
+		JLabel lblTytu = new JLabel("Tytu\u0142");
+		lblTytu.setBounds(71, 162, 46, 14);
+		STUDIO.add(lblTytu);
+		
+		JLabel lblWykonawca = new JLabel("Wykonawca");
+		lblWykonawca.setBounds(71, 233, 93, 14);
+		STUDIO.add(lblWykonawca);
+		
+		JLabel lblAlbum = new JLabel("Album");
+		lblAlbum.setBounds(71, 313, 46, 14);
+		STUDIO.add(lblAlbum);
+		
+		JLabel lblDatapublikacji = new JLabel("Data_publikacji");
+		lblDatapublikacji.setBounds(71, 380, 98, 14);
+		STUDIO.add(lblDatapublikacji);
+		
+		JButton btnDodaj = new JButton("Dodaj");
+		btnDodaj.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+					if(tytu.getText().isEmpty()||wyko.getText().isEmpty()||albu.getText().isEmpty()||data_publi.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Nie podales wszystkich informacji");
+					}
+					else {
+					String sql="INSERT INTO utwory (Tytul, Wykonawca, Album, Data_publikacji) "
+							+ "VALUES('"+tytu.getText()+"','"+wyko.getText()+"','"+albu.getText()+"','"+data_publi.getText()+"')";
+					int rs=stmt.executeUpdate(sql);
+					if(rs==1)
+						JOptionPane.showMessageDialog(null, "Utwor zostal dodany");
+					else 
+						JOptionPane.showMessageDialog(null, "Bledny login lub haslo");
+					}
+					con.close();
+				} catch(Exception e1){System.out.println(e1);}
+			}
+		});
+		btnDodaj.setBounds(52, 483, 89, 23);
+		STUDIO.add(btnDodaj);
 		
 		JPanel BIBLIOTEKA = new JPanel();
 		layeredPane.add(BIBLIOTEKA, "name_68702683888800");
