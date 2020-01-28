@@ -77,6 +77,9 @@ public class menu_glowne {
 		Image ikona1 = ImageIO.read(new File("logo.png"));
 		ImageIcon tlo = new ImageIcon("tlo.png");
 		ImageIcon logo2 = new ImageIcon("logo2.png");
+		ImageIcon studio_guziczek = new ImageIcon("studio_guziczek.png");
+		ImageIcon lib_guziczek = new ImageIcon("lib_guziczek.png"); 
+		ImageIcon sklep_guziczek = new ImageIcon("sklep_guziczek.png");
 		
 		
 		frame = new JFrame();
@@ -93,38 +96,6 @@ public class menu_glowne {
 		lblIkona.setBounds(55, 11, 80, 80);
 		lblIkona.setIcon(logo2);
 		frame.getContentPane().add(lblIkona);
-		
-		JButton btnNewest = new JButton("newest");
-		btnNewest.setBounds(61, 440, 89, 23);
-		frame.getContentPane().add(btnNewest);
-		
-		JButton btnBrowse = new JButton("browse");
-		btnBrowse.setBounds(46, 477, 89, 23);
-		frame.getContentPane().add(btnBrowse);
-		
-		JButton btnAlbums = new JButton("albums");
-		btnAlbums.setBounds(61, 282, 89, 23);
-		frame.getContentPane().add(btnAlbums);
-		
-		JButton btnArtists = new JButton("artists");
-		btnArtists.setBounds(61, 316, 89, 23);
-		frame.getContentPane().add(btnArtists);
-		
-		JButton btnPlaylists = new JButton("playlists");
-		btnPlaylists.setBounds(61, 350, 89, 23);
-		frame.getContentPane().add(btnPlaylists);
-		
-		JButton btnPlay = new JButton("play");
-		btnPlay.setBounds(654, 647, 89, 23);
-		frame.getContentPane().add(btnPlay);
-		
-		JButton btnBackward = new JButton("backward");
-		btnBackward.setBounds(544, 647, 89, 23);
-		frame.getContentPane().add(btnBackward);
-		
-		JButton btnForward = new JButton("forward");
-		btnForward.setBounds(765, 647, 89, 23);
-		frame.getContentPane().add(btnForward);
 		
 		JLayeredPane layeredPane = new JLayeredPane();
 		layeredPane.setBounds(185, 0, 1095, 634);
@@ -174,19 +145,23 @@ public class menu_glowne {
 		data_publi.setColumns(10);
 		
 		JLabel lblTytu = new JLabel("Tytu\u0142");
-		lblTytu.setBounds(71, 162, 46, 14);
+		lblTytu.setForeground(Color.WHITE);
+		lblTytu.setBounds(52, 168, 65, 23);
 		STUDIO.add(lblTytu);
 		
 		JLabel lblWykonawca = new JLabel("Wykonawca");
-		lblWykonawca.setBounds(71, 233, 93, 14);
+		lblWykonawca.setForeground(Color.WHITE);
+		lblWykonawca.setBounds(52, 237, 112, 34);
 		STUDIO.add(lblWykonawca);
 		
 		JLabel lblAlbum = new JLabel("Album");
-		lblAlbum.setBounds(71, 313, 46, 14);
+		lblAlbum.setForeground(Color.WHITE);
+		lblAlbum.setBounds(52, 324, 46, 14);
 		STUDIO.add(lblAlbum);
 		
 		JLabel lblDatapublikacji = new JLabel("Data_publikacji");
-		lblDatapublikacji.setBounds(71, 380, 98, 14);
+		lblDatapublikacji.setForeground(Color.WHITE);
+		lblDatapublikacji.setBounds(52, 391, 98, 14);
 		STUDIO.add(lblDatapublikacji);
 		
 		JButton btnDodaj = new JButton("Dodaj");
@@ -234,6 +209,10 @@ public class menu_glowne {
 				layeredPane.revalidate();
 			}
 		});
+		btnHome.setIcon(sklep_guziczek);
+		btnHome.setBorderPainted(false);
+		btnHome.setFocusPainted(false);
+		btnHome.setContentAreaFilled(false);
 		btnHome.setBounds(10, 90, 165, 23);
 		frame.getContentPane().add(btnHome);
 		
@@ -274,7 +253,11 @@ public class menu_glowne {
 			}
 		
 		});
-		btnShop.setBounds(10, 124, 165, 23);
+		btnShop.setIcon(studio_guziczek);
+		btnShop.setBorderPainted(false);
+		btnShop.setFocusPainted(false);
+		btnShop.setContentAreaFilled(false);
+		btnShop.setBounds(10, 124, 165, 25);
 		frame.getContentPane().add(btnShop);
 		
 		JButton btnYourLibrary = new JButton("BIBLIOTEKA");
@@ -286,6 +269,10 @@ public class menu_glowne {
 				layeredPane.revalidate();
 			}
 		});
+		btnYourLibrary.setIcon(lib_guziczek);
+		btnYourLibrary.setBorderPainted(false);
+		btnYourLibrary.setFocusPainted(false);
+		btnYourLibrary.setContentAreaFilled(false);
 		btnYourLibrary.setBounds(10, 158, 165, 23);
 		frame.getContentPane().add(btnYourLibrary);
 		
