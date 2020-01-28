@@ -259,7 +259,7 @@ public class rejestracja extends JFrame {
 		comboBox.addItem("Jaki jest nunmer Twojej karty kredytowej");
 		comboBox.addItem("Jaki masz numer buta");
 		
-		
+		String nazwa_srd = null;
 			
 		
 		btnRegister.addActionListener(new ActionListener() {
@@ -278,8 +278,8 @@ public class rejestracja extends JFrame {
 						JOptionPane.showMessageDialog(null, "Nie podales wszystkich informacji");
 					}
 					else {
-					String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc) "
-							+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"')";               
+					String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc,nazwa_studia) "
+							+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_srd+"')";               
 					int rs=stmt.executeUpdate(sql);
 					
 					if(rs == 1)

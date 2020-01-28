@@ -4,7 +4,6 @@ import java.sql.*;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.EventQueue;
-import java.awt.*;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,9 +28,9 @@ import java.awt.event.ActionEvent;
 public class main {
 
 	private JFrame frame;
-	public JTextField user;
+	private JTextField user;
 	private JPasswordField pass;
-	
+
 	
 	
 
@@ -40,7 +39,6 @@ public class main {
 	 */
 	public static void main(String[] args) {
 		new splash();
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -62,15 +60,14 @@ public class main {
 	public main() throws IOException {
 		initialize();
 	}
-	
 
 	/**
 	 * Initialize the contents of the frame.
 	 * @throws IOExceptio
 	 */
-	public void initialize() throws IOException {
+	private void initialize() throws IOException {
 		
-		//PRÓBUJE ZMIENIÆ KURSOR NA GUZIKACH - KAMIL
+		//PRÃ“BUJE ZMIENIÄ† KURSOR NA GUZIKACH - KAMIL
 		//Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
 		//Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 		
@@ -104,8 +101,7 @@ public class main {
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPassword.setBounds(1028, 238, 88, 29);
 		frame.getContentPane().add(lblPassword);
-		String loginek = user.getText();
-	
+
 		JButton btnLoginIn = new JButton("Login in");
 		btnLoginIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -123,33 +119,19 @@ public class main {
 					
 					String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
 					ResultSet rs=stmt.executeQuery(sql);
-				
-					String sql2="Select nazwa_studia from login where  Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
-					ResultSet rs2=stmt.executeQuery(sql2);
-					rs2.next();
-					String nazwa_studia = rs2.getString("nazwa_studia");
-					System.out.println(nazwa_studia);
-					String loginek=user.getText();
-					
-						
-					if(nazwa_studia.isEmpty()) {
-						frame.setVisible(false);
-						nazwa_studia window2 = new nazwa_studia();
-						window2.frame.setVisible(true);
-						
-												}
-					else 
+					if(rs.next())
 					{
-						
-					
+						frame.setVisible(false);
 						menu_glowne window = new menu_glowne();
 						window.frame.setVisible(true);
 					}
+					else 
+						JOptionPane.showMessageDialog(null, "Bledny login lub haslo");
+				
 					
-		
 					
 					con.close();
-				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Bledny login lub haslo");}
+				} catch(Exception e1){System.out.println(e1);}
 			}
 		});
 		btnLoginIn.setBounds(1128, 336, 108, 29);
@@ -183,6 +165,4 @@ public class main {
 		tlolabel.setIcon(tlo);
 		frame.getContentPane().add(tlolabel);
 	}
-	
-	
 }
