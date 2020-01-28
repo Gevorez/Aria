@@ -191,6 +191,7 @@ public class menu_glowne {
 					lblNewLabel.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 20));
 					lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 					lblNewLabel.setBounds(333, 11, 449, 46);
+					lblNewLabel.setForeground(Color.white);
 					STUDIO.add(lblNewLabel);
 					
 					if(rs2.next()) {
