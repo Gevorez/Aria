@@ -30,6 +30,9 @@ public class nazwa_studia {
 	       
 	    }
 	    public void createGUI(){
+	    	
+	    	ImageIcon tlo = new ImageIcon("tlo.png");
+	    	
 	        frame=new JFrame();
 	        frame.getContentPane().setLayout(null);
 	        frame.setSize(600,300);
@@ -81,6 +84,11 @@ public class nazwa_studia {
 	        
 	        btnKliku.setBounds(472, 206, 89, 23);
 	        frame.getContentPane().add(btnKliku);
+	        
+	        JLabel tlostudio = new JLabel("New label");
+	        tlostudio.setBounds(-675, -400, 1280, 720);
+	        frame.getContentPane().add(tlostudio);
+	        tlostudio.setIcon(tlo);
 	        frame.setVisible(true);
 
 	    }

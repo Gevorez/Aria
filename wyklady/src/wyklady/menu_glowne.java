@@ -221,6 +221,12 @@ public class menu_glowne {
 		btnYourLibrary.setBounds(10, 158, 165, 23);
 		frame.getContentPane().add(btnYourLibrary);
 		
+		JLabel tlolabel = new JLabel("");
+		tlolabel.setBounds(0, 0, 1280, 720);
+		tlolabel.setIcon(tlo);
+		frame.getContentPane().add(tlolabel);
+		
+		
 		
 	}
 	}
