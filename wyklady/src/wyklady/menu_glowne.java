@@ -107,6 +107,7 @@ public class menu_glowne {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(333, 11, 449, 46);
 		STUDIO.add(lblNewLabel);*/
+		//dsjnfskjd
 		
 		JPanel SKLEP = new JPanel();
 		layeredPane.add(SKLEP, "name_68648280148399");
