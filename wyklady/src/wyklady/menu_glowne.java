@@ -37,7 +37,7 @@ public class menu_glowne {
 	}
 
 	/**
-	 * Create the application.
+	 * Create the application
 	 */
 	
 	public menu_glowne() {
