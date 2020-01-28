@@ -1,16 +1,22 @@
 package wyklady;
 
 import java.awt.EventQueue;
-
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JComboBox;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
+import java.awt.Color;
+
 import javax.swing.JLayeredPane;
 import java.awt.event.ActionEvent;
 
@@ -40,21 +46,35 @@ public class menu_glowne {
 	 * Create the application
 	 */
 	
-	public menu_glowne() {
+	public menu_glowne() throws IOException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws IOException 
 	 */
-	private void initialize() {
+	private void initialize() throws IOException {
+		
+		//WEDEWDW
+		//dqwdqwdwqdqw
+		
+		Image ikona1 = ImageIO.read(new File("logo.png"));
+		ImageIcon tlo = new ImageIcon("tlo.png");
+		ImageIcon logo2 = new ImageIcon("logo2.png");
+		
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1280, 720);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setIconImage(ikona1);
+		frame.setResizable(false);
+		frame.setBackground(Color.BLACK);
 		
 		JLabel lblIkona = new JLabel("ikona");
-		lblIkona.setBounds(46, 30, 46, 14);
+		lblIkona.setBounds(55, 11, 80, 80);
+		lblIkona.setIcon(logo2);
 		frame.getContentPane().add(lblIkona);
 		
 		JButton btnNewest = new JButton("newest");
@@ -90,12 +110,14 @@ public class menu_glowne {
 		frame.getContentPane().add(btnForward);
 		
 		JLayeredPane layeredPane = new JLayeredPane();
-		layeredPane.setBounds(185, 0, 1079, 634);
+		layeredPane.setBounds(185, 0, 1095, 634);
 		frame.getContentPane().add(layeredPane);
 		layeredPane.setLayout(new CardLayout(0, 0));
 		
 		JPanel STUDIO = new JPanel();
 		layeredPane.add(STUDIO, "name_68613709652399");
+		STUDIO.setBackground(Color.DARK_GRAY);
+		STUDIO.setOpaque(true);
 		STUDIO.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("STUDIO");
@@ -104,6 +126,8 @@ public class menu_glowne {
 		
 		JPanel SKLEP = new JPanel();
 		layeredPane.add(SKLEP, "name_68648280148399");
+		SKLEP.setBackground(Color.DARK_GRAY);
+		SKLEP.setOpaque(true);
 		SKLEP.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("SKLEP");
@@ -112,6 +136,8 @@ public class menu_glowne {
 		
 		JPanel BIBLIOTEKA = new JPanel();
 		layeredPane.add(BIBLIOTEKA, "name_68702683888800");
+		BIBLIOTEKA.setBackground(Color.DARK_GRAY);
+		BIBLIOTEKA.setOpaque(true);
 		BIBLIOTEKA.setLayout(null);
 		
 		JLabel lblNewLabel_2 = new JLabel("BIBLIOTEKA");
@@ -153,6 +179,11 @@ public class menu_glowne {
 		});
 		btnYourLibrary.setBounds(10, 158, 165, 23);
 		frame.getContentPane().add(btnYourLibrary);
+		
+		JLabel tlolabel = new JLabel("");
+		tlolabel.setBounds(0, 0, 1280, 720);
+		tlolabel.setIcon(tlo);
+		frame.getContentPane().add(tlolabel);
 		
 		
 	}
