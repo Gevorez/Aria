@@ -63,7 +63,7 @@ public class nazwa_studia {
 						else {
 						String sql="Update login "
 								+ "set nazwa_studia='"+nazwa_std.getText()+"'"
-										+ "where Login='"+nazwa_std.getText()+"'";               
+										+ "where Login='"+main.user.getText()+"'";               
 						int rs=stmt.executeUpdate(sql);
 						if(rs == 1)
 							JOptionPane.showMessageDialog(null, "Udalo sie zarejestrowac");

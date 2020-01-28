@@ -29,9 +29,10 @@ import java.awt.event.ActionEvent;
 public class main {
 
 	private JFrame frame;
-	public JTextField user;
+	public static JTextField user;
 	private JPasswordField pass;
-
+	
+	
 	
 	
 
@@ -40,7 +41,9 @@ public class main {
 	 */
 	public static void main(String[] args) {
 		new splash();
-		
+		user = new JTextField();
+		user.setBounds(1028, 181, 181, 29);
+		String dupa=user.getText();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -88,8 +91,7 @@ public class main {
 		frame.setBackground(Color.BLACK);
 		
 		
-		user = new JTextField();
-		user.setBounds(1028, 181, 181, 29);
+		
 		frame.getContentPane().add(user);
 		user.setColumns(10);
 		
