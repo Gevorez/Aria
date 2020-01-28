@@ -17,6 +17,7 @@ import javax.swing.ComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -277,8 +278,9 @@ public class rejestracja extends JFrame {
 					String sql2="Select Login from login";
 					ResultSet rs2=stmt.executeQuery(sql2);
 					String sql4="Select Login from login where Login="+x;
-					ResultSet rs4=stmt.executeQuery(sql4);
+					ResultSet rs4=stmt.executeQuery(sql4)
 					rs*/
+					
 					if(login.getText().isEmpty()||haslo.getText().isEmpty()||email.getText().isEmpty()||telefon.getText().isEmpty()||nazwisko.getText().isEmpty()||pomocnicze.getText().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Nie podales wszystkich informacji");
 					}
@@ -287,12 +289,14 @@ public class rejestracja extends JFrame {
 							+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_str.getText()+"')";               
 					int rs=stmt.executeUpdate(sql);
 					
-					if(rs == 1)
+					if(rs == 1) {
 						JOptionPane.showMessageDialog(null, "Udalo sie zarejestrowac");
-					else 
-					
-						JOptionPane.showMessageDialog(null, "Nie udalo sie zarejestrowac");
+						dispose();
+						
 					}
+					
+					}
+					
 							con.close();
 				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Prosze wybrac inny login");}
 			}
