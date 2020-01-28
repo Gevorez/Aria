@@ -57,6 +57,7 @@ public class menu_glowne {
 	private void initialize() throws IOException {
 		
 		//WEDEWDW
+		//dqwdqwdwqdqw
 		
 		Image ikona1 = ImageIO.read(new File("logo.png"));
 		ImageIcon tlo = new ImageIcon("tlo.png");
