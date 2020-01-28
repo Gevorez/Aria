@@ -3,12 +3,17 @@ package wyklady;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import java.math.BigInteger; 
+import java.security.MessageDigest; 
+import java.security.NoSuchAlgorithmException; 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.imageio.ImageIO;
+import javax.swing.ComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -18,6 +23,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JProgressBar;
@@ -30,6 +36,8 @@ import javax.swing.JEditorPane;
 import javax.swing.JTextPane;
 import javax.swing.JCheckBox;
 import java.awt.Color;
+import javax.swing.JMenuItem;
+import javax.swing.JComboBox;
 
 public class rejestracja extends JFrame {
 
@@ -42,6 +50,8 @@ public class rejestracja extends JFrame {
 	private JPasswordField haslo;
 	private JTextField pomocnicze;
 	private JTextField pytan_pomoc;
+	private ComboBoxModel patternExamples;
+	
 
 	/**
 	 * Launch the application
@@ -58,6 +68,8 @@ public class rejestracja extends JFrame {
 			}
 		});
 	}
+	
+
 	
 	public rejestracja() {
 		
@@ -177,30 +189,9 @@ public class rejestracja extends JFrame {
 		contentPane.add(lblPasswordStrength);
 		
 		
-		btnRegister.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					Class.forName("com.mysql.cj.jdbc.Driver");
-					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
-					Statement stmt=con.createStatement();
-					/*	String x = login.getText();					 
-					String sql2="Select Login from login";
-					ResultSet rs2=stmt.executeQuery(sql2);
-					String sql4="Select Login from login where Login="+x;
-					ResultSet rs4=stmt.executeQuery(sql4);
-					rs*/
-					String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc) "
-							+ "VALUES('"+login.getText()+"','"+haslo.getText()+"','"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"')";               
-					int rs=stmt.executeUpdate(sql);
-					if(rs == 1)
-						JOptionPane.showMessageDialog(null, "Udało sie zarejestrowaĉ");
-					else 
-					
-						JOptionPane.showMessageDialog(null, "Nie udało sie zarejestrowaĉ");
-							con.close();
-				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Prosze wybrać inny login");}
-			}
-		});
+		
+		
+		
 		btnRegister.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		btnRegister.setBounds(341, 673, 115, 42);
 		contentPane.add(btnRegister);
@@ -223,6 +214,7 @@ public class rejestracja extends JFrame {
 		
 		
 		pytan_pomoc.setBounds(10, 416, 275, 19);
+		pytan_pomoc.setVisible(false);
 		contentPane.add(pytan_pomoc);
 		pytan_pomoc.setColumns(10);
 		
@@ -259,12 +251,55 @@ public class rejestracja extends JFrame {
 		chckbxNewCheckBox.setBounds(6, 567, 97, 23);
 		contentPane.add(chckbxNewCheckBox);
 		
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(10, 416, 275, 21);
+		contentPane.add(comboBox);
+		comboBox.addItem("Jak nazywa si� Tw�j pies?");
+		comboBox.addItem("Jaki jest nunmer Twojej karty kredytowej");
+		comboBox.addItem("Jaki masz numer buta");
+		
+		
+			
+		
+		btnRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+					/*	String x = login.getText();					 
+					String sql2="Select Login from login";
+					ResultSet rs2=stmt.executeQuery(sql2);
+					String sql4="Select Login from login where Login="+x;
+					ResultSet rs4=stmt.executeQuery(sql4);
+					rs*/
+					if(login.getText().isEmpty()||haslo.getText().isEmpty()||email.getText().isEmpty()||telefon.getText().isEmpty()||nazwisko.getText().isEmpty()||pomocnicze.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Nie podales wszystkich informacji");
+					}
+					else {
+					String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc) "
+							+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"')";               
+					int rs=stmt.executeUpdate(sql);
+					
+					if(rs == 1)
+						JOptionPane.showMessageDialog(null, "Udalo sie zarejestrowac");
+					else 
+					
+						JOptionPane.showMessageDialog(null, "Nie udalo sie zarejestrowac");
+					}
+							con.close();
+				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Prosze wybrac inny login");}
+			}
+		});
+		
+		
 		JLabel rej_tlo = new JLabel("");
 		rej_tlo.setBounds(0, 0, 484, 761);
 		rej_tlo.setIcon(rejtlo);
 		contentPane.add(rej_tlo);
-		
-		
-		
+	           
+ 
+	
 	}
 }

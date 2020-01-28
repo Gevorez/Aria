@@ -31,15 +31,21 @@ public class main {
 	private JTextField user;
 	private JPasswordField pass;
 
+	
+	
+
 	/**
 	 * Launch the application
 	 */
 	public static void main(String[] args) {
+		new splash();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					main window = new main();
 					window.frame.setVisible(true);
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -95,7 +101,7 @@ public class main {
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPassword.setBounds(1028, 238, 88, 29);
 		frame.getContentPane().add(lblPassword);
-		
+
 		JButton btnLoginIn = new JButton("Login in");
 		btnLoginIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -103,12 +109,27 @@ public class main {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
-					String sql="Select * from login where Login='"+user.getText()+"'and Haslo='"+pass.getText().toString()+ "'";
+					String xd=pass.getText();
+					
+					/*String sql2="Select Haslo from login where Login='"+user.getText()+"'";
+					ResultSet rs2=stmt.executeQuery(sql2);
+					rs2.next();
+					String haslo = rs2.getString("Haslo");
+					System.out.println(haslo);*/
+					
+					String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
 					ResultSet rs=stmt.executeQuery(sql);
 					if(rs.next())
-						JOptionPane.showMessageDialog(null, "Udalo sie zalogowac");
+					{
+						frame.setVisible(false);
+						menu_glowne window = new menu_glowne();
+						window.frame.setVisible(true);
+					}
 					else 
 						JOptionPane.showMessageDialog(null, "Bledny login lub haslo");
+				
+					
+					
 					con.close();
 				} catch(Exception e1){System.out.println(e1);}
 			}
