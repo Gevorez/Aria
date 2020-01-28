@@ -73,6 +73,7 @@ public class menu_glowne {
 		//WEDEWDW
 		//dqwdqwdwqdqw
 		//WEFWEFWEFWE
+		//thbeawfubewhfuhbewhbffewhbju
 		
 		Image ikona1 = ImageIO.read(new File("logo.png"));
 		ImageIcon tlo = new ImageIcon("tlo.png");
