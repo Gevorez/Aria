@@ -5,6 +5,10 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.swing.JFrame;
 import javax.swing.JComboBox;
@@ -18,6 +22,8 @@ import java.awt.CardLayout;
 import java.awt.Color;
 
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
@@ -76,6 +82,8 @@ public class menu_glowne {
 		frame.setResizable(false);
 		frame.setBackground(Color.BLACK);
 		
+		
+		
 		JLabel lblIkona = new JLabel("ikona");
 		lblIkona.setBounds(55, 11, 80, 80);
 		lblIkona.setIcon(logo2);
@@ -118,17 +126,11 @@ public class menu_glowne {
 		frame.getContentPane().add(layeredPane);
 		layeredPane.setLayout(new CardLayout(0, 0));
 		
-		JPanel STUDIO = new JPanel();
-		layeredPane.add(STUDIO, "name_68613709652399");
-		STUDIO.setBackground(Color.DARK_GRAY);
-		STUDIO.setOpaque(true);
-		STUDIO.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("");
+		/*JLabel lblNewLabel = new JLabel("a");
 		lblNewLabel.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(333, 11, 449, 46);
-		STUDIO.add(lblNewLabel);
+		STUDIO.add(lblNewLabel);*/
 		
 		JPanel SKLEP = new JPanel();
 		layeredPane.add(SKLEP, "name_68648280148399");
@@ -139,6 +141,12 @@ public class menu_glowne {
 		JLabel lblNewLabel_1 = new JLabel("SKLEP");
 		lblNewLabel_1.setBounds(450, 245, 171, 117);
 		SKLEP.add(lblNewLabel_1);
+		
+		JPanel STUDIO = new JPanel();
+		layeredPane.add(STUDIO, "name_68613709652399");
+		STUDIO.setBackground(Color.DARK_GRAY);
+		STUDIO.setOpaque(true);
+		STUDIO.setLayout(null);
 		
 		JPanel BIBLIOTEKA = new JPanel();
 		layeredPane.add(BIBLIOTEKA, "name_68702683888800");
@@ -159,7 +167,7 @@ public class menu_glowne {
 				layeredPane.revalidate();
 			}
 		});
-		btnHome.setBounds(10, 124, 165, 23);
+		btnHome.setBounds(10, 90, 165, 23);
 		frame.getContentPane().add(btnHome);
 		
 		JButton btnShop = new JButton("STUDIO");
@@ -169,9 +177,36 @@ public class menu_glowne {
 				layeredPane.add(STUDIO);
 				layeredPane.repaint();
 				layeredPane.revalidate();
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+				
+					String sql2="Select nazwa_studia from login where  Login='"+main.user.getText()+"'";
+					ResultSet rs2=stmt.executeQuery(sql2);
+					rs2.next();
+					String nazwa_studia = rs2.getString("nazwa_studia");
+					
+					JLabel lblNewLabel = new JLabel(nazwa_studia);
+					lblNewLabel.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 20));
+					lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+					lblNewLabel.setBounds(333, 11, 449, 46);
+					STUDIO.add(lblNewLabel);
+					
+					if(rs2.next()) {
+						
+						
+						
+					}
+					
+					
+					
+							con.close();
+				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Prosze wybrac inny login");}
 			}
+		
 		});
-		btnShop.setBounds(10, 90, 165, 23);
+		btnShop.setBounds(10, 124, 165, 23);
 		frame.getContentPane().add(btnShop);
 		
 		JButton btnYourLibrary = new JButton("BIBLIOTEKA");
@@ -185,11 +220,6 @@ public class menu_glowne {
 		});
 		btnYourLibrary.setBounds(10, 158, 165, 23);
 		frame.getContentPane().add(btnYourLibrary);
-		
-		JLabel tlolabel = new JLabel("");
-		tlolabel.setBounds(0, 0, 1280, 720);
-		tlolabel.setIcon(tlo);
-		frame.getContentPane().add(tlolabel);
 		
 		
 	}
