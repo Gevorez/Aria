@@ -58,7 +58,6 @@ public class menu_glowne {
 		
 		Image ikona1 = ImageIO.read(new File("logo.png"));
 		ImageIcon tlo = new ImageIcon("tlo.png");
-		ImageIcon tlo2 = new ImageIcon("tlo2.png");
 		ImageIcon logo2 = new ImageIcon("logo2.png");
 		
 		
