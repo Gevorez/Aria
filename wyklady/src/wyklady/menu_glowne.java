@@ -10,6 +10,9 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import java.awt.CardLayout;
+import javax.swing.JLayeredPane;
+import java.awt.event.ActionEvent;
 
 
 
@@ -54,25 +57,13 @@ public class menu_glowne {
 		lblIkona.setBounds(46, 30, 46, 14);
 		frame.getContentPane().add(lblIkona);
 		
-		JButton btnShop = new JButton("shop");
-		btnShop.setBounds(10, 90, 89, 23);
-		frame.getContentPane().add(btnShop);
-		
-		JButton btnHome = new JButton("home");
-		btnHome.setBounds(61, 124, 89, 23);
-		frame.getContentPane().add(btnHome);
-		
 		JButton btnNewest = new JButton("newest");
-		btnNewest.setBounds(61, 158, 89, 23);
+		btnNewest.setBounds(61, 440, 89, 23);
 		frame.getContentPane().add(btnNewest);
 		
 		JButton btnBrowse = new JButton("browse");
-		btnBrowse.setBounds(61, 192, 89, 23);
+		btnBrowse.setBounds(46, 477, 89, 23);
 		frame.getContentPane().add(btnBrowse);
-		
-		JButton btnYourLibrary = new JButton("your library");
-		btnYourLibrary.setBounds(10, 248, 89, 23);
-		frame.getContentPane().add(btnYourLibrary);
 		
 		JButton btnAlbums = new JButton("albums");
 		btnAlbums.setBounds(61, 282, 89, 23);
@@ -98,9 +89,70 @@ public class menu_glowne {
 		btnForward.setBounds(765, 647, 89, 23);
 		frame.getContentPane().add(btnForward);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(160, 0, 1094, 606);
-		frame.getContentPane().add(panel);
+		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane.setBounds(185, 0, 1079, 634);
+		frame.getContentPane().add(layeredPane);
+		layeredPane.setLayout(new CardLayout(0, 0));
+		
+		JPanel STUDIO = new JPanel();
+		layeredPane.add(STUDIO, "name_68613709652399");
+		STUDIO.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("STUDIO");
+		lblNewLabel.setBounds(468, 274, 133, 101);
+		STUDIO.add(lblNewLabel);
+		
+		JPanel SKLEP = new JPanel();
+		layeredPane.add(SKLEP, "name_68648280148399");
+		SKLEP.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("SKLEP");
+		lblNewLabel_1.setBounds(450, 245, 171, 117);
+		SKLEP.add(lblNewLabel_1);
+		
+		JPanel BIBLIOTEKA = new JPanel();
+		layeredPane.add(BIBLIOTEKA, "name_68702683888800");
+		BIBLIOTEKA.setLayout(null);
+		
+		JLabel lblNewLabel_2 = new JLabel("BIBLIOTEKA");
+		lblNewLabel_2.setBounds(475, 315, 134, 96);
+		BIBLIOTEKA.add(lblNewLabel_2);
+		
+		JButton btnHome = new JButton("SKLEP");
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				layeredPane.removeAll();
+				layeredPane.add(SKLEP);
+				layeredPane.repaint();
+				layeredPane.revalidate();
+			}
+		});
+		btnHome.setBounds(10, 124, 165, 23);
+		frame.getContentPane().add(btnHome);
+		
+		JButton btnShop = new JButton("STUDIO");
+		btnShop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				layeredPane.removeAll();
+				layeredPane.add(STUDIO);
+				layeredPane.repaint();
+				layeredPane.revalidate();
+			}
+		});
+		btnShop.setBounds(10, 90, 165, 23);
+		frame.getContentPane().add(btnShop);
+		
+		JButton btnYourLibrary = new JButton("BIBLIOTEKA");
+		btnYourLibrary.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				layeredPane.removeAll();
+				layeredPane.add(BIBLIOTEKA);
+				layeredPane.repaint();
+				layeredPane.revalidate();
+			}
+		});
+		btnYourLibrary.setBounds(10, 158, 165, 23);
+		frame.getContentPane().add(btnYourLibrary);
 		
 		
 	}
