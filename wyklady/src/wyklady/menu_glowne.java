@@ -19,6 +19,9 @@ import java.awt.Color;
 
 import javax.swing.JLayeredPane;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 
 
@@ -120,8 +123,10 @@ public class menu_glowne {
 		STUDIO.setOpaque(true);
 		STUDIO.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("STUDIO");
-		lblNewLabel.setBounds(468, 274, 133, 101);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 20));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(333, 11, 449, 46);
 		STUDIO.add(lblNewLabel);
 		
 		JPanel SKLEP = new JPanel();
