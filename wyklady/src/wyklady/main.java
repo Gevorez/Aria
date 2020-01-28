@@ -143,7 +143,7 @@ public class main {
 					else 
 					{
 						
-					
+						frame.setVisible(false);
 						menu_glowne window = new menu_glowne();
 						window.frame.setVisible(true);
 					}

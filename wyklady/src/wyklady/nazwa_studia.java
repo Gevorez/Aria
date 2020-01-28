@@ -65,11 +65,11 @@ public class nazwa_studia {
 								+ "set nazwa_studia='"+nazwa_std.getText()+"'"
 										+ "where Login='"+main.user.getText()+"'";               
 						int rs=stmt.executeUpdate(sql);
-						if(rs == 1)
-							JOptionPane.showMessageDialog(null, "Udalo sie zarejestrowac");
-						else 
+									
 						
-							JOptionPane.showMessageDialog(null, "Nie udalo sie zarejestrowac");
+						frame.setVisible(false);
+						menu_glowne window2 = new menu_glowne();
+						window2.frame.setVisible(true);
 						}
 				
 	        		
