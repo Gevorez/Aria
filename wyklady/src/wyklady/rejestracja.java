@@ -278,7 +278,7 @@ public class rejestracja extends JFrame {
 					String sql2="Select Login from login";
 					ResultSet rs2=stmt.executeQuery(sql2);
 					String sql4="Select Login from login where Login="+x;
-					ResultSet rs4=stmt.executeQuery(sql4);
+					ResultSet rs4=stmt.executeQuery(sql4)
 					rs*/
 					
 					if(login.getText().isEmpty()||haslo.getText().isEmpty()||email.getText().isEmpty()||telefon.getText().isEmpty()||nazwisko.getText().isEmpty()||pomocnicze.getText().isEmpty()) {
