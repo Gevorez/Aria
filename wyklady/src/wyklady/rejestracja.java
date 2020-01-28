@@ -51,6 +51,7 @@ public class rejestracja extends JFrame {
 	private JTextField pomocnicze;
 	private JTextField pytan_pomoc;
 	private ComboBoxModel patternExamples;
+	private JTextField nazwa_str;
 	
 
 	/**
@@ -259,7 +260,11 @@ public class rejestracja extends JFrame {
 		comboBox.addItem("Jaki jest nunmer Twojej karty kredytowej");
 		comboBox.addItem("Jaki masz numer buta");
 		
-		String nazwa_srd = null;
+		nazwa_str=new JTextField();
+		nazwa_str.setVisible(false);
+		contentPane.add(nazwa_str);
+		nazwa_str.setColumns(10);
+		
 			
 		
 		btnRegister.addActionListener(new ActionListener() {
@@ -279,7 +284,7 @@ public class rejestracja extends JFrame {
 					}
 					else {
 					String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc,nazwa_studia) "
-							+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_srd+"')";               
+							+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_str.getText()+"')";               
 					int rs=stmt.executeUpdate(sql);
 					
 					if(rs == 1)
