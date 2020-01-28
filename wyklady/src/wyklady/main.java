@@ -63,7 +63,7 @@ public class main {
 
 	/**
 	 * Initialize the contents of the frame.
-	 * @throws IOException 
+	 * @throws IOExceptio
 	 */
 	private void initialize() throws IOException {
 		
