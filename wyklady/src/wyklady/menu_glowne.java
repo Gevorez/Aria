@@ -29,6 +29,7 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 
 
@@ -202,6 +203,32 @@ public class menu_glowne {
 		lblNewLabel_2.setBounds(475, 315, 134, 96);
 		BIBLIOTEKA.add(lblNewLabel_2);
 		
+		JLabel label = new JLabel("Tytu\u0142");
+		label.setForeground(Color.WHITE);
+		label.setBounds(10, 139, 65, 23);
+		BIBLIOTEKA.add(label);
+		
+		JLabel label_1 = new JLabel("Wykonawca");
+		label_1.setForeground(Color.WHITE);
+		label_1.setBounds(10, 83, 112, 34);
+		BIBLIOTEKA.add(label_1);
+		
+		JLabel label_2 = new JLabel("Album");
+		label_2.setForeground(Color.WHITE);
+		label_2.setBounds(10, 56, 46, 14);
+		BIBLIOTEKA.add(label_2);
+		
+		JLabel label_3 = new JLabel("Data_publikacji");
+		label_3.setForeground(Color.WHITE);
+		label_3.setBounds(10, 187, 98, 14);
+		BIBLIOTEKA.add(label_3);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(207, 51, 298, 150);
+		BIBLIOTEKA.add(textArea);
+		
+		
+		
 		JButton btnHome = new JButton("SKLEP");
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -233,6 +260,7 @@ public class menu_glowne {
 					String sql2="Select nazwa_studia from login where  Login='"+main.user.getText()+"'";
 					ResultSet rs2=stmt.executeQuery(sql2);
 					rs2.next();
+					
 					String nazwa_studia = rs2.getString("nazwa_studia");
 					
 					JLabel lblNewLabel = new JLabel(nazwa_studia);
@@ -269,6 +297,30 @@ public class menu_glowne {
 				layeredPane.add(BIBLIOTEKA);
 				layeredPane.repaint();
 				layeredPane.revalidate();
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+				
+					String sql2="Select Tytul,Wykonawca,Album,Data_publikacji,img from utwory";
+					ResultSet rs2=stmt.executeQuery(sql2);
+					
+					  while(rs2.next()){
+					         //Retrieve by column name
+					         String tyt  = rs2.getString("Tytul");
+					         String wyko = rs2.getString("Wykonawca");
+					         String Album = rs2.getString("Album");
+					         String Data_pb = rs2.getString("Data_publikacji");
+					         
+					         //Display values
+					         int i = Integer.parseInt(rs2.getString("Tytul"));
+					         textArea.setText(rs2.getString(i));
+					        }
+					
+					
+				
+							con.close();
+				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Prosze wybrac inny login");}
 			}
 		});
 		btnYourLibrary.setIcon(lib_guziczek);
