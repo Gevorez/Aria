@@ -302,7 +302,7 @@ public class menu_glowne {
 					Statement stmt=con.createStatement();
 					String sql="DELETE FROM utwory WHERE Tytul ="
 							+ " ('"+usun.getText()+"')";
-							
+							//ss
 					int rs=stmt.executeUpdate(sql);
 					if(rs==1) {
 						JOptionPane.showMessageDialog(null, "utwor zostal usuniety");
