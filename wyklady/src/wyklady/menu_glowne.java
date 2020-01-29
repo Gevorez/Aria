@@ -40,6 +40,8 @@ public class menu_glowne {
 	private JTextField wyko;
 	private JTextField albu;
 	private JTextField data_publi;
+	private JTextField usun;
+	private JTextField zmiana;
 
 	/**
 	 * Launch the application.
@@ -170,6 +172,7 @@ public class menu_glowne {
 		JButton btnDodaj = new JButton("Dodaj");
 		btnDodaj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
@@ -188,10 +191,68 @@ public class menu_glowne {
 					}
 					con.close();
 				} catch(Exception e1){System.out.println(e1);}
+				wyko.setText(null);
+				tytu.setText(null);
+				albu.setText(null);
+				data_publi.setText(null);
 			}
+			
 		});
 		btnDodaj.setBounds(52, 483, 89, 23);
 		STUDIO.add(btnDodaj);
+		
+		zmiana = new JTextField();
+		zmiana.setBounds(647, 263, 96, 19);
+		STUDIO.add(zmiana);
+		zmiana.setColumns(10);
+		JTextArea textArea2 = new JTextArea();
+		
+		JButton btnGuziczek = new JButton("guziczek");
+		btnGuziczek.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+					
+				
+						
+						String sql="Update login "
+								+ "set nazwa_studia='"+zmiana.getText()+"'"
+										+ "where Login='"+main.user.getText()+"'";
+						
+						
+						
+					int rs=stmt.executeUpdate(sql);
+				
+					if(rs==1) {
+						JOptionPane.showMessageDialog(null, "nazwa zmieniona");
+						textArea2.setText(null);
+						
+						
+					
+					}
+					else 
+						JOptionPane.showMessageDialog(null, "Bledny login lub haslo");
+					
+					textArea2.setText(zmiana.getText());
+					
+					
+					
+					
+					con.close();
+				} catch(Exception e1){System.out.println(e1);}
+			
+				
+				/*String sql="Update login "
+								+ "set nazwa_studia='"+nazwa_std.getText()+"'"
+										+ "where Login='"+main.user.getText()+"'";*/
+			}
+		});
+		btnGuziczek.setBounds(835, 262, 85, 21);
+		STUDIO.add(btnGuziczek);
 		
 		JPanel BIBLIOTEKA = new JPanel();
 		layeredPane.add(BIBLIOTEKA, "name_68702683888800");
@@ -199,33 +260,94 @@ public class menu_glowne {
 		BIBLIOTEKA.setOpaque(true);
 		BIBLIOTEKA.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("BIBLIOTEKA");
-		lblNewLabel_2.setBounds(475, 315, 134, 96);
-		BIBLIOTEKA.add(lblNewLabel_2);
-		
 		JLabel label = new JLabel("Tytu\u0142");
 		label.setForeground(Color.WHITE);
-		label.setBounds(10, 139, 65, 23);
+		label.setBounds(522, 23, 65, 23);
 		BIBLIOTEKA.add(label);
 		
 		JLabel label_1 = new JLabel("Wykonawca");
 		label_1.setForeground(Color.WHITE);
-		label_1.setBounds(10, 83, 112, 34);
+		label_1.setBounds(359, 17, 112, 34);
 		BIBLIOTEKA.add(label_1);
 		
 		JLabel label_2 = new JLabel("Album");
 		label_2.setForeground(Color.WHITE);
-		label_2.setBounds(10, 56, 46, 14);
+		label_2.setBounds(207, 27, 46, 14);
 		BIBLIOTEKA.add(label_2);
 		
 		JLabel label_3 = new JLabel("Data_publikacji");
 		label_3.setForeground(Color.WHITE);
-		label_3.setBounds(10, 187, 98, 14);
+		label_3.setBounds(692, 27, 98, 14);
 		BIBLIOTEKA.add(label_3);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(207, 51, 298, 150);
+		textArea.setBackground(Color.DARK_GRAY);
+		textArea.setForeground(Color.WHITE);
+		textArea.setBounds(196, 51, 721, 325);
 		BIBLIOTEKA.add(textArea);
+		usun = new JTextField();
+		
+		
+	
+		usun.setBounds(20, 591, 221, 19);
+		BIBLIOTEKA.add(usun);
+		usun.setColumns(10);
+		
+		JButton btnUsun = new JButton("Usun");
+		btnUsun.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+					String sql="DELETE FROM utwory WHERE Tytul ="
+							+ " ('"+usun.getText()+"')";
+							
+					int rs=stmt.executeUpdate(sql);
+					if(rs==1) {
+						JOptionPane.showMessageDialog(null, "utwor zostal usuniety");
+					textArea.setText(null);
+					String sql2="Select Tytul,Wykonawca,Album,Data_publikacji,id from utwory";
+					ResultSet rs2=stmt.executeQuery(sql2);
+					int i=0;
+						
+							while(rs2.next() &&  i<10) {
+					         //Retrieve by column name
+					         String tyt  = rs2.getString("Tytul");
+					       
+					         String wyko = rs2.getString("Wykonawca");
+					         String Album = rs2.getString("Album");
+					         String Data_pb = rs2.getString("Data_publikacji");
+					         
+					        
+					         i++;
+					         
+					         //Display values
+					        textArea.append(i +" "+Album+"\t\t "   +wyko+ "\t\t"+tyt+" \t\t  "+Data_pb+"\n"); 
+					        
+					        
+							}
+					
+					
+					}
+
+					else 
+						JOptionPane.showMessageDialog(null, "Bledne dane");
+					con.close();
+				} catch(Exception e1)
+				{
+					System.out.println(e1);
+					}
+			}
+				});
+		btnUsun.setBounds(265, 590, 85, 21);
+		BIBLIOTEKA.add(btnUsun);
+		
+		JLabel lblPodajTytulUsuwanego = new JLabel("Podaj tytul usuwanego utworu");
+		lblPodajTytulUsuwanego.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblPodajTytulUsuwanego.setForeground(Color.WHITE);
+		lblPodajTytulUsuwanego.setBounds(20, 561, 257, 23);
+		BIBLIOTEKA.add(lblPodajTytulUsuwanego);
 		
 		
 		
@@ -244,6 +366,13 @@ public class menu_glowne {
 		btnHome.setContentAreaFilled(false);
 		btnHome.setBounds(10, 90, 165, 23);
 		frame.getContentPane().add(btnHome);
+
+		
+		textArea2.setBackground(Color.DARK_GRAY);
+		textArea2.setForeground(Color.WHITE);
+		textArea2.setBounds(333, 11, 449, 46);
+		textArea2.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 20));
+		STUDIO.add(textArea2);
 		
 		JButton btnShop = new JButton("STUDIO");
 		btnShop.addActionListener(new ActionListener() {
@@ -252,6 +381,10 @@ public class menu_glowne {
 				layeredPane.add(STUDIO);
 				layeredPane.repaint();
 				layeredPane.revalidate();
+				wyko.setText(null);
+				tytu.setText(null);
+				albu.setText(null);
+				data_publi.setText(null);
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
@@ -263,12 +396,14 @@ public class menu_glowne {
 					
 					String nazwa_studia = rs2.getString("nazwa_studia");
 					
-					JLabel lblNewLabel = new JLabel(nazwa_studia);
+					textArea2.setText(nazwa_studia);
+					
+					/*JLabel lblNewLabel = new JLabel(nazwa_studia);
 					lblNewLabel.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 20));
 					lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 					lblNewLabel.setBounds(333, 11, 449, 46);
 					lblNewLabel.setForeground(Color.white);
-					STUDIO.add(lblNewLabel);
+					STUDIO.add(lblNewLabel);*/
 					
 					if(rs2.next()) {
 						
@@ -297,30 +432,38 @@ public class menu_glowne {
 				layeredPane.add(BIBLIOTEKA);
 				layeredPane.repaint();
 				layeredPane.revalidate();
+				textArea.setText(null);
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
 				
-					String sql2="Select Tytul,Wykonawca,Album,Data_publikacji,img from utwory";
+					String sql2="Select Tytul,Wykonawca,Album,Data_publikacji,id from utwory";
 					ResultSet rs2=stmt.executeQuery(sql2);
-					
-					  while(rs2.next()){
+					int i=0;
+						
+							while(rs2.next() &&  i<10) {
 					         //Retrieve by column name
 					         String tyt  = rs2.getString("Tytul");
+					       
 					         String wyko = rs2.getString("Wykonawca");
 					         String Album = rs2.getString("Album");
 					         String Data_pb = rs2.getString("Data_publikacji");
 					         
+					        
+					         i++;
+					         
 					         //Display values
-					         int i = Integer.parseInt(rs2.getString("Tytul"));
-					         textArea.setText(rs2.getString(i));
-					        }
-					
+					        textArea.append(i +" "+Album+"\t\t "   +wyko+ "\t\t"+tyt+" \t\t  "+Data_pb+"\n"); 
+					        
+					        
+							}
+							
+							
 					
 				
 							con.close();
-				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Prosze wybrac inny login");}
+				} catch(Exception e1){JOptionPane.showMessageDialog(null, "dupa zbita");}
 			}
 		});
 		btnYourLibrary.setIcon(lib_guziczek);

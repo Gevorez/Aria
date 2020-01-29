@@ -25,6 +25,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class main {
 
@@ -177,6 +179,57 @@ public class main {
 		frame.getContentPane().add(btnNewButton_3);
 		
 		pass = new JPasswordField();
+		pass.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					try {
+						Class.forName("com.mysql.cj.jdbc.Driver");
+						Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+						Statement stmt=con.createStatement();
+						String xd=pass.getText();
+						
+						/*String sql2="Select Haslo from login where Login='"+user.getText()+"'";
+						ResultSet rs2=stmt.executeQuery(sql2);
+						rs2.next();
+						String haslo = rs2.getString("Haslo");
+						System.out.println(haslo);*/
+						
+						String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
+						ResultSet rs=stmt.executeQuery(sql);
+					
+						String sql2="Select nazwa_studia from login where  Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
+						ResultSet rs2=stmt.executeQuery(sql2);
+						rs2.next();
+						String nazwa_studia = rs2.getString("nazwa_studia");
+						System.out.println(nazwa_studia);
+						String loginek=user.getText();
+						
+							
+						if(nazwa_studia.isEmpty()) {
+							frame.setVisible(false);
+							nazwa_studia window2 = new nazwa_studia();
+							window2.frame.setVisible(true);
+							
+													}
+						else 
+						{
+							
+							frame.setVisible(false);
+							menu_glowne window = new menu_glowne();
+							window.frame.setVisible(true);
+						}
+						
+			
+						
+						con.close();
+					} catch(Exception e1){JOptionPane.showMessageDialog(null, "Bledny login lub haslo");}
+				
+		
+				}
+			}
+		});
 		pass.setBounds(1028, 268, 181, 29);
 		frame.getContentPane().add(pass);
 		
