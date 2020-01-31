@@ -284,21 +284,29 @@ public class rejestracja extends JFrame {
 					if(login.getText().isEmpty()||haslo.getText().isEmpty()||email.getText().isEmpty()||telefon.getText().isEmpty()||nazwisko.getText().isEmpty()||pomocnicze.getText().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Nie podales wszystkich informacji");
 					}
-					else {
-					String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc,nazwa_studia) "
-							+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_str.getText()+"')";               
-					int rs=stmt.executeUpdate(sql);
-					
-					if(rs == 1) {
-						JOptionPane.showMessageDialog(null, "Udalo sie zarejestrowac");
-						dispose();
 						
-					}
+						String sql2="SELECT count(*) as total from login ";
+						ResultSet rs2=stmt.executeQuery(sql2);
+						rs2.next();
+						int xd=rs2.getInt("total");
+						if(xd==0) {
+						
+							String sql3="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc,nazwa_studia,Admin) "
+									+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_str.getText()+"',1)";               
+							int rs=stmt.executeUpdate(sql3);
+							
+						} else 
+						{
+							String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc,nazwa_studia,Admin) "
+							+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_str.getText()+"',0)";               
+					int rs3=stmt.executeUpdate(sql);
+						}
+
+						dispose();
 					
-					}
 					
 							con.close();
-				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Prosze wybrac inny login");}
+				} catch(Exception e1){JOptionPane.showMessageDialog(null, e1);}
 			}
 		});
 		
