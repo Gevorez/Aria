@@ -33,9 +33,13 @@ import javax.swing.JTextArea;
 
 
 
-public class menu_glowne {
+public class menu_glowne_admina {
 
 	JFrame frame;
+	private JTextField tytu;
+	private JTextField wyko;
+	private JTextField albu;
+	private JTextField data_publi;
 	private JTextField usun;
 	private JTextField zmiana;
 
@@ -46,7 +50,7 @@ public class menu_glowne {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					menu_glowne window = new menu_glowne();
+					menu_glowne_admina window = new menu_glowne_admina();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +63,7 @@ public class menu_glowne {
 	 * Create the application
 	 */
 	
-	public menu_glowne() throws IOException {
+	public menu_glowne_admina() throws IOException {
 		initialize();
 	}
 
@@ -124,6 +128,78 @@ public class menu_glowne {
 		STUDIO.setBackground(Color.DARK_GRAY);
 		STUDIO.setOpaque(true);
 		STUDIO.setLayout(null);
+		
+		tytu = new JTextField();
+		tytu.setBounds(52, 187, 152, 20);
+		STUDIO.add(tytu);
+		tytu.setColumns(10);
+		
+		wyko = new JTextField();
+		wyko.setBounds(52, 263, 152, 20);
+		STUDIO.add(wyko);
+		wyko.setColumns(10);
+		
+		albu = new JTextField();
+		albu.setBounds(52, 338, 152, 20);
+		STUDIO.add(albu);
+		albu.setColumns(10);
+		
+		data_publi = new JTextField();
+		data_publi.setBounds(52, 405, 152, 20);
+		STUDIO.add(data_publi);
+		data_publi.setColumns(10);
+		
+		JLabel lblTytu = new JLabel("Tytu\u0142");
+		lblTytu.setForeground(Color.WHITE);
+		lblTytu.setBounds(52, 168, 65, 23);
+		STUDIO.add(lblTytu);
+		
+		JLabel lblWykonawca = new JLabel("Wykonawca");
+		lblWykonawca.setForeground(Color.WHITE);
+		lblWykonawca.setBounds(52, 237, 112, 34);
+		STUDIO.add(lblWykonawca);
+		
+		JLabel lblAlbum = new JLabel("Album");
+		lblAlbum.setForeground(Color.WHITE);
+		lblAlbum.setBounds(52, 324, 46, 14);
+		STUDIO.add(lblAlbum);
+		
+		JLabel lblDatapublikacji = new JLabel("Data_publikacji");
+		lblDatapublikacji.setForeground(Color.WHITE);
+		lblDatapublikacji.setBounds(52, 391, 98, 14);
+		STUDIO.add(lblDatapublikacji);
+		
+		JButton btnDodaj = new JButton("Dodaj");
+		btnDodaj.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+					if(tytu.getText().isEmpty()||wyko.getText().isEmpty()||albu.getText().isEmpty()||data_publi.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Nie podales wszystkich informacji");
+					}
+					else {
+					String sql="INSERT INTO utwory (Tytul, Wykonawca, Album, Data_publikacji) "
+							+ "VALUES('"+tytu.getText()+"','"+wyko.getText()+"','"+albu.getText()+"','"+data_publi.getText()+"')";
+					int rs=stmt.executeUpdate(sql);
+					if(rs==1)
+						JOptionPane.showMessageDialog(null, "Utwor zostal dodany");
+					else 
+						JOptionPane.showMessageDialog(null, "Bledny login lub haslo");
+					}
+					con.close();
+				} catch(Exception e1){System.out.println(e1);}
+				wyko.setText(null);
+				tytu.setText(null);
+				albu.setText(null);
+				data_publi.setText(null);
+			}
+			
+		});
+		btnDodaj.setBounds(52, 483, 89, 23);
+		STUDIO.add(btnDodaj);
 		
 		zmiana = new JTextField();
 		zmiana.setBounds(647, 263, 96, 19);
@@ -231,16 +307,17 @@ public class menu_glowne {
 					if(rs==1) {
 						JOptionPane.showMessageDialog(null, "utwor zostal usuniety");
 					textArea.setText(null);
-					String sql2="Select tytul,wykonawca,album,data_publikacji from zakupione_"+main.user.getText()+"";
+					String sql2="Select Tytul,Wykonawca,Album,Data_publikacji,id from utwory";
 					ResultSet rs2=stmt.executeQuery(sql2);
 					int i=0;
 						
 							while(rs2.next() &&  i<10) {
 					         //Retrieve by column name
-					         String tyt  = rs2.getString("tytul");
-					         String wyko = rs2.getString("wykonawca");
-					         String Album = rs2.getString("album");
-					         String Data_pb = rs2.getString("data_publikacji");
+					         String tyt  = rs2.getString("Tytul");
+					       
+					         String wyko = rs2.getString("Wykonawca");
+					         String Album = rs2.getString("Album");
+					         String Data_pb = rs2.getString("Data_publikacji");
 					         
 					        
 					         i++;
@@ -304,7 +381,10 @@ public class menu_glowne {
 				layeredPane.add(STUDIO);
 				layeredPane.repaint();
 				layeredPane.revalidate();
-				
+				wyko.setText(null);
+				tytu.setText(null);
+				albu.setText(null);
+				data_publi.setText(null);
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
@@ -316,7 +396,7 @@ public class menu_glowne {
 					
 					String nazwa_studia = rs2.getString("nazwa_studia");
 					
-					textArea2.setText(nazwa_studia);
+					textArea2.setText("To jest Admin");
 					
 					/*JLabel lblNewLabel = new JLabel(nazwa_studia);
 					lblNewLabel.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 20));
@@ -357,22 +437,17 @@ public class menu_glowne {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
-
-					String sql="Select nazwa_studia from login where  Login='"+main.user.getText()+"'";
-					ResultSet rs3=stmt.executeQuery(sql);
-					rs3.next();
-					String nazwa_studia = rs3.getString("nazwa_studia");
-					
-					String sql2="Select tytul,wykonawca,album,data_publikacji from zakupione_"+main.user.getText()+"";
+				
+					String sql2="Select Tytul,Wykonawca,Album,Data_publikacji from utwory";
 					ResultSet rs2=stmt.executeQuery(sql2);
 					int i=0;
 						
 							while(rs2.next() &&  i<10) {
 					         //Retrieve by column name
-					         String tyt  = rs2.getString("tytul");
-					         String wyko = rs2.getString("wykonawca");
-					         String Album = rs2.getString("album");
-					         String Data_pb = rs2.getString("data_publikacji");
+					         String tyt  = rs2.getString("Tytul");
+					         String wyko = rs2.getString("Wykonawca");
+					         String Album = rs2.getString("Album");
+					         String Data_pb = rs2.getString("Data_publikacji");
 					         
 					        
 					         i++;

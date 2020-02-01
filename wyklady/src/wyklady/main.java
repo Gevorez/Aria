@@ -45,7 +45,7 @@ public class main {
 		new splash();
 		user = new JTextField();
 		user.setBounds(1028, 181, 181, 29);
-		String dupa=user.getText();
+	 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -114,6 +114,99 @@ public class main {
 		btnLoginIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+					String xd=pass.getText();
+					
+					String sql12="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
+					ResultSet rs12=stmt.executeQuery(sql12);
+				
+					String sql22="Select nazwa_studia from login where  Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
+					ResultSet rs22=stmt.executeQuery(sql22);
+					rs22.next();
+					String nazwa_studiaa = rs22.getString("nazwa_studia");
+					System.out.println(nazwa_studiaa);
+			
+					String sql3="SELECT Admin from login where login.Admin =1";
+					ResultSet rs3=stmt.executeQuery(sql3);
+			
+					if(rs3.next()) {
+						while(rs3.next())
+						{
+						String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
+						ResultSet rs=stmt.executeQuery(sql);
+						frame.setVisible(false);
+						menu_glowne_admina window = new menu_glowne_admina();
+						window.frame.setVisible(true);
+						}
+					}
+					else {
+						
+					
+					
+					String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
+					ResultSet rs=stmt.executeQuery(sql);
+				
+					String sql2="Select nazwa_studia from login where  Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
+					ResultSet rs2=stmt.executeQuery(sql2);
+					rs2.next();
+					String nazwa_studia = rs2.getString("nazwa_studia");
+					System.out.println(nazwa_studia);
+					
+					
+						
+					if(nazwa_studia.isEmpty()) {
+						frame.setVisible(false);
+						nazwa_studia window2 = new nazwa_studia();
+						window2.frame.setVisible(true);
+						
+												}
+					else 
+					{
+						
+						frame.setVisible(false);
+						menu_glowne window = new menu_glowne();
+						window.frame.setVisible(true);
+					}
+					
+					}
+					
+					con.close();
+				} catch(Exception e1){JOptionPane.showMessageDialog(null, e1);}
+			
+			}
+		});
+		btnLoginIn.setBounds(1128, 336, 108, 29);
+		btnLoginIn.setIcon(loginguzik);
+		btnLoginIn.setBorderPainted(false);
+		btnLoginIn.setFocusPainted(false);
+		btnLoginIn.setContentAreaFilled(false);
+		frame.getContentPane().add(btnLoginIn);
+		
+		
+		JButton btnNewButton_3 = new JButton("Register");
+		btnNewButton_3.setForeground(Color.WHITE);
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				rejestracja okno = new rejestracja();
+				okno.setVisible(true);
+			}
+		});
+		btnNewButton_3.setBounds(1151, 376, 85, 21);
+		btnNewButton_3.setBorderPainted(false);
+		btnNewButton_3.setFocusPainted(false);
+		btnNewButton_3.setContentAreaFilled(false);
+		frame.getContentPane().add(btnNewButton_3);
+		
+		pass = new JPasswordField();
+		pass.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
@@ -154,78 +247,6 @@ public class main {
 					
 					con.close();
 				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Bledny login lub haslo");}
-			}
-		});
-		btnLoginIn.setBounds(1128, 336, 108, 29);
-		btnLoginIn.setIcon(loginguzik);
-		btnLoginIn.setBorderPainted(false);
-		btnLoginIn.setFocusPainted(false);
-		btnLoginIn.setContentAreaFilled(false);
-		frame.getContentPane().add(btnLoginIn);
-		
-		
-		JButton btnNewButton_3 = new JButton("Register");
-		btnNewButton_3.setForeground(Color.WHITE);
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				rejestracja okno = new rejestracja();
-				okno.setVisible(true);
-			}
-		});
-		btnNewButton_3.setBounds(1151, 376, 85, 21);
-		btnNewButton_3.setBorderPainted(false);
-		btnNewButton_3.setFocusPainted(false);
-		btnNewButton_3.setContentAreaFilled(false);
-		frame.getContentPane().add(btnNewButton_3);
-		
-		pass = new JPasswordField();
-		pass.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode()==KeyEvent.VK_ENTER)
-				{
-					try {
-						Class.forName("com.mysql.cj.jdbc.Driver");
-						Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
-						Statement stmt=con.createStatement();
-						String xd=pass.getText();
-						
-						/*String sql2="Select Haslo from login where Login='"+user.getText()+"'";
-						ResultSet rs2=stmt.executeQuery(sql2);
-						rs2.next();
-						String haslo = rs2.getString("Haslo");
-						System.out.println(haslo);*/
-						
-						String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
-						ResultSet rs=stmt.executeQuery(sql);
-					
-						String sql2="Select nazwa_studia from login where  Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
-						ResultSet rs2=stmt.executeQuery(sql2);
-						rs2.next();
-						String nazwa_studia = rs2.getString("nazwa_studia");
-						System.out.println(nazwa_studia);
-						String loginek=user.getText();
-						
-							
-						if(nazwa_studia.isEmpty()) {
-							frame.setVisible(false);
-							nazwa_studia window2 = new nazwa_studia();
-							window2.frame.setVisible(true);
-							
-													}
-						else 
-						{
-							
-							frame.setVisible(false);
-							menu_glowne window = new menu_glowne();
-							window.frame.setVisible(true);
-						}
-						
-			
-						
-						con.close();
-					} catch(Exception e1){JOptionPane.showMessageDialog(null, "Bledny login lub haslo");}
-				
 		
 				}
 			}

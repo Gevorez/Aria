@@ -24,6 +24,7 @@ public class nazwa_studia {
 	    JProgressBar progressBar=new JProgressBar();
 	    JLabel message=new JLabel();//Crating a JLabel for displaying the message
 	    private JTextField nazwa_std;
+	   
 	    nazwa_studia()
 	    {
 	    	createGUI();
@@ -60,6 +61,7 @@ public class nazwa_studia {
 						Statement stmt=con.createStatement();
 						
 						
+						
 						if(nazwa_std.getText().isEmpty()) {
 							JOptionPane.showMessageDialog(null, "Nie podales nazwy studia");
 						}
@@ -68,16 +70,23 @@ public class nazwa_studia {
 								+ "set nazwa_studia='"+nazwa_std.getText()+"'"
 										+ "where Login='"+main.user.getText()+"'";               
 						int rs=stmt.executeUpdate(sql);
-									
+						
+						
+						String sql2="create table zakupione_"+main.user.getText()+" (tytul varchar(255),"
+								+ "wykonawca varchar(255),"
+								+ "album varchar(255),"
+								+ "data_publikacji varchar(255))"; 
+						int rs2 =stmt.executeUpdate(sql2);
 						
 						frame.setVisible(false);
 						menu_glowne window2 = new menu_glowne();
 						window2.frame.setVisible(true);
+						
 						}
 				
 	        		
 								con.close();
-					} catch(Exception e1){JOptionPane.showMessageDialog(null, "cos poszlo nie tak");}
+					} catch(Exception e1){JOptionPane.showMessageDialog(null, e1);}
 				}
 			});
 	        	
