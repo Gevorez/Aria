@@ -132,7 +132,7 @@ public class menu_glowne_admina {
 		STUDIO.setLayout(null);
 		
 		tytu = new JTextField();
-		tytu.setBounds(52, 187, 152, 20);
+		tytu.setBounds(174, 201, 152, 20);
 		STUDIO.add(tytu);
 		tytu.setColumns(10);
 		tytu.setForeground(Color.WHITE);
@@ -141,7 +141,7 @@ public class menu_glowne_admina {
 		tytu.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		
 		wyko = new JTextField();
-		wyko.setBounds(52, 263, 152, 20);
+		wyko.setBounds(174, 241, 152, 20);
 		STUDIO.add(wyko);
 		wyko.setColumns(10);
 		wyko.setForeground(Color.WHITE);
@@ -150,7 +150,7 @@ public class menu_glowne_admina {
 		wyko.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		
 		albu = new JTextField();
-		albu.setBounds(52, 338, 152, 20);
+		albu.setBounds(174, 276, 152, 20);
 		STUDIO.add(albu);
 		albu.setColumns(10);
 		albu.setForeground(Color.WHITE);
@@ -159,7 +159,7 @@ public class menu_glowne_admina {
 		albu.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		
 		data_publi = new JTextField();
-		data_publi.setBounds(52, 405, 152, 20);
+		data_publi.setBounds(174, 316, 152, 20);
 		STUDIO.add(data_publi);
 		data_publi.setColumns(10);
 		data_publi.setForeground(Color.WHITE);
@@ -167,24 +167,24 @@ public class menu_glowne_admina {
 		data_publi.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
 		data_publi.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		
-		JLabel lblTytu = new JLabel("Tytu\u0142");
+		JLabel lblTytu = new JLabel("TYTU\u0141");
 		lblTytu.setForeground(Color.WHITE);
-		lblTytu.setBounds(52, 168, 65, 23);
+		lblTytu.setBounds(52, 203, 65, 23);
 		STUDIO.add(lblTytu);
 		
-		JLabel lblWykonawca = new JLabel("Wykonawca");
+		JLabel lblWykonawca = new JLabel("WYKONAWCA");
 		lblWykonawca.setForeground(Color.WHITE);
 		lblWykonawca.setBounds(52, 237, 112, 34);
 		STUDIO.add(lblWykonawca);
 		
-		JLabel lblAlbum = new JLabel("Album");
+		JLabel lblAlbum = new JLabel("ALBUM");
 		lblAlbum.setForeground(Color.WHITE);
-		lblAlbum.setBounds(52, 324, 46, 14);
+		lblAlbum.setBounds(52, 282, 46, 14);
 		STUDIO.add(lblAlbum);
 		
-		JLabel lblDatapublikacji = new JLabel("Data_publikacji");
+		JLabel lblDatapublikacji = new JLabel("DATA PUBLIKACJI");
 		lblDatapublikacji.setForeground(Color.WHITE);
-		lblDatapublikacji.setBounds(52, 391, 98, 14);
+		lblDatapublikacji.setBounds(52, 322, 112, 14);
 		STUDIO.add(lblDatapublikacji);
 		
 		JButton btnDodaj = new JButton("Dodaj");
@@ -216,7 +216,7 @@ public class menu_glowne_admina {
 			}
 			
 		});
-		btnDodaj.setBounds(52, 483, 89, 23);
+		btnDodaj.setBounds(237, 370, 89, 23);
 		STUDIO.add(btnDodaj);
 		
 		zmiana = new JTextField();
@@ -285,20 +285,24 @@ public class menu_glowne_admina {
 		JLabel label = new JLabel("Tytu\u0142");
 		label.setForeground(Color.WHITE);
 		label.setBounds(522, 23, 65, 23);
+		label.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		BIBLIOTEKA.add(label);
 		
 		JLabel label_1 = new JLabel("Wykonawca");
 		label_1.setForeground(Color.WHITE);
 		label_1.setBounds(359, 17, 112, 34);
+		label_1.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		BIBLIOTEKA.add(label_1);
 		
 		JLabel label_2 = new JLabel("Album");
 		label_2.setForeground(Color.WHITE);
 		label_2.setBounds(207, 27, 46, 14);
+		label_2.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		BIBLIOTEKA.add(label_2);
 		
 		JLabel label_3 = new JLabel("Data_publikacji");
 		label_3.setForeground(Color.WHITE);
+		label_3.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		label_3.setBounds(692, 27, 98, 14);
 		BIBLIOTEKA.add(label_3);
 		
@@ -402,8 +406,14 @@ public class menu_glowne_admina {
 		
 		JLabel lblWitajWStudiu = new JLabel("WITAJ W STUDIU");
 		lblWitajWStudiu.setForeground(Color.WHITE);
+		lblWitajWStudiu.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 10));
 		lblWitajWStudiu.setBounds(525, 11, 98, 14);
 		STUDIO.add(lblWitajWStudiu);
+		
+		JLabel lblDodajUtwrDo = new JLabel("DODAJ UTW\u00D3R DO SWOJEGO STUDIA");
+		lblDodajUtwrDo.setForeground(Color.WHITE);
+		lblDodajUtwrDo.setBounds(66, 158, 294, 14);
+		STUDIO.add(lblDodajUtwrDo);
 		
 		JButton btnShop = new JButton("STUDIO");
 		btnShop.addActionListener(new ActionListener() {
