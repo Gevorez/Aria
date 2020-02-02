@@ -291,15 +291,15 @@ public class rejestracja extends JFrame {
 						int xd=rs2.getInt("total");
 						if(xd==0) {
 						
-							String sql3="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc,nazwa_studia,Admin) "
-									+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_str.getText()+"',1)";               
+							String sql3="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc,nazwa_studia,Admin,Admin_head) "
+									+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_str.getText()+"',1,1)";               
 							int rs=stmt.executeUpdate(sql3);
 							dispose();
 							
 						} else 
 						{
-							String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc,nazwa_studia,Admin) "
-							+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_str.getText()+"',0)";               
+							String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc,nazwa_studia,Admin,Admin_head) "
+							+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_str.getText()+"',0,0)";               
 					int rs3=stmt.executeUpdate(sql);
 					dispose();
 						}
