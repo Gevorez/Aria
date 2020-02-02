@@ -194,7 +194,7 @@ public class menu_glowne_admina {
 						JOptionPane.showMessageDialog(null, "Bledny login lub haslo");
 					}
 					con.close();
-				} catch(Exception e1){System.out.println(e1);}
+				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Utwor o takim tytule juz istnieje");;}
 				wyko.setText(null);
 				tytu.setText(null);
 				albu.setText(null);
@@ -358,7 +358,7 @@ public class menu_glowne_admina {
 					}
 
 					else 
-						JOptionPane.showMessageDialog(null, "Utwor o takim tytule juz istnieje");
+						JOptionPane.showMessageDialog(null, "Bledne dane");
 					con.close();
 				} catch(Exception e1)
 				{
