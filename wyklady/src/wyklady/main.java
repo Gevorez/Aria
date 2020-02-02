@@ -40,7 +40,7 @@ public class main {
 	
 
 	/**
-	 * Launch the application
+	 * Launch the applicationd
 	 */
 	public static void main(String[] args) {
 		new splash();
