@@ -45,6 +45,7 @@ public class menu_glowne_admina {
 	private JTextField usun;
 	private JTextField zmiana;
 	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -194,7 +195,7 @@ public class menu_glowne_admina {
 						JOptionPane.showMessageDialog(null, "Bledny login lub haslo");
 					}
 					con.close();
-				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Utwor o takim tytule juz istnieje");;}
+				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Utwor o takim tytule juz istnieje");}
 				wyko.setText(null);
 				tytu.setText(null);
 				albu.setText(null);
@@ -433,9 +434,7 @@ public class menu_glowne_admina {
 		lblDajAdminaDla.setBounds(624, 531, 176, 14);
 		UPRAWNIENIA.add(lblDajAdminaDla);
 		
-		JButton btnZatwierd = new JButton("POTWIERDZ");
-		btnZatwierd.setBounds(796, 561, 119, 23);
-		UPRAWNIENIA.add(btnZatwierd);
+	
 		
 		JButton btnShop = new JButton("STUDIO");
 		btnShop.addActionListener(new ActionListener() {
@@ -503,7 +502,7 @@ public class menu_glowne_admina {
 					ResultSet rs2=stmt.executeQuery(sql2);
 					int i=0;
 						
-							while(rs2.next() &&  i<10) {
+							while(rs2.next() &&  i<999) {
 					         //Retrieve by column name
 					         String tyt  = rs2.getString("Tytul");
 					         String wyko = rs2.getString("Wykonawca");
@@ -540,8 +539,137 @@ public class menu_glowne_admina {
 				layeredPane.add(UPRAWNIENIA);
 				layeredPane.repaint();
 				layeredPane.revalidate();
+				textArea_1.setText(null);
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+				
+					String sql2="Select Imie,Nazwisko,Login,Admin from login";
+					ResultSet rs2=stmt.executeQuery(sql2);
+					int i=0;
+						
+							while(rs2.next() &&  i<999) {
+					         //Retrieve by column name
+					         String Imie  = rs2.getString("Imie");
+					         String Nazwisko = rs2.getString("Nazwisko");
+					         String Login = rs2.getString("Login");
+					         String Admin = rs2.getString("Admin");
+					      
+					         
+					        
+					         i++;
+					         
+					         //Display values
+					        textArea_1.append(i +" "+Imie+"\t\t "   +Nazwisko+ "\t\t"+Login+" \t\t  "+Admin+"\n"); 
+					        
+					        
+							}
+							
+							
+					
+				
+							con.close();
+				} catch(Exception e1){System.out.print(e1);}
 			}
 		});
+		JButton btnZatwierd = new JButton("POTWIERDZ");
+		btnZatwierd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+				
+		
+					
+					String sql="Update login "
+							+ "set Admin='1'"
+									+ "where Login='"+textField.getText()+"'";
+					int rs = stmt.executeUpdate(sql);
+					String sql2="Select Imie,Nazwisko,Login,Admin from login";
+					ResultSet rs2=stmt.executeQuery(sql2);
+					
+					
+							
+					if(rs==1) {
+						
+						JOptionPane.showMessageDialog(null, "Poprawnie nadales uprawnienia");
+						
+					
+	
+					}
+					
+					else 
+						JOptionPane.showMessageDialog(null, "Zly login");
+					
+				
+			        
+					
+					
+
+							con.close();
+				} catch(Exception e1){System.out.print(e1);}
+				
+			}
+		});
+		btnZatwierd.setBounds(796, 561, 119, 23);
+		UPRAWNIENIA.add(btnZatwierd);
+		
+		JLabel lblZabierzAdminawpisz = new JLabel("ZABIERZ ADMINA (WPISZ LOGIN)");
+		lblZabierzAdminawpisz.setForeground(Color.WHITE);
+		lblZabierzAdminawpisz.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblZabierzAdminawpisz.setBounds(30, 531, 176, 14);
+		UPRAWNIENIA.add(lblZabierzAdminawpisz);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(240, 529, 86, 20);
+		UPRAWNIENIA.add(textField_1);
+		
+		JButton button = new JButton("POTWIERDZ");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+				
+					
+					
+					String sql2="Select Admin_head,Admin from login where Admin_head=1 ";
+					ResultSet rs2=stmt.executeQuery(sql2);
+					rs2.next();
+					 String head  = rs2.getString("Admin_head");
+					System.out.print(head);
+					
+					int result = Integer.parseInt(head);	
+					 String sql="Update login "
+								+ "set Admin='0'"
+										+ "where Login='"+textField_1.getText()+"' and Admin_head=0";
+						int rs = stmt.executeUpdate(sql);
+					
+						
+					
+					if(rs==1) {
+						
+						JOptionPane.showMessageDialog(null, "Poprawnie zabrales uprawnienia");
+	
+					}
+					
+					else 
+						JOptionPane.showMessageDialog(null, "Zly login, lub probujesz usunac glownego admina");
+					
+					 
+			       
+					
+
+							con.close();
+				} catch(Exception e1){System.out.print(e1);}
+			}
+		});
+		button.setBounds(226, 561, 119, 23);
+		UPRAWNIENIA.add(button);
 		
 		btnUprawnienia.setIcon(lib_guziczek);
 		btnUprawnienia.setBorderPainted(false);

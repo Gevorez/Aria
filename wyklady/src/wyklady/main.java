@@ -215,7 +215,7 @@ public class main {
 						"  pytanie_pomoc varchar(255) NOT NULL," + 
 						"  pytanie_pomoc_tresc varchar(255) NOT NULL," + 
 						"  nazwa_studia varchar(255) NOT NULL," + 
-						"  Admin int(1) NOT NULL," + 
+						"  Admin int(1) NOT NULL, Admin_head int(1) NOT NULL," + 
 						"  UNIQUE KEY uniq (Login))";
 						
 				int rsb=stmt.executeUpdate(sqlo);
