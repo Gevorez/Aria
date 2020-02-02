@@ -44,7 +44,10 @@ public class main {
 	public static void main(String[] args) {
 		new splash();
 		user = new JTextField();
+		user.setForeground(Color.WHITE);
+		user.setBackground(Color.BLACK);
 		user.setBounds(1028, 181, 181, 29);
+		user.setBorder(null);
 	 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -242,6 +245,9 @@ public class main {
 		frame.getContentPane().add(btnNewButton_3);
 		
 		pass = new JPasswordField();
+		pass.setForeground(Color.WHITE);
+		pass.setBackground(Color.BLACK);
+		pass.setBorder(null);
 		pass.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
