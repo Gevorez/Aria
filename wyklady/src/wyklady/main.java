@@ -120,7 +120,7 @@ public class main {
 		JButton btnLoginIn = new JButton("Login in");
 		btnLoginIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
+try {
 					
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
@@ -136,10 +136,13 @@ public class main {
 					rs22.next();
 					String nazwa_studiaa = rs22.getString("nazwa_studia");
 					System.out.println(nazwa_studiaa);
+					
 			
-					String sql3="SELECT Admin from login where login.Admin =1";
+					String sql3="SELECT Admin from login where login.Admin = 1";
 					ResultSet rs3=stmt.executeQuery(sql3);
-			
+					frame.setVisible(false);
+					menu_glowne_admina windowd = new menu_glowne_admina();
+					windowd.frame.setVisible(true);
 					if(rs3.next()) {
 						while(rs3.next())
 						{
@@ -254,45 +257,70 @@ public class main {
 				if(e.getKeyCode()==KeyEvent.VK_ENTER)
 				{
 					try {
-					Class.forName("com.mysql.cj.jdbc.Driver");
-					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
-					Statement stmt=con.createStatement();
-					String xd=pass.getText();
+						Class.forName("com.mysql.cj.jdbc.Driver");
+						Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+						Statement stmt=con.createStatement();
+						String xd=pass.getText();
+						
+						
+						String sql12="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
+						ResultSet rs12=stmt.executeQuery(sql12);
 					
-					/*String sql2="Select Haslo from login where Login='"+user.getText()+"'";
-					ResultSet rs2=stmt.executeQuery(sql2);
-					rs2.next();
-					String haslo = rs2.getString("Haslo");
-					System.out.println(haslo);*/
-					
-					String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
-					ResultSet rs=stmt.executeQuery(sql);
+						String sql22="Select nazwa_studia from login where  Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
+						ResultSet rs22=stmt.executeQuery(sql22);
+						rs22.next();
+						String nazwa_studiaa = rs22.getString("nazwa_studia");
+						System.out.println(nazwa_studiaa);
+						
 				
-					String sql2="Select nazwa_studia from login where  Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
-					ResultSet rs2=stmt.executeQuery(sql2);
-					rs2.next();
-					String nazwa_studia = rs2.getString("nazwa_studia");
-					System.out.println(nazwa_studia);
-					String loginek=user.getText();
-					
-						
-					if(nazwa_studia.isEmpty()) {
+						String sql3="SELECT Admin from login where login.Admin = 1";
+						ResultSet rs3=stmt.executeQuery(sql3);
 						frame.setVisible(false);
-						nazwa_studia window2 = new nazwa_studia();
-						window2.frame.setVisible(true);
+						menu_glowne_admina windowd = new menu_glowne_admina();
+						windowd.frame.setVisible(true);
+						if(rs3.next()) {
+							while(rs3.next())
+							{
+							String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
+							ResultSet rs=stmt.executeQuery(sql);
+							frame.setVisible(false);
+							menu_glowne_admina window = new menu_glowne_admina();
+							window.frame.setVisible(true);
+							}
+						}
+						else {
+							
 						
-												}
-					else 
-					{
 						
-						frame.setVisible(false);
-						menu_glowne window = new menu_glowne();
-						window.frame.setVisible(true);
-					}
+						String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
+						ResultSet rs=stmt.executeQuery(sql);
 					
-		
+						String sql2="Select nazwa_studia from login where  Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
+						ResultSet rs2=stmt.executeQuery(sql2);
+						rs2.next();
+						String nazwa_studia = rs2.getString("nazwa_studia");
+						System.out.println(nazwa_studia);
+						
+						
+							
+						if(nazwa_studia.isEmpty()) {
+							frame.setVisible(false);
+							nazwa_studia window2 = new nazwa_studia();
+							window2.frame.setVisible(true);
+							
+													}
+						else 
+						{
+							
+							frame.setVisible(false);
+							menu_glowne window = new menu_glowne();
+							window.frame.setVisible(true);
+						}
+						
+						}
+						
+						con.close();
 					
-					con.close();
 				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Bledny login lub haslo");}
 		
 				}
