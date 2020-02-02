@@ -34,7 +34,7 @@ public class main {
 	public static JTextField user;
 	private JPasswordField pass;
 	
-	
+
 	
 	
 
@@ -51,7 +51,11 @@ public class main {
 				try {
 					main window = new main();
 					window.frame.setVisible(true);
-					
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/","root","");
+					Statement stmt=con.createStatement();
+					int my=stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS wypozyczalnia ");
+					con.close();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -119,6 +123,7 @@ public class main {
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
 					String xd=pass.getText();
+					
 					
 					String sql12="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
 					ResultSet rs12=stmt.executeQuery(sql12);
@@ -192,6 +197,42 @@ public class main {
 			public void actionPerformed(ActionEvent arg0) {
 				rejestracja okno = new rejestracja();
 				okno.setVisible(true);
+	try {
+					
+					
+					
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
+					Statement stmt=con.createStatement();
+					
+				String sqlo=" "
+						+ "CREATE TABLE IF NOT EXISTS login (" + 
+						"  Login varchar(255) NOT NULL," + 
+						"  Haslo varchar(255) NOT NULL," + 
+						"  Email varchar(255) NOT NULL," + 
+						"  Telefon varchar(255) NOT NULL," + 
+						"  Imie varchar(255) NOT NULL," + 
+						"  Nazwisko varchar(255) NOT NULL," + 
+						"  pytanie_pomoc varchar(255) NOT NULL," + 
+						"  pytanie_pomoc_tresc varchar(255) NOT NULL," + 
+						"  nazwa_studia varchar(255) NOT NULL," + 
+						"  Admin int(1) NOT NULL," + 
+						"  UNIQUE KEY uniq (Login))";
+						
+				int rsb=stmt.executeUpdate(sqlo);
+				String solo2="CREATE TABLE IF NOT EXISTS `utwory` (\r\n" + 
+						"  `Tytul` varchar(255) NOT NULL,\r\n" + 
+						"  `Wykonawca` varchar(255) NOT NULL,\r\n" + 
+						"  `Album` varchar(255) NOT NULL,\r\n" + 
+						"  `Data_publikacji` varchar(255) NOT NULL,\r\n" + 
+						"  `id` int(11) NOT NULL AUTO_INCREMENT,\r\n" + 
+						"  `nazwa_studia_utwory` varchar(255) NOT NULL,\r\n" + 
+						"  PRIMARY KEY (`id`)\r\n" + 
+						")";
+				int rsbb=stmt.executeUpdate(solo2);
+				con.close();
+	} catch(Exception e1){JOptionPane.showMessageDialog(null, e1);}
+
 			}
 		});
 		btnNewButton_3.setBounds(1151, 376, 85, 21);
