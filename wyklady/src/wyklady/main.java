@@ -122,7 +122,7 @@ public class main {
 		JButton btnLoginIn = new JButton("Login in");
 		btnLoginIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-try {
+				try {
 					
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
@@ -178,7 +178,7 @@ try {
 					}
 					
 					con.close();
-				} catch(Exception e1){JOptionPane.showMessageDialog(null, e1);}
+				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Bledny login lub haslo");}
 			
 			}
 		});
@@ -250,37 +250,29 @@ try {
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode()==KeyEvent.VK_ENTER)
 				{
-				/*	try {
+					try {
+						
 						Class.forName("com.mysql.cj.jdbc.Driver");
 						Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 						Statement stmt=con.createStatement();
 						String xd=pass.getText();
 						
 						
-						String sql12="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
+						String sql12="Select Login, Haslo,Admin from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "') and Admin=1";
 						ResultSet rs12=stmt.executeQuery(sql12);
-					
-						String sql22="Select nazwa_studia from login where  Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
-						ResultSet rs22=stmt.executeQuery(sql22);
-						rs22.next();
-						String nazwa_studiaa = rs22.getString("nazwa_studia");
-						System.out.println(nazwa_studiaa);
 						
-				
-						String sql3="SELECT Admin from login where login.Admin = 1";
-						ResultSet rs3=stmt.executeQuery(sql3);
-						frame.setVisible(false);
-						menu_glowne_admina windowd = new menu_glowne_admina();
-						windowd.frame.setVisible(true);
-						if(rs3.next()) {
-							while(rs3.next())
-							{
+					
+						
+						 
+						
+						if(rs12.next()) {
+							
 							String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
 							ResultSet rs=stmt.executeQuery(sql);
 							frame.setVisible(false);
 							menu_glowne_admina window = new menu_glowne_admina();
 							window.frame.setVisible(true);
-							}
+							
 						}
 						else {
 							
@@ -314,8 +306,7 @@ try {
 						}
 						
 						con.close();
-					
-				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Bledny login lub haslo");}*/
+					} catch(Exception e1){JOptionPane.showMessageDialog(null, "Bledny login lub haslo");}
 		
 				}
 			}
