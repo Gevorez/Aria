@@ -32,6 +32,10 @@ import javax.swing.border.BevelBorder;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+import javax.swing.JPopupMenu;
+import javax.swing.JMenuItem;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 
@@ -93,6 +97,36 @@ public class menu_glowne {
 		
 		
 		frame = new JFrame();
+		
+		//POPUPMENU
+		
+		JPopupMenu popupMenu = new JPopupMenu();
+		popupMenu.setBounds(0, 0, 200, 50);
+		frame.getContentPane().add(popupMenu);
+		
+		JButton btnWyloguj = new JButton("WYLOGUJ");
+		btnWyloguj.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+	            frame.setVisible(false);
+				JFrame menu_glowne = new rejestracja();
+				menu_glowne.setVisible(true);
+				
+			}
+		});
+		popupMenu.add(btnWyloguj);
+		
+		//POPUPMENU
+		
+		frame.getContentPane().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				if(arg0.isPopupTrigger())
+				{
+					popupMenu.show(arg0.getComponent(),arg0.getX(),arg0.getY());
+				}
+			}
+		});
 		frame.setBounds(100, 100, 1280, 720);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -564,7 +598,6 @@ public class menu_glowne {
 		tlolabel.setBounds(0, 0, 1280, 720);
 		tlolabel.setIcon(tlo);
 		frame.getContentPane().add(tlolabel);
-		
 		
 		
 	}
