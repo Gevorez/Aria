@@ -70,7 +70,7 @@ public class menu_glowne {
 	private void initialize() throws IOException {
 		
 		//WEDEWDW
-		//dqwdqwdwqdqw
+		//dqwdqwdwqdqwd
 		//WEFWEFWEFWE
 		//thbeawfubewhfuhbewhbffewhbju
 		
