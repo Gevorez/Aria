@@ -32,6 +32,9 @@ import javax.swing.border.BevelBorder;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+import javax.swing.JPopupMenu;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 
@@ -93,6 +96,47 @@ public class menu_glowne_admina {
 		ImageIcon zmien_guziczek = new ImageIcon("zmien_guziczek.png");
 		
 		frame = new JFrame();
+		
+		JPopupMenu popupMenu = new JPopupMenu();
+		popupMenu.setBounds(0, 0, 200, 50);
+		frame.getContentPane().add(popupMenu);
+		
+		JButton btnNewButton = new JButton("WYLOGUJ");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+
+			
+				frame.setVisible(false);
+
+			
+				
+				try {
+					main window;
+					window = new main();
+					window.frame.setVisible(true);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+				
+		
+			}
+			
+		});
+		popupMenu.add(btnNewButton);
+		
+		frame.getContentPane().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				if(e.isPopupTrigger())
+				{
+					popupMenu.show(e.getComponent(),e.getX(),e.getY());
+				}
+			}
+		});
+		
 		frame.setBounds(100, 100, 1280, 720);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);

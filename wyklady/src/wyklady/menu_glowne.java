@@ -107,6 +107,7 @@ public class menu_glowne {
 		frame.getContentPane().add(popupMenu);
 		
 		JButton btnWyloguj = new JButton("WYLOGUJ");
+		btnWyloguj.setBackground(Color.WHITE);
 		btnWyloguj.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
