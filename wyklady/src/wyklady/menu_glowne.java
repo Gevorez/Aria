@@ -27,6 +27,8 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
@@ -129,6 +131,9 @@ public class menu_glowne {
 		zmiana.setBounds(647, 263, 96, 19);
 		STUDIO.add(zmiana);
 		zmiana.setColumns(10);
+		zmiana.setForeground(Color.WHITE);
+		zmiana.setBackground(Color.BLACK);
+		zmiana.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
 		JTextArea textArea2 = new JTextArea();
 		
 		JButton btnGuziczek = new JButton("guziczek");
@@ -210,6 +215,9 @@ public class menu_glowne {
 		textArea.setBounds(196, 51, 721, 325);
 		BIBLIOTEKA.add(textArea);
 		usun = new JTextField();
+		usun.setForeground(Color.WHITE);
+		usun.setBackground(Color.BLACK);
+		usun.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
 		
 		
 	

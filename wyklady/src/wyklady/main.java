@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.border.BevelBorder;
 
 public class main {
 
@@ -44,10 +45,12 @@ public class main {
 	public static void main(String[] args) {
 		new splash();
 		user = new JTextField();
+		user.setHorizontalAlignment(SwingConstants.LEFT);
+		user.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		user.setForeground(Color.WHITE);
 		user.setBackground(Color.BLACK);
-		user.setBounds(1028, 181, 181, 29);
-		user.setBorder(null);
+		user.setBounds(1013, 198, 210, 29);
+		user.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
 	 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -100,20 +103,19 @@ public class main {
 		frame.setBackground(Color.BLACK);
 		
 		
-		
 		frame.getContentPane().add(user);
 		user.setColumns(10);
 		
 		JLabel lblLogin = new JLabel("Login");
 		lblLogin.setForeground(Color.WHITE);
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblLogin.setBounds(1028, 153, 68, 29);
+		lblLogin.setBounds(1013, 169, 68, 29);
 		frame.getContentPane().add(lblLogin);
 		
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setForeground(Color.WHITE);
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblPassword.setBounds(1028, 238, 88, 29);
+		lblPassword.setBounds(1013, 233, 88, 29);
 		frame.getContentPane().add(lblPassword);
 	
 	
@@ -189,7 +191,7 @@ try {
 			
 			}
 		});
-		btnLoginIn.setBounds(1128, 336, 108, 29);
+		btnLoginIn.setBounds(1113, 302, 108, 29);
 		btnLoginIn.setIcon(loginguzik);
 		btnLoginIn.setBorderPainted(false);
 		btnLoginIn.setFocusPainted(false);
@@ -197,7 +199,7 @@ try {
 		frame.getContentPane().add(btnLoginIn);
 		
 		
-		JButton btnNewButton_3 = new JButton("Register");
+		JButton btnNewButton_3 = new JButton("REGISTER");
 		btnNewButton_3.setForeground(Color.WHITE);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -241,16 +243,17 @@ try {
 
 			}
 		});
-		btnNewButton_3.setBounds(1151, 376, 85, 21);
+		btnNewButton_3.setBounds(1123, 342, 100, 21);
 		btnNewButton_3.setBorderPainted(false);
 		btnNewButton_3.setFocusPainted(false);
 		btnNewButton_3.setContentAreaFilled(false);
 		frame.getContentPane().add(btnNewButton_3);
 		
 		pass = new JPasswordField();
+		pass.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		pass.setHorizontalAlignment(SwingConstants.LEFT);
 		pass.setForeground(Color.WHITE);
 		pass.setBackground(Color.BLACK);
-		pass.setBorder(null);
 		pass.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -326,7 +329,8 @@ try {
 				}
 			}
 		});
-		pass.setBounds(1028, 268, 181, 29);
+		pass.setBounds(1013, 262, 210, 29);
+		pass.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
 		frame.getContentPane().add(pass);
 		
 		JLabel tlolabel = new JLabel("");

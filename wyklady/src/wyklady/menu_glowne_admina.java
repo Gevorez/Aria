@@ -27,6 +27,8 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
@@ -133,21 +135,37 @@ public class menu_glowne_admina {
 		tytu.setBounds(52, 187, 152, 20);
 		STUDIO.add(tytu);
 		tytu.setColumns(10);
+		tytu.setForeground(Color.WHITE);
+		tytu.setBackground(Color.BLACK);
+		tytu.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
+		tytu.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		
 		wyko = new JTextField();
 		wyko.setBounds(52, 263, 152, 20);
 		STUDIO.add(wyko);
 		wyko.setColumns(10);
+		wyko.setForeground(Color.WHITE);
+		wyko.setBackground(Color.BLACK);
+		wyko.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
+		wyko.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		
 		albu = new JTextField();
 		albu.setBounds(52, 338, 152, 20);
 		STUDIO.add(albu);
 		albu.setColumns(10);
+		albu.setForeground(Color.WHITE);
+		albu.setBackground(Color.BLACK);
+		albu.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
+		albu.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		
 		data_publi = new JTextField();
 		data_publi.setBounds(52, 405, 152, 20);
 		STUDIO.add(data_publi);
 		data_publi.setColumns(10);
+		data_publi.setForeground(Color.WHITE);
+		data_publi.setBackground(Color.BLACK);
+		data_publi.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
+		data_publi.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		
 		JLabel lblTytu = new JLabel("Tytu\u0142");
 		lblTytu.setForeground(Color.WHITE);
@@ -205,6 +223,10 @@ public class menu_glowne_admina {
 		zmiana.setBounds(647, 263, 96, 19);
 		STUDIO.add(zmiana);
 		zmiana.setColumns(10);
+		zmiana.setForeground(Color.WHITE);
+		zmiana.setBackground(Color.BLACK);
+		zmiana.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
+		zmiana.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		JTextArea textArea2 = new JTextArea();
 		
 		JButton btnGuziczek = new JButton("guziczek");
@@ -290,6 +312,10 @@ public class menu_glowne_admina {
 		
 	
 		usun.setBounds(20, 591, 221, 19);
+		usun.setForeground(Color.WHITE);
+		usun.setBackground(Color.BLACK);
+		usun.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
+		usun.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		BIBLIOTEKA.add(usun);
 		usun.setColumns(10);
 		
@@ -370,9 +396,14 @@ public class menu_glowne_admina {
 		
 		textArea2.setBackground(Color.DARK_GRAY);
 		textArea2.setForeground(Color.WHITE);
-		textArea2.setBounds(333, 11, 449, 46);
-		textArea2.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 20));
+		textArea2.setBounds(471, 27, 449, 46);
+		textArea2.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 30));
 		STUDIO.add(textArea2);
+		
+		JLabel lblWitajWStudiu = new JLabel("WITAJ W STUDIU");
+		lblWitajWStudiu.setForeground(Color.WHITE);
+		lblWitajWStudiu.setBounds(525, 11, 98, 14);
+		STUDIO.add(lblWitajWStudiu);
 		
 		JButton btnShop = new JButton("STUDIO");
 		btnShop.addActionListener(new ActionListener() {
