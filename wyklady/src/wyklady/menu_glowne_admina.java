@@ -358,7 +358,7 @@ public class menu_glowne_admina {
 					}
 
 					else 
-						JOptionPane.showMessageDialog(null, "Bledne dane");
+						JOptionPane.showMessageDialog(null, "Utwor o takim tytule juz istnieje");
 					con.close();
 				} catch(Exception e1)
 				{
