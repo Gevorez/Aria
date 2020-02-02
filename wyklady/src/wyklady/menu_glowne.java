@@ -108,9 +108,8 @@ public class menu_glowne {
 		btnWyloguj.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-	            frame.setVisible(false);
-				JFrame menu_glowne = new rejestracja();
-				menu_glowne.setVisible(true);
+				rejestracja okno = new rejestracja();
+				okno.setVisible(true);
 				
 			}
 		});
