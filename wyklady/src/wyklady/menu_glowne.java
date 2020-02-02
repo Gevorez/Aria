@@ -84,6 +84,12 @@ public class menu_glowne {
 		ImageIcon sklep_guziczek = new ImageIcon("sklep_guziczek.png");
 		ImageIcon zmien_guziczek = new ImageIcon("zmien_guziczek.png");
 		ImageIcon usun_guziczek = new ImageIcon("usun_guziczek.png");
+		ImageIcon nirvana = new ImageIcon("nirvana_guzik.png");
+		ImageIcon metallica = new ImageIcon("metallica_guzik.png");
+		ImageIcon daftpunk = new ImageIcon("daftpunk_guzik.png");
+		ImageIcon beatles = new ImageIcon("beatles_guzik.png");
+		ImageIcon greenday = new ImageIcon("green_day_guzik.png");
+		ImageIcon plusik = new ImageIcon("plusik.png");
 		
 		
 		frame = new JFrame();
@@ -119,9 +125,139 @@ public class menu_glowne {
 		SKLEP.setOpaque(true);
 		SKLEP.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("SKLEP");
-		lblNewLabel_1.setBounds(450, 245, 171, 117);
-		SKLEP.add(lblNewLabel_1);
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setEditable(false);
+		textArea_1.setBounds(961, 46, 92, 22);
+		SKLEP.add(textArea_1);
+		
+		JLabel lblStanKonta = new JLabel("STAN KONTA");
+		lblStanKonta.setForeground(Color.WHITE);
+		lblStanKonta.setBounds(961, 21, 92, 14);
+		SKLEP.add(lblStanKonta);
+		
+		JButton saldo = new JButton("+");
+		saldo.setIcon(plusik);
+		saldo.setBorderPainted(false);
+		saldo.setFocusPainted(false);
+		saldo.setContentAreaFilled(false);
+		saldo.setBounds(859, 45, 89, 23);
+		SKLEP.add(saldo);
+		
+		JButton album1 = new JButton("New button");
+		album1.setIcon(nirvana);
+		album1.setBorderPainted(false);
+		album1.setFocusPainted(false);
+		album1.setContentAreaFilled(false);
+		album1.setBounds(74, 161, 160, 130);
+		SKLEP.add(album1);
+		
+		JButton album2 = new JButton("New button");
+		album2.setIcon(metallica);
+		album2.setBorderPainted(false);
+		album2.setFocusPainted(false);
+		album2.setContentAreaFilled(false);
+		album2.setBounds(430, 161, 160, 130);
+		SKLEP.add(album2);
+		
+		JButton album3 = new JButton("New button");
+		album3.setIcon(daftpunk);
+		album3.setBorderPainted(false);
+		album3.setFocusPainted(false);
+		album3.setContentAreaFilled(false);
+		album3.setBounds(788, 161, 160, 130);
+		SKLEP.add(album3);
+		
+		JButton album4 = new JButton("New button");
+		album4.setIcon(beatles);
+		album4.setBorderPainted(false);
+		album4.setFocusPainted(false);
+		album4.setContentAreaFilled(false);
+		album4.setBounds(74, 371, 160, 130);
+		SKLEP.add(album4);
+		
+		JButton album5 = new JButton("New button");
+		album5.setIcon(greenday);
+		album5.setBorderPainted(false);
+		album5.setFocusPainted(false);
+		album5.setContentAreaFilled(false);
+		album5.setBounds(430, 371, 160, 130);
+		SKLEP.add(album5);
+		
+		JButton album6 = new JButton("New button");
+		album6.setBounds(788, 371, 160, 130);
+		SKLEP.add(album6);
+		
+		JLabel lblShop = new JLabel("SHOP");
+		lblShop.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 33));
+		lblShop.setForeground(Color.WHITE);
+		lblShop.setBounds(55, 46, 134, 71);
+		SKLEP.add(lblShop);
+		
+		JLabel lblNirvana = new JLabel("Nirvana");
+		lblNirvana.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblNirvana.setForeground(Color.WHITE);
+		lblNirvana.setBounds(84, 302, 120, 14);
+		SKLEP.add(lblNirvana);
+		
+		JLabel lblMetallica = new JLabel("Metallica");
+		lblMetallica.setForeground(Color.WHITE);
+		lblMetallica.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblMetallica.setBounds(440, 303, 120, 14);
+		SKLEP.add(lblMetallica);
+		
+		JLabel lblDaftPunk = new JLabel("Daft Punk");
+		lblDaftPunk.setForeground(Color.WHITE);
+		lblDaftPunk.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblDaftPunk.setBounds(798, 302, 120, 14);
+		SKLEP.add(lblDaftPunk);
+		
+		JLabel lblBeatles = new JLabel("The Beatles");
+		lblBeatles.setForeground(Color.WHITE);
+		lblBeatles.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblBeatles.setBounds(84, 512, 120, 14);
+		SKLEP.add(lblBeatles);
+		
+		JLabel lblGreenDay = new JLabel("Green Day");
+		lblGreenDay.setForeground(Color.WHITE);
+		lblGreenDay.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblGreenDay.setBounds(440, 512, 120, 14);
+		SKLEP.add(lblGreenDay);
+		
+		JLabel lblinne = new JLabel("Inne");
+		lblinne.setForeground(Color.WHITE);
+		lblinne.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblinne.setBounds(798, 513, 120, 14);
+		SKLEP.add(lblinne);
+		
+		JLabel lblDwdw = new JLabel("NEVERMIND");
+		lblDwdw.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblDwdw.setForeground(Color.WHITE);
+		lblDwdw.setBounds(94, 319, 95, 14);
+		SKLEP.add(lblDwdw);
+		
+		JLabel lblMasterOfPuppets = new JLabel("MASTER OF PUPPETS");
+		lblMasterOfPuppets.setForeground(Color.WHITE);
+		lblMasterOfPuppets.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblMasterOfPuppets.setBounds(450, 320, 126, 14);
+		SKLEP.add(lblMasterOfPuppets);
+		
+		JLabel lblRandomAccessMemories = new JLabel("RANDOM ACCESS MEMORIES");
+		lblRandomAccessMemories.setForeground(Color.WHITE);
+		lblRandomAccessMemories.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblRandomAccessMemories.setBounds(808, 320, 177, 14);
+		SKLEP.add(lblRandomAccessMemories);
+		
+		JLabel lblAbbeyRoad = new JLabel("ABBEY ROAD");
+		lblAbbeyRoad.setForeground(Color.WHITE);
+		lblAbbeyRoad.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblAbbeyRoad.setBounds(94, 531, 177, 14);
+		SKLEP.add(lblAbbeyRoad);
+		
+		JLabel lblAmericanIdiot = new JLabel("AMERICAN IDIOT");
+		lblAmericanIdiot.setForeground(Color.WHITE);
+		lblAmericanIdiot.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblAmericanIdiot.setBounds(450, 532, 177, 14);
+		SKLEP.add(lblAmericanIdiot);
 		
 		JPanel STUDIO = new JPanel();
 		layeredPane.add(STUDIO, "name_68613709652399");
