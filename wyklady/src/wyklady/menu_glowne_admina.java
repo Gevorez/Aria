@@ -109,23 +109,6 @@ public class menu_glowne_admina {
 		frame.getContentPane().add(layeredPane);
 		layeredPane.setLayout(new CardLayout(0, 0));
 		
-		/*JLabel lblNewLabel = new JLabel("a");
-		lblNewLabel.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 20));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(333, 11, 449, 46);
-		STUDIO.add(lblNewLabel);*/
-		//dsjnfskjd
-		
-		JPanel SKLEP = new JPanel();
-		layeredPane.add(SKLEP, "name_68648280148399");
-		SKLEP.setBackground(Color.BLACK);
-		SKLEP.setOpaque(true);
-		SKLEP.setLayout(null);
-		
-		JLabel lblNewLabel_1 = new JLabel("SKLEP");
-		lblNewLabel_1.setBounds(450, 245, 171, 117);
-		SKLEP.add(lblNewLabel_1);
-		
 		JPanel STUDIO = new JPanel();
 		layeredPane.add(STUDIO, "name_68613709652399");
 		STUDIO.setBackground(Color.BLACK);
@@ -221,14 +204,16 @@ public class menu_glowne_admina {
 		STUDIO.add(btnDodaj);
 		
 		zmiana = new JTextField();
-		zmiana.setBounds(647, 263, 96, 19);
+		zmiana.setBounds(52, 473, 96, 19);
 		STUDIO.add(zmiana);
 		zmiana.setColumns(10);
 		zmiana.setForeground(Color.WHITE);
 		zmiana.setBackground(Color.BLACK);
 		zmiana.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
 		zmiana.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 10));
+		
 		JTextArea textArea2 = new JTextArea();
+		textArea2.setEditable(false);
 		
 		JButton btnGuziczek = new JButton("guziczek");
 		btnGuziczek.addActionListener(new ActionListener() {
@@ -274,7 +259,7 @@ public class menu_glowne_admina {
 										+ "where Login='"+main.user.getText()+"'";*/
 			}
 		});
-		btnGuziczek.setBounds(835, 262, 85, 21);
+		btnGuziczek.setBounds(241, 501, 85, 21);
 		STUDIO.add(btnGuziczek);
 		
 		JPanel BIBLIOTEKA = new JPanel();
@@ -286,26 +271,26 @@ public class menu_glowne_admina {
 		JLabel label = new JLabel("Tytu\u0142");
 		label.setForeground(Color.WHITE);
 		label.setBounds(522, 23, 65, 23);
-		label.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
+		label.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 11));
 		BIBLIOTEKA.add(label);
 		
 		JLabel label_1 = new JLabel("Wykonawca");
 		label_1.setForeground(Color.WHITE);
 		label_1.setBounds(359, 17, 112, 34);
-		label_1.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
+		label_1.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 11));
 		BIBLIOTEKA.add(label_1);
 		
 		JLabel label_2 = new JLabel("Album");
 		label_2.setForeground(Color.WHITE);
 		label_2.setBounds(207, 27, 46, 14);
-		label_2.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
+		label_2.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 11));
 		BIBLIOTEKA.add(label_2);
 		
-		JLabel label_3 = new JLabel("Data_publikacji");
-		label_3.setForeground(Color.WHITE);
-		label_3.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
-		label_3.setBounds(692, 27, 98, 14);
-		BIBLIOTEKA.add(label_3);
+		JLabel lblDataPublikacji = new JLabel("Data publikacji");
+		lblDataPublikacji.setForeground(Color.WHITE);
+		lblDataPublikacji.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 11));
+		lblDataPublikacji.setBounds(692, 27, 98, 14);
+		BIBLIOTEKA.add(lblDataPublikacji);
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(Color.BLACK);
@@ -379,24 +364,6 @@ public class menu_glowne_admina {
 		lblPodajTytulUsuwanego.setForeground(Color.WHITE);
 		lblPodajTytulUsuwanego.setBounds(20, 561, 257, 23);
 		BIBLIOTEKA.add(lblPodajTytulUsuwanego);
-		
-		
-		
-		JButton btnHome = new JButton("SKLEP");
-		btnHome.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				layeredPane.removeAll();
-				layeredPane.add(SKLEP);
-				layeredPane.repaint();
-				layeredPane.revalidate();
-			}
-		});
-		btnHome.setIcon(sklep_guziczek);
-		btnHome.setBorderPainted(false);
-		btnHome.setFocusPainted(false);
-		btnHome.setContentAreaFilled(false);
-		btnHome.setBounds(10, 90, 165, 23);
-		frame.getContentPane().add(btnHome);
 
 		
 		textArea2.setBackground(Color.BLACK);
@@ -412,9 +379,16 @@ public class menu_glowne_admina {
 		STUDIO.add(lblWitajWStudiu);
 		
 		JLabel lblDodajUtwrDo = new JLabel("DODAJ UTW\u00D3R DO SWOJEGO STUDIA");
+		lblDodajUtwrDo.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		lblDodajUtwrDo.setForeground(Color.WHITE);
-		lblDodajUtwrDo.setBounds(66, 158, 294, 14);
+		lblDodajUtwrDo.setBounds(52, 158, 294, 14);
 		STUDIO.add(lblDodajUtwrDo);
+		
+		JLabel lblZmienNazweSwojego = new JLabel("ZMIEN NAZWE SWOJEGO STUDIA");
+		lblZmienNazweSwojego.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblZmienNazweSwojego.setForeground(Color.WHITE);
+		lblZmienNazweSwojego.setBounds(52, 448, 328, 14);
+		STUDIO.add(lblZmienNazweSwojego);
 		
 		JPanel UPRAWNIENIA = new JPanel();
 		UPRAWNIENIA.setBackground(Color.BLACK);
@@ -497,7 +471,7 @@ public class menu_glowne_admina {
 		btnShop.setBorderPainted(false);
 		btnShop.setFocusPainted(false);
 		btnShop.setContentAreaFilled(false);
-		btnShop.setBounds(10, 124, 165, 25);
+		btnShop.setBounds(10, 81, 165, 25);
 		frame.getContentPane().add(btnShop);
 		
 		JButton btnYourLibrary = new JButton("BIBLIOTEKA");
@@ -544,7 +518,7 @@ public class menu_glowne_admina {
 		btnYourLibrary.setBorderPainted(false);
 		btnYourLibrary.setFocusPainted(false);
 		btnYourLibrary.setContentAreaFilled(false);
-		btnYourLibrary.setBounds(10, 158, 165, 23);
+		btnYourLibrary.setBounds(10, 113, 165, 23);
 		frame.getContentPane().add(btnYourLibrary);
 		
 		JButton btnUprawnienia = new JButton("UPRAWNIENIA");

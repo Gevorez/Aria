@@ -113,7 +113,7 @@ public class menu_glowne {
 		
 		JPanel SKLEP = new JPanel();
 		layeredPane.add(SKLEP, "name_68648280148399");
-		SKLEP.setBackground(Color.DARK_GRAY);
+		SKLEP.setBackground(Color.BLACK);
 		SKLEP.setOpaque(true);
 		SKLEP.setLayout(null);
 		
@@ -123,18 +123,20 @@ public class menu_glowne {
 		
 		JPanel STUDIO = new JPanel();
 		layeredPane.add(STUDIO, "name_68613709652399");
-		STUDIO.setBackground(Color.DARK_GRAY);
+		STUDIO.setBackground(Color.BLACK);
 		STUDIO.setOpaque(true);
 		STUDIO.setLayout(null);
 		
 		zmiana = new JTextField();
-		zmiana.setBounds(647, 263, 96, 19);
+		zmiana.setBounds(52, 473, 96, 19);
 		STUDIO.add(zmiana);
 		zmiana.setColumns(10);
 		zmiana.setForeground(Color.WHITE);
 		zmiana.setBackground(Color.BLACK);
 		zmiana.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
+		zmiana.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 10));
 		JTextArea textArea2 = new JTextArea();
+		textArea2.setEditable(false);
 		
 		JButton btnGuziczek = new JButton("guziczek");
 		btnGuziczek.addActionListener(new ActionListener() {
@@ -180,12 +182,12 @@ public class menu_glowne {
 										+ "where Login='"+main.user.getText()+"'";*/
 			}
 		});
-		btnGuziczek.setBounds(835, 262, 85, 21);
+		btnGuziczek.setBounds(241, 501, 85, 21);
 		STUDIO.add(btnGuziczek);
 		
 		JPanel BIBLIOTEKA = new JPanel();
 		layeredPane.add(BIBLIOTEKA, "name_68702683888800");
-		BIBLIOTEKA.setBackground(Color.DARK_GRAY);
+		BIBLIOTEKA.setBackground(Color.BLACK);
 		BIBLIOTEKA.setOpaque(true);
 		BIBLIOTEKA.setLayout(null);
 		
@@ -204,16 +206,17 @@ public class menu_glowne {
 		label_2.setBounds(207, 27, 46, 14);
 		BIBLIOTEKA.add(label_2);
 		
-		JLabel label_3 = new JLabel("Data_publikacji");
+		JLabel label_3 = new JLabel("Data publikacji");
 		label_3.setForeground(Color.WHITE);
 		label_3.setBounds(692, 27, 98, 14);
 		BIBLIOTEKA.add(label_3);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBackground(Color.DARK_GRAY);
+		textArea.setBackground(Color.BLACK);
 		textArea.setForeground(Color.WHITE);
 		textArea.setBounds(196, 51, 721, 325);
 		BIBLIOTEKA.add(textArea);
+		
 		usun = new JTextField();
 		usun.setForeground(Color.WHITE);
 		usun.setBackground(Color.BLACK);
@@ -248,7 +251,7 @@ public class menu_glowne {
 					         String tyt  = rs2.getString("tytul");
 					         String wyko = rs2.getString("wykonawca");
 					         String Album = rs2.getString("album");
-					         String Data_pb = rs2.getString("data_publikacji");
+					         String Data_pb = rs2.getString("data publikacji");
 					         
 					        
 					         i++;
@@ -299,10 +302,10 @@ public class menu_glowne {
 		frame.getContentPane().add(btnHome);
 
 		
-		textArea2.setBackground(Color.DARK_GRAY);
+		textArea2.setBackground(Color.BLACK);
 		textArea2.setForeground(Color.WHITE);
-		textArea2.setBounds(333, 11, 449, 46);
-		textArea2.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 20));
+		textArea2.setBounds(471, 27, 449, 46);
+		textArea2.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 30));
 		STUDIO.add(textArea2);
 		
 		JButton btnShop = new JButton("STUDIO");
@@ -404,6 +407,12 @@ public class menu_glowne {
 		btnYourLibrary.setContentAreaFilled(false);
 		btnYourLibrary.setBounds(10, 158, 165, 23);
 		frame.getContentPane().add(btnYourLibrary);
+		
+		JLabel lblZmienNazweSwojego = new JLabel("ZMIEN NAZWE SWOJEGO STUDIA");
+		lblZmienNazweSwojego.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
+		lblZmienNazweSwojego.setForeground(Color.WHITE);
+		lblZmienNazweSwojego.setBounds(52, 448, 328, 14);
+		STUDIO.add(lblZmienNazweSwojego);
 		
 		JLabel tlolabel = new JLabel("");
 		tlolabel.setBounds(0, 0, 1280, 720);
