@@ -82,6 +82,8 @@ public class menu_glowne {
 		ImageIcon studio_guziczek = new ImageIcon("studio_guziczek.png");
 		ImageIcon lib_guziczek = new ImageIcon("lib_guziczek.png"); 
 		ImageIcon sklep_guziczek = new ImageIcon("sklep_guziczek.png");
+		ImageIcon zmien_guziczek = new ImageIcon("zmien_guziczek.png");
+		ImageIcon usun_guziczek = new ImageIcon("usun_guziczek.png");
 		
 		
 		frame = new JFrame();
@@ -182,7 +184,11 @@ public class menu_glowne {
 										+ "where Login='"+main.user.getText()+"'";*/
 			}
 		});
-		btnGuziczek.setBounds(241, 501, 85, 21);
+		btnGuziczek.setBounds(237, 501, 300, 21);
+		btnGuziczek.setIcon(zmien_guziczek);
+		btnGuziczek.setBorderPainted(false);
+		btnGuziczek.setFocusPainted(false);
+		btnGuziczek.setContentAreaFilled(false);
 		STUDIO.add(btnGuziczek);
 		
 		JPanel BIBLIOTEKA = new JPanel();
@@ -274,7 +280,11 @@ public class menu_glowne {
 					}
 			}
 				});
-		btnUsun.setBounds(265, 590, 85, 21);
+		btnUsun.setBounds(265, 590, 300, 21);
+		btnUsun.setIcon(usun_guziczek);
+		btnUsun.setBorderPainted(false);
+		btnUsun.setFocusPainted(false);
+		btnUsun.setContentAreaFilled(false);
 		BIBLIOTEKA.add(btnUsun);
 		
 		JLabel lblPodajTytulUsuwanego = new JLabel("Podaj tytul usuwanego utworu");

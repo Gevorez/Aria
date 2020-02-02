@@ -87,7 +87,9 @@ public class menu_glowne_admina {
 		ImageIcon studio_guziczek = new ImageIcon("studio_guziczek.png");
 		ImageIcon lib_guziczek = new ImageIcon("lib_guziczek.png"); 
 		ImageIcon sklep_guziczek = new ImageIcon("sklep_guziczek.png");
-		
+		ImageIcon usun_guziczek = new ImageIcon("usun_guziczek.png");
+		ImageIcon dodaj_guziczek = new ImageIcon("dodaj_guziczek.png");
+		ImageIcon zmien_guziczek = new ImageIcon("zmien_guziczek.png");
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1280, 720);
@@ -200,7 +202,11 @@ public class menu_glowne_admina {
 			}
 			
 		});
-		btnDodaj.setBounds(237, 370, 89, 23);
+		btnDodaj.setBounds(237, 370, 300, 21);
+		btnDodaj.setIcon(dodaj_guziczek);
+		btnDodaj.setBorderPainted(false);
+		btnDodaj.setFocusPainted(false);
+		btnDodaj.setContentAreaFilled(false);
 		STUDIO.add(btnDodaj);
 		
 		zmiana = new JTextField();
@@ -259,7 +265,11 @@ public class menu_glowne_admina {
 										+ "where Login='"+main.user.getText()+"'";*/
 			}
 		});
-		btnGuziczek.setBounds(241, 501, 85, 21);
+		btnGuziczek.setBounds(237, 501, 300, 21);
+		btnGuziczek.setIcon(zmien_guziczek);
+		btnGuziczek.setBorderPainted(false);
+		btnGuziczek.setFocusPainted(false);
+		btnGuziczek.setContentAreaFilled(false);
 		STUDIO.add(btnGuziczek);
 		
 		JPanel BIBLIOTEKA = new JPanel();
@@ -356,7 +366,11 @@ public class menu_glowne_admina {
 					}
 			}
 				});
-		btnUsun.setBounds(265, 590, 85, 21);
+		btnUsun.setBounds(265, 590, 300, 21);
+		btnUsun.setIcon(usun_guziczek);
+		btnUsun.setBorderPainted(false);
+		btnUsun.setFocusPainted(false);
+		btnUsun.setContentAreaFilled(false);
 		BIBLIOTEKA.add(btnUsun);
 		
 		JLabel lblPodajTytulUsuwanego = new JLabel("Podaj tytul usuwanego utworu");
@@ -471,7 +485,7 @@ public class menu_glowne_admina {
 		btnShop.setBorderPainted(false);
 		btnShop.setFocusPainted(false);
 		btnShop.setContentAreaFilled(false);
-		btnShop.setBounds(10, 81, 165, 25);
+		btnShop.setBounds(10, 93, 165, 25);
 		frame.getContentPane().add(btnShop);
 		
 		JButton btnYourLibrary = new JButton("BIBLIOTEKA");
@@ -518,7 +532,7 @@ public class menu_glowne_admina {
 		btnYourLibrary.setBorderPainted(false);
 		btnYourLibrary.setFocusPainted(false);
 		btnYourLibrary.setContentAreaFilled(false);
-		btnYourLibrary.setBounds(10, 113, 165, 23);
+		btnYourLibrary.setBounds(10, 129, 165, 23);
 		frame.getContentPane().add(btnYourLibrary);
 		
 		JButton btnUprawnienia = new JButton("UPRAWNIENIA");
