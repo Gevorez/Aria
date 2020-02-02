@@ -225,7 +225,6 @@ public class main {
 						"  `Album` varchar(255) NOT NULL,\r\n" + 
 						"  `Data_publikacji` varchar(255) NOT NULL,\r\n" + 
 						"  `id` int(11) NOT NULL AUTO_INCREMENT,\r\n" + 
-						"  `nazwa_studia_utwory` varchar(255) NOT NULL,\r\n" + 
 						"  PRIMARY KEY (`id`)\r\n" + 
 						")";
 				int rsbb=stmt.executeUpdate(solo2);

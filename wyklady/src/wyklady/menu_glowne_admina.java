@@ -457,9 +457,7 @@ public class menu_glowne_admina {
 					ResultSet rs2=stmt.executeQuery(sql2);
 					rs2.next();
 					
-					String nazwa_studia = rs2.getString("nazwa_studia");
 					
-					textArea2.setText("To jest Admin");
 					
 					/*JLabel lblNewLabel = new JLabel(nazwa_studia);
 					lblNewLabel.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 20));
@@ -477,7 +475,7 @@ public class menu_glowne_admina {
 					
 					
 							con.close();
-				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Prosze wybrac inny login");}
+				} catch(Exception e1){JOptionPane.showMessageDialog(null, "cos sie popsulo");}
 			}
 		
 		});
