@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.swing.JFrame;
+
 import javax.swing.JComboBox;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
@@ -36,7 +37,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import wyklady.main;
 
 
 public class menu_glowne {
@@ -54,6 +55,7 @@ public class menu_glowne {
 				try {
 					menu_glowne window = new menu_glowne();
 					window.frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -108,11 +110,22 @@ public class menu_glowne {
 		btnWyloguj.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-	            frame.setVisible(false);
-				JFrame menu_glowne = new rejestracja();
-				menu_glowne.setVisible(true);
+			
+				frame.setVisible(false);
 				
+				try {
+					main window;
+					window = new main();
+					window.frame.setVisible(true);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+				
+		
 			}
+			
 		});
 		popupMenu.add(btnWyloguj);
 		

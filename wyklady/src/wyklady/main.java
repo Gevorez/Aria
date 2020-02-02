@@ -31,7 +31,7 @@ import javax.swing.border.BevelBorder;
 
 public class main {
 
-	private JFrame frame;
+	 JFrame frame;
 	public static JTextField user;
 	private JPasswordField pass;
 	
