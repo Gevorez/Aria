@@ -38,9 +38,6 @@ import javax.swing.JMenuItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import wyklady.main;
-import wyklady.przypomnienie_hasla;
-import java.awt.Component;
-import javax.swing.JSeparator;
 
 
 public class menu_glowne {
@@ -106,39 +103,11 @@ public class menu_glowne {
 		//POPUPMENU
 		
 		JPopupMenu popupMenu = new JPopupMenu();
-		popupMenu.setBounds(0, 0, 175, 201);
+		popupMenu.setBounds(0, 0, 200, 50);
 		frame.getContentPane().add(popupMenu);
 		
-		JButton btnWyloguj = new JButton("   WYLOGUJ   ");
-		popupMenu.add(btnWyloguj);
+		JButton btnWyloguj = new JButton("WYLOGUJ");
 		btnWyloguj.setBackground(Color.WHITE);
-		
-		JButton btnNewButton = new JButton("ZMIEN HASLO");
-		popupMenu.add(btnNewButton);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
-		
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			
-			frame.setVisible(true);
-
-			
-			
-			przypomnienie_hasla window;
-			window = new przypomnienie_hasla();
-			window.frame.setVisible(true);
-			
-			
-			
-		}
-		
-	});
 		btnWyloguj.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -162,6 +131,7 @@ public class menu_glowne {
 			}
 			
 		});
+		popupMenu.add(btnWyloguj);
 		
 		//POPUPMENU
 		
@@ -225,6 +195,13 @@ public class menu_glowne {
 		SKLEP.add(saldo);
 		
 		JButton album1 = new JButton("New button");
+		album1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				wyklady.albumy.nirvana window = new wyklady.albumy.nirvana();
+				window.frame.setVisible(true);
+				
+			}
+		});
 		album1.setIcon(nirvana);
 		album1.setBorderPainted(false);
 		album1.setFocusPainted(false);
@@ -233,6 +210,12 @@ public class menu_glowne {
 		SKLEP.add(album1);
 		
 		JButton album2 = new JButton("New button");
+		album2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				wyklady.albumy.metallica window = new wyklady.albumy.metallica();
+				window.frame.setVisible(true);
+			}
+		});
 		album2.setIcon(metallica);
 		album2.setBorderPainted(false);
 		album2.setFocusPainted(false);
@@ -241,6 +224,12 @@ public class menu_glowne {
 		SKLEP.add(album2);
 		
 		JButton album3 = new JButton("New button");
+		album3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				wyklady.albumy.daft_punk window = new wyklady.albumy.daft_punk();
+				window.frame.setVisible(true);
+			}
+		});
 		album3.setIcon(daftpunk);
 		album3.setBorderPainted(false);
 		album3.setFocusPainted(false);
@@ -249,6 +238,12 @@ public class menu_glowne {
 		SKLEP.add(album3);
 		
 		JButton album4 = new JButton("New button");
+		album4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				wyklady.albumy.beatles window = new wyklady.albumy.beatles();
+				window.frame.setVisible(true);
+			}
+		});
 		album4.setIcon(beatles);
 		album4.setBorderPainted(false);
 		album4.setFocusPainted(false);
@@ -257,6 +252,12 @@ public class menu_glowne {
 		SKLEP.add(album4);
 		
 		JButton album5 = new JButton("New button");
+		album5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				wyklady.albumy.Green_day window = new wyklady.albumy.Green_day();
+				window.frame.setVisible(true);
+			}
+		});
 		album5.setIcon(greenday);
 		album5.setBorderPainted(false);
 		album5.setFocusPainted(false);
@@ -265,6 +266,12 @@ public class menu_glowne {
 		SKLEP.add(album5);
 		
 		JButton album6 = new JButton("New button");
+		album6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				wyklady.albumy.inne window = new wyklady.albumy.inne();
+				window.frame.setVisible(true);
+			}
+		});
 		album6.setBounds(788, 371, 160, 130);
 		SKLEP.add(album6);
 		
@@ -450,7 +457,7 @@ public class menu_glowne {
 		usun.setBounds(20, 591, 221, 19);
 		BIBLIOTEKA.add(usun);
 		usun.setColumns(10);
-		
+	
 		JButton btnUsun = new JButton("Usun");
 		btnUsun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -458,8 +465,8 @@ public class menu_glowne {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
-					String sql="DELETE FROM utwory WHERE Tytul ="
-							+ " ('"+usun.getText()+"')";
+					String sql="DELETE FROM zakupione_"+main.user.getText()+" WHERE id ="
+							+ " ("+usun.getText()+")";
 							//ss
 					int rs=stmt.executeUpdate(sql);
 					if(rs==1) {
@@ -474,13 +481,14 @@ public class menu_glowne {
 					         String tyt  = rs2.getString("tytul");
 					         String wyko = rs2.getString("wykonawca");
 					         String Album = rs2.getString("album");
-					         String Data_pb = rs2.getString("data publikacji");
+					         String Data_pb = rs2.getString("data_publikacji");
+					         String id = rs2.getString("id");
 					         
 					        
 					         i++;
 					         
 					         //Display values
-					        textArea.append(i +" "+Album+"\t\t "   +wyko+ "\t\t"+tyt+" \t\t  "+Data_pb+"\n"); 
+					        textArea.append(id +" "+Album+"\t\t "   +wyko+ "\t\t"+tyt+" \t\t  "+Data_pb+"\n"); 
 					        
 					        
 							}
@@ -601,22 +609,23 @@ public class menu_glowne {
 					rs3.next();
 					String nazwa_studia = rs3.getString("nazwa_studia");
 					
-					String sql2="Select tytul,wykonawca,album,data_publikacji from zakupione_"+main.user.getText()+"";
+					String sql2="Select tytul,wykonawca,album,data_publikacji,id from zakupione_"+main.user.getText()+"";
 					ResultSet rs2=stmt.executeQuery(sql2);
 					int i=0;
 						
-							while(rs2.next() &&  i<10) {
+							while(rs2.next() &&  i<999) {
 					         //Retrieve by column name
 					         String tyt  = rs2.getString("tytul");
 					         String wyko = rs2.getString("wykonawca");
 					         String Album = rs2.getString("album");
 					         String Data_pb = rs2.getString("data_publikacji");
+					         String id=rs2.getString("id");
 					         
 					        
 					         i++;
 					         
 					         //Display values
-					        textArea.append(i +" "+Album+"\t\t "   +wyko+ "\t\t"+tyt+" \t\t  "+Data_pb+"\n"); 
+					        textArea.append(id +" "+Album+"\t\t "   +wyko+ "\t\t"+tyt+" \t\t  "+Data_pb+"\n"); 
 					        
 					        
 							}
@@ -647,24 +656,6 @@ public class menu_glowne {
 		frame.getContentPane().add(tlolabel);
 		
 		
-	}
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-					
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
 	}
 	}
 

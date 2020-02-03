@@ -75,7 +75,10 @@ public class nazwa_studia {
 						String sql2="create table zakupione_"+main.user.getText()+" (tytul varchar(255),"
 								+ "wykonawca varchar(255),"
 								+ "album varchar(255),"
-								+ "data_publikacji varchar(255))"; 
+								+ "data_publikacji varchar(255),"
+								+ "id int(255) NOT NULL AUTO_INCREMENT,"
+								+ "UNIQUE KEY uniq (tytul),"
+								+ "PRIMARY KEY (id))"; 
 						int rs2 =stmt.executeUpdate(sql2);
 						
 						frame.setVisible(false);
