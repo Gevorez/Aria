@@ -21,9 +21,10 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import java.security.MessageDigest;
+import java.awt.Color;
 public class przypomnienie_hasla {
 
-	private JFrame frame;
+	JFrame frame;
 	private JTextField pomoc;
 	private JPasswordField password;
 
@@ -55,11 +56,15 @@ public class przypomnienie_hasla {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.BLACK);
 		frame.setBounds(100, 100, 485, 291);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		pomoc = new JTextField();
+		pomoc.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 10));
+		pomoc.setBackground(Color.BLACK);
+		pomoc.setForeground(Color.WHITE);
 		pomoc.setBounds(89, 83, 296, 19);
 		frame.getContentPane().add(pomoc);
 		pomoc.setColumns(10);
@@ -117,8 +122,9 @@ public class przypomnienie_hasla {
 		
 		
 		JLabel lblPrzypomnienieHasla = new JLabel("Podaj odpowiedz na pytanie pomocnicze aby zmienic haslo");
-		lblPrzypomnienieHasla.setBounds(10, 0, 476, 102);
-		lblPrzypomnienieHasla.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblPrzypomnienieHasla.setForeground(Color.WHITE);
+		lblPrzypomnienieHasla.setBounds(20, 0, 476, 102);
+		lblPrzypomnienieHasla.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 16));
 		frame.getContentPane().add(lblPrzypomnienieHasla);
 		
 		JButton btnPrzypomnij = new JButton("Zmien");

@@ -117,6 +117,20 @@ public class main {
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPassword.setBounds(1013, 233, 88, 29);
 		frame.getContentPane().add(lblPassword);
+		
+		JButton btnForgotPassword = new JButton("FORGOT PASSWORD?");
+		btnForgotPassword.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				przypomnienie_hasla window = new przypomnienie_hasla();
+				window.frame.setVisible(true);
+			}
+		});
+		btnForgotPassword.setForeground(Color.WHITE);
+		btnForgotPassword.setFocusPainted(false);
+		btnForgotPassword.setContentAreaFilled(false);
+		btnForgotPassword.setBorderPainted(false);
+		btnForgotPassword.setBounds(1050, 365, 189, 21);
+		frame.getContentPane().add(btnForgotPassword);
 	
 	
 		JButton btnLoginIn = new JButton("Login in");
@@ -319,6 +333,4 @@ public class main {
 		tlolabel.setIcon(tlo);
 		frame.getContentPane().add(tlolabel);
 	}
-	
-	
 }
