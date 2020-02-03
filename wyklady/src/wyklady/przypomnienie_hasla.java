@@ -124,6 +124,8 @@ public class przypomnienie_hasla {
 		panel.add(zmianka);
 		
 		password = new JPasswordField();
+		password.setBackground(Color.BLACK);
+		password.setForeground(Color.WHITE);
 		password.setBounds(64, 62, 185, 20);
 		panel.add(password);
 		
