@@ -27,6 +27,7 @@ public class przypomnienie_hasla {
 	JFrame frame;
 	private JTextField pomoc;
 	private JPasswordField password;
+	private JTextField login;
 
 	/**
 	 * Launch the application.
@@ -62,10 +63,10 @@ public class przypomnienie_hasla {
 		frame.getContentPane().setLayout(null);
 		
 		pomoc = new JTextField();
-		pomoc.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 10));
+		pomoc.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		pomoc.setBackground(Color.BLACK);
 		pomoc.setForeground(Color.WHITE);
-		pomoc.setBounds(89, 83, 296, 19);
+		pomoc.setBounds(91, 152, 296, 19);
 		frame.getContentPane().add(pomoc);
 		pomoc.setColumns(10);
 		
@@ -75,15 +76,21 @@ public class przypomnienie_hasla {
 		layeredPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setForeground(Color.WHITE);
+		panel.setBackground(Color.BLACK);
 		panel.setBounds(0, -231, 347, 179);
 		layeredPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Wpisz nowe haslo");
+		lblNewLabel.setBackground(Color.BLACK);
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setBounds(10, 11, 276, 26);
 		panel.add(lblNewLabel);
 		
 		JButton zmianka = new JButton("Zmien");
+		zmianka.setForeground(Color.WHITE);
+		zmianka.setBackground(Color.BLACK);
 		zmianka.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -93,7 +100,7 @@ public class przypomnienie_hasla {
 					
 					
 						String sql="Update login "
-								+ "set Haslo='"+password.getText()+"'"
+								+ "set Haslo=SHA1('"+password.getText()+"')"
 								+"where pytanie_pomoc='"+pomoc.getText()+"'";
 						
 
@@ -121,14 +128,14 @@ public class przypomnienie_hasla {
 		panel.add(password);
 		
 		
-		JLabel lblPrzypomnienieHasla = new JLabel("Podaj odpowiedz na pytanie pomocnicze aby zmienic haslo");
+		JLabel lblPrzypomnienieHasla = new JLabel("Podaj login i odpowiedz na pytanie pomocnicze aby zmienic haslo");
 		lblPrzypomnienieHasla.setForeground(Color.WHITE);
-		lblPrzypomnienieHasla.setBounds(20, 0, 476, 102);
-		lblPrzypomnienieHasla.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 16));
+		lblPrzypomnienieHasla.setBounds(10, 0, 476, 74);
+		lblPrzypomnienieHasla.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 15));
 		frame.getContentPane().add(lblPrzypomnienieHasla);
-		
+		login = new JTextField();
 		JButton btnPrzypomnij = new JButton("Zmien");
-		btnPrzypomnij.setBounds(175, 117, 121, 21);
+		btnPrzypomnij.setBounds(170, 198, 121, 21);
 		btnPrzypomnij.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -137,15 +144,16 @@ public class przypomnienie_hasla {
 						Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 						Statement stmt=con.createStatement();
 						String test=pomoc.getText();
+						String loginek=login.getText();
 						
-						String sql3="Select  pytanie_pomoc from login where pytanie_pomoc ='"+test+"'";
+						String sql3="Select  pytanie_pomoc,login from login where pytanie_pomoc ='"+test+"'and login ='"+loginek+"'";
 						ResultSet rs3=stmt.executeQuery(sql3);
 						rs3.next();
 						String pomoc = rs3.getString("pytanie_pomoc");
 						
 						
 							
-						if(pomoc != test)
+						if(pomoc != test && pomoc !=loginek )
 						{
 					    layeredPane.removeAll();
 						layeredPane.add(panel);
@@ -161,6 +169,24 @@ public class przypomnienie_hasla {
 			}
 		});
 		frame.getContentPane().add(btnPrzypomnij);
+		
+		
+		login.setForeground(Color.WHITE);
+		login.setBackground(Color.BLACK);
+		login.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		login.setBounds(91, 102, 296, 20);
+		frame.getContentPane().add(login);
+		login.setColumns(10);
+		
+		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setForeground(Color.WHITE);
+		lblLogin.setBounds(21, 107, 46, 14);
+		frame.getContentPane().add(lblLogin);
+		
+		JLabel lblOdpowiedz = new JLabel("Odpowiedz");
+		lblOdpowiedz.setForeground(Color.WHITE);
+		lblOdpowiedz.setBounds(21, 157, 64, 14);
+		frame.getContentPane().add(lblOdpowiedz);
 		
 		
 	}
