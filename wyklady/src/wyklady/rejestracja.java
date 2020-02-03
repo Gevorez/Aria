@@ -39,6 +39,8 @@ import javax.swing.JCheckBox;
 import java.awt.Color;
 import javax.swing.JMenuItem;
 import javax.swing.JComboBox;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class rejestracja extends JFrame {
 
@@ -250,6 +252,9 @@ public class rejestracja extends JFrame {
 		contentPane.add(lblIAcceptThe);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("");
+		
+			
+		
 		chckbxNewCheckBox.setBounds(6, 567, 97, 23);
 		contentPane.add(chckbxNewCheckBox);
 		
@@ -281,30 +286,46 @@ public class rejestracja extends JFrame {
 					ResultSet rs4=stmt.executeQuery(sql4)
 					rs*/
 					
-					if(login.getText().isEmpty()||haslo.getText().isEmpty()||email.getText().isEmpty()||telefon.getText().isEmpty()||nazwisko.getText().isEmpty()||pomocnicze.getText().isEmpty()) {
+					 if(login.getText().isEmpty()||haslo.getText().isEmpty()||email.getText().isEmpty()||telefon.getText().isEmpty()||nazwisko.getText().isEmpty()||pomocnicze.getText().isEmpty())
+						
+					 {
 						JOptionPane.showMessageDialog(null, "Nie podales wszystkich informacji");
 					}
+						
+						
 					else {	
 						String sql2="SELECT count(*) as total from login ";
 						ResultSet rs2=stmt.executeQuery(sql2);
 						rs2.next();
 						int xd=rs2.getInt("total");
-						if(xd==0) {
-						
+						if(xd==0 ) {
+							if (chckbxNewCheckBox.isSelected() ) {
 							String sql3="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc,nazwa_studia,Admin,Admin_head) "
-									+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_str.getText()+"',1,1)";               
+									+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_str.getText()+"',1,1)";
+							
 							int rs=stmt.executeUpdate(sql3);
 							dispose();
-							
+							}
 						} else 
+							if (chckbxNewCheckBox.isSelected() ) {
 						{
 							String sql="INSERT INTO login (Login, Haslo, Email, Telefon, Imie,Nazwisko,pytanie_pomoc,pytanie_pomoc_tresc,nazwa_studia,Admin,Admin_head) "
-							+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_str.getText()+"',0,0)";               
+							+ "VALUES('"+login.getText()+"',SHA1('"+haslo.getText()+"'),'"+email.getText()+"','"+telefon.getText()+"','"+imie.getText()+"','"+nazwisko.getText()+"','"+pomocnicze.getText()+"','"+pytan_pomoc.getText()+"','"+nazwa_str.getText()+"',0,0)";
+							
+							
+								
 					int rs3=stmt.executeUpdate(sql);
 					dispose();
+						
+						
+							
 						}
 					}
-						
+							else {
+								chckbxNewCheckBox.setSelected(false);
+								JOptionPane.showMessageDialog(null,"Zaakceptuj RODO");
+							}
+					}
 					
 					
 							con.close();
