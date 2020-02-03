@@ -455,6 +455,7 @@ public class menu_glowne_admina {
 		UPRAWNIENIA.setLayout(null);
 		
 		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setEditable(false);
 		textArea_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		textArea_1.setBackground(Color.BLACK);
 		textArea_1.setForeground(Color.WHITE);
