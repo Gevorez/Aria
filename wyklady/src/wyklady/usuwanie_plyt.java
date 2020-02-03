@@ -45,7 +45,7 @@ public class usuwanie_plyt extends JFrame {
 	 * Create the frame.
 	 */
 	public usuwanie_plyt() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 249, 335);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

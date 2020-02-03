@@ -101,7 +101,7 @@ public class menu_glowne_admina {
 		popupMenu.setBounds(0, 0, 200, 50);
 		frame.getContentPane().add(popupMenu);
 		
-		JButton btnNewButton = new JButton("WYLOGUJ");
+		JButton btnNewButton = new JButton("  WYLOGUJ    ");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -126,6 +126,25 @@ public class menu_glowne_admina {
 			
 		});
 		popupMenu.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("ZMIEN HASLO");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				frame.setVisible(true);
+
+				
+				
+				przypomnienie_hasla window;
+				window = new przypomnienie_hasla();
+				window.frame.setVisible(true);
+				
+				
+			}
+		});
+		popupMenu.add(btnNewButton_1);
+		
 		
 		frame.getContentPane().addMouseListener(new MouseAdapter() {
 			@Override

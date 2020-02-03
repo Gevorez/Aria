@@ -59,7 +59,7 @@ public class przypomnienie_hasla {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.BLACK);
 		frame.setBounds(100, 100, 485, 291);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		pomoc = new JTextField();

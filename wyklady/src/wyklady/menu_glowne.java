@@ -38,6 +38,9 @@ import javax.swing.JMenuItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import wyklady.main;
+import wyklady.przypomnienie_hasla;
+import java.awt.Component;
+import javax.swing.JSeparator;
 
 
 public class menu_glowne {
@@ -103,11 +106,39 @@ public class menu_glowne {
 		//POPUPMENU
 		
 		JPopupMenu popupMenu = new JPopupMenu();
-		popupMenu.setBounds(0, 0, 200, 50);
+		popupMenu.setBounds(0, 0, 175, 201);
 		frame.getContentPane().add(popupMenu);
 		
-		JButton btnWyloguj = new JButton("WYLOGUJ");
+		JButton btnWyloguj = new JButton("   WYLOGUJ   ");
+		popupMenu.add(btnWyloguj);
 		btnWyloguj.setBackground(Color.WHITE);
+		
+		JButton btnNewButton = new JButton("ZMIEN HASLO");
+		popupMenu.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		
+		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			
+			frame.setVisible(true);
+
+			
+			
+			przypomnienie_hasla window;
+			window = new przypomnienie_hasla();
+			window.frame.setVisible(true);
+			
+			
+			
+		}
+		
+	});
 		btnWyloguj.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -131,7 +162,6 @@ public class menu_glowne {
 			}
 			
 		});
-		popupMenu.add(btnWyloguj);
 		
 		//POPUPMENU
 		
@@ -617,6 +647,24 @@ public class menu_glowne {
 		frame.getContentPane().add(tlolabel);
 		
 		
+	}
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+					
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
 	}
 	}
 

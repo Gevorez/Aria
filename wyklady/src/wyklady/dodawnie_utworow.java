@@ -53,7 +53,7 @@ public class dodawnie_utworow {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 680, 190);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblDodawanieNowegoUtworu = new JLabel("Dodawanie nowego utworu");
