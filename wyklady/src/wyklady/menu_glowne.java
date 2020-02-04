@@ -133,6 +133,24 @@ public class menu_glowne {
 		});
 		popupMenu.add(btnWyloguj);
 		
+		JButton button = new JButton("ZMIEN HASLO");
+		button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				frame.setVisible(true);
+
+				
+				
+				przypomnienie_hasla window;
+				window = new przypomnienie_hasla();
+				window.frame.setVisible(true);
+				
+				
+			}
+		});
+		
+		popupMenu.add(button);
 		//POPUPMENU
 		
 		frame.getContentPane().addMouseListener(new MouseAdapter() {
