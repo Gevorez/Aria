@@ -24,6 +24,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
@@ -55,12 +56,13 @@ public class rejestracja extends JFrame {
 	private JTextField pytan_pomoc;
 	private ComboBoxModel patternExamples;
 	private JTextField nazwa_str;
-	
+	static ResourceBundle res;
 
 	/**
 	 * Launch the application
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -76,6 +78,8 @@ public class rejestracja extends JFrame {
 
 	
 	public rejestracja() {
+		if(GlobalVariables.jezyk==1)res = ResourceBundle.getBundle("PL");
+		if(GlobalVariables.jezyk==0)res = ResourceBundle.getBundle("EN");
 		
 		
 		ImageIcon rejtlo = new ImageIcon("rej_tlo.png");
@@ -120,7 +124,7 @@ public class rejestracja extends JFrame {
 		login.setColumns(10);
 		JProgressBar progressBar = new JProgressBar();
 		JButton btnNewButton = new JButton("New button");
-		JButton btnRegister = new JButton("Register");
+		JButton btnbtn = new JButton(res.getString("Register"));
 		haslo = new JPasswordField();
 		haslo.addKeyListener(new KeyAdapter() {
 			@Override
@@ -136,20 +140,20 @@ public class rejestracja extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int s= haslo.getText().length();
 				progressBar.setValue(s);
-				btnRegister.doClick();
+				btnbtn.doClick();
 				
 			}
 		});
 		haslo.setBounds(10, 321, 275, 19);
 		contentPane.add(haslo);
 		
-		JLabel lblName = new JLabel("Name");
+		JLabel lblName = new JLabel(res.getString("Name"));
 		lblName.setForeground(Color.WHITE);
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblName.setBounds(10, 47, 68, 21);
 		contentPane.add(lblName);
 		
-		JLabel lblSurname = new JLabel("Surname");
+		JLabel lblSurname = new JLabel(res.getString("Surname"));
 		lblSurname.setForeground(Color.WHITE);
 		lblSurname.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblSurname.setBounds(10, 97, 97, 21);
@@ -161,7 +165,7 @@ public class rejestracja extends JFrame {
 		lblEmail.setBounds(10, 149, 97, 21);
 		contentPane.add(lblEmail);
 		
-		JLabel lblPhoneNumber = new JLabel("Phone number");
+		JLabel lblPhoneNumber = new JLabel(res.getString("Phonenumber"));
 		lblPhoneNumber.setForeground(Color.WHITE);
 		lblPhoneNumber.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPhoneNumber.setBounds(10, 201, 147, 21);
@@ -173,7 +177,7 @@ public class rejestracja extends JFrame {
 		lblLogin.setBounds(10, 238, 97, 31);
 		contentPane.add(lblLogin);
 		
-		JLabel lblPassword = new JLabel("Password");
+		JLabel lblPassword = new JLabel(res.getString("Password"));
 		lblPassword.setForeground(Color.WHITE);
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPassword.setBounds(10, 298, 97, 19);
@@ -186,7 +190,7 @@ public class rejestracja extends JFrame {
 		
 		pomocnicze = new JTextField();
 		pytan_pomoc = new JTextField();
-		JLabel lblPasswordStrength = new JLabel("Password strength");
+		JLabel lblPasswordStrength = new JLabel(res.getString("PasswordStrength"));
 		lblPasswordStrength.setForeground(Color.WHITE);
 		lblPasswordStrength.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPasswordStrength.setBounds(10, 349, 184, 21);
@@ -196,16 +200,16 @@ public class rejestracja extends JFrame {
 		
 		
 		
-		btnRegister.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		btnRegister.setBounds(341, 673, 115, 42);
-		contentPane.add(btnRegister);
+		btnbtn.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		btnbtn.setBounds(295, 673, 161, 42);
+		contentPane.add(btnbtn);
 		
 		btnNewButton.setVisible(false);
 		btnNewButton.setEnabled(false);
 		btnNewButton.setBounds(372, 14, 0, 21);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblPyranie = new JLabel("Auxiliary question");
+		JLabel lblPyranie = new JLabel(res.getString("AuxiliaryQuestion"));
 		lblPyranie.setForeground(Color.WHITE);
 		lblPyranie.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPyranie.setBounds(10, 385, 253, 21);
@@ -222,7 +226,7 @@ public class rejestracja extends JFrame {
 		contentPane.add(pytan_pomoc);
 		pytan_pomoc.setColumns(10);
 		
-		JLabel label = new JLabel("Answer Auxiliary question");
+		JLabel label = new JLabel(res.getString("AnswerAuxiliaryQuestion"));
 		label.setForeground(Color.WHITE);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		label.setBounds(10, 445, 253, 21);
@@ -246,7 +250,7 @@ public class rejestracja extends JFrame {
 		});
 		contentPane.add(btnRodo);
 		
-		JLabel lblIAcceptThe = new JLabel("I ACCEPT THE TERMS AND CONDITIONS OF");
+		JLabel lblIAcceptThe = new JLabel(res.getString("IAcceptTheTermsAndCnditionsOf"));
 		lblIAcceptThe.setForeground(Color.WHITE);
 		lblIAcceptThe.setBounds(10, 590, 253, 14);
 		contentPane.add(lblIAcceptThe);
@@ -262,9 +266,9 @@ public class rejestracja extends JFrame {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(10, 416, 275, 21);
 		contentPane.add(comboBox);
-		comboBox.addItem("Jak nazywa siê Twój pies?");
-		comboBox.addItem("Jaki jest nunmer Twojej karty kredytowej");
-		comboBox.addItem("Jaki masz numer buta");
+		comboBox.addItem(res.getString("JakNazywaSieTwojPies"));
+		comboBox.addItem(res.getString("JakiJestNunmerTwojejKartyKredytowej"));
+		comboBox.addItem(res.getString("JakiMaszNumerButa"));
 		
 		nazwa_str=new JTextField();
 		nazwa_str.setVisible(false);
@@ -273,7 +277,7 @@ public class rejestracja extends JFrame {
 		
 			
 		
-		btnRegister.addActionListener(new ActionListener() {
+		btnbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
@@ -289,7 +293,7 @@ public class rejestracja extends JFrame {
 					 if(login.getText().isEmpty()||haslo.getText().isEmpty()||email.getText().isEmpty()||telefon.getText().isEmpty()||nazwisko.getText().isEmpty()||pomocnicze.getText().isEmpty())
 						
 					 {
-						JOptionPane.showMessageDialog(null, "Nie podales wszystkich informacji");
+						JOptionPane.showMessageDialog(null, res.getString("NiePodalesWszystkichInformacji"));
 					}
 						
 						
@@ -323,7 +327,7 @@ public class rejestracja extends JFrame {
 					}
 							else {
 								chckbxNewCheckBox.setSelected(false);
-								JOptionPane.showMessageDialog(null,"Zaakceptuj RODO");
+								JOptionPane.showMessageDialog(null,res.getString("ZaakceptujRODO"));
 							}
 					}
 					

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
 import javax.swing.JComboBox;
@@ -49,11 +50,13 @@ public class menu_glowne_admina {
 	private JTextField zmiana;
 	private JTextField textField;
 	private JTextField textField_1;
+	static ResourceBundle res;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -71,6 +74,8 @@ public class menu_glowne_admina {
 	 */
 	
 	public menu_glowne_admina() throws IOException {
+		if(GlobalVariables.jezyk==1)res = ResourceBundle.getBundle("PL");
+		if(GlobalVariables.jezyk==0)res = ResourceBundle.getBundle("EN");
 		initialize();
 	}
 
@@ -101,7 +106,7 @@ public class menu_glowne_admina {
 		popupMenu.setBounds(0, 0, 200, 50);
 		frame.getContentPane().add(popupMenu);
 		
-		JButton btnNewButton = new JButton("  WYLOGUJ    ");
+		JButton btnNewButton = new JButton(res.getString("LogOut"));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -127,7 +132,7 @@ public class menu_glowne_admina {
 		});
 		popupMenu.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("ZMIEN HASLO");
+		JButton btnNewButton_1 = new JButton(res.getString("ChangePassword"));
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -217,12 +222,12 @@ public class menu_glowne_admina {
 		data_publi.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
 		data_publi.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 10));
 		
-		JLabel lblTytu = new JLabel("TYTU\u0141");
+		JLabel lblTytu = new JLabel(res.getString("title"));
 		lblTytu.setForeground(Color.WHITE);
 		lblTytu.setBounds(52, 203, 65, 23);
 		STUDIO.add(lblTytu);
 		
-		JLabel lblWykonawca = new JLabel("WYKONAWCA");
+		JLabel lblWykonawca = new JLabel(res.getString("Performer"));
 		lblWykonawca.setForeground(Color.WHITE);
 		lblWykonawca.setBounds(52, 237, 112, 34);
 		STUDIO.add(lblWykonawca);
@@ -232,12 +237,12 @@ public class menu_glowne_admina {
 		lblAlbum.setBounds(52, 282, 46, 14);
 		STUDIO.add(lblAlbum);
 		
-		JLabel lblDatapublikacji = new JLabel("DATA PUBLIKACJI");
+		JLabel lblDatapublikacji = new JLabel(res.getString("Data"));
 		lblDatapublikacji.setForeground(Color.WHITE);
 		lblDatapublikacji.setBounds(52, 322, 112, 14);
 		STUDIO.add(lblDatapublikacji);
 		
-		JButton btnDodaj = new JButton("Dodaj");
+		JButton btnDodaj = new JButton(res.getString("Add"));
 		btnDodaj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -253,12 +258,12 @@ public class menu_glowne_admina {
 							+ "VALUES('"+tytu.getText()+"','"+wyko.getText()+"','"+albu.getText()+"','"+data_publi.getText()+"')";
 					int rs=stmt.executeUpdate(sql);
 					if(rs==1)
-						JOptionPane.showMessageDialog(null, "Utwor zostal dodany");
+						JOptionPane.showMessageDialog(null, res.getString("Added"));
 					else 
-						JOptionPane.showMessageDialog(null, "Bledny login lub haslo");
+						JOptionPane.showMessageDialog(null, res.getString("Zle"));
 					}
 					con.close();
-				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Utwor o takim tytule juz istnieje");}
+				} catch(Exception e1){JOptionPane.showMessageDialog(null, res.getString("Exists"));}
 				wyko.setText(null);
 				tytu.setText(null);
 				albu.setText(null);
@@ -306,14 +311,14 @@ public class menu_glowne_admina {
 					int rs=stmt.executeUpdate(sql);
 				
 					if(rs==1) {
-						JOptionPane.showMessageDialog(null, "nazwa zmieniona");
+						JOptionPane.showMessageDialog(null, res.getString("NameChanged"));
 						textArea2.setText(null);
 						
 						
 					
 					}
 					else 
-						JOptionPane.showMessageDialog(null, "Bledny login lub haslo");
+						JOptionPane.showMessageDialog(null, res.getString("wrong"));
 					
 					textArea2.setText(zmiana.getText());
 					
@@ -422,7 +427,7 @@ public class menu_glowne_admina {
 					}
 
 					else 
-						JOptionPane.showMessageDialog(null, "Bledne dane");
+						JOptionPane.showMessageDialog(null, res.getString("Zle"));
 					con.close();
 				} catch(Exception e1)
 				{
@@ -437,7 +442,7 @@ public class menu_glowne_admina {
 		btnUsun.setContentAreaFilled(false);
 		BIBLIOTEKA.add(btnUsun);
 		
-		JLabel lblPodajTytulUsuwanego = new JLabel("Podaj tytul usuwanego utworu");
+		JLabel lblPodajTytulUsuwanego = new JLabel(res.getString("Podaj"));
 		lblPodajTytulUsuwanego.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblPodajTytulUsuwanego.setForeground(Color.WHITE);
 		lblPodajTytulUsuwanego.setBounds(20, 561, 257, 23);
@@ -450,19 +455,19 @@ public class menu_glowne_admina {
 		textArea2.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 30));
 		STUDIO.add(textArea2);
 		
-		JLabel lblWitajWStudiu = new JLabel("WITAJ W STUDIU");
+		JLabel lblWitajWStudiu = new JLabel(res.getString("Welcome"));
 		lblWitajWStudiu.setForeground(Color.WHITE);
 		lblWitajWStudiu.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 10));
 		lblWitajWStudiu.setBounds(525, 11, 98, 14);
 		STUDIO.add(lblWitajWStudiu);
 		
-		JLabel lblDodajUtwrDo = new JLabel("DODAJ UTW\u00D3R DO SWOJEGO STUDIA");
+		JLabel lblDodajUtwrDo = new JLabel(res.getString("DodajUtwor"));
 		lblDodajUtwrDo.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		lblDodajUtwrDo.setForeground(Color.WHITE);
 		lblDodajUtwrDo.setBounds(52, 158, 294, 14);
 		STUDIO.add(lblDodajUtwrDo);
 		
-		JLabel lblZmienNazweSwojego = new JLabel("ZMIEN NAZWE SWOJEGO STUDIA");
+		JLabel lblZmienNazweSwojego = new JLabel(res.getString("ZmienNazwe"));
 		lblZmienNazweSwojego.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		lblZmienNazweSwojego.setForeground(Color.WHITE);
 		lblZmienNazweSwojego.setBounds(52, 448, 328, 14);
@@ -549,7 +554,7 @@ public class menu_glowne_admina {
 		btnShop.setBounds(10, 93, 165, 25);
 		frame.getContentPane().add(btnShop);
 		
-		JButton btnYourLibrary = new JButton("BIBLIOTEKA");
+		JButton btnYourLibrary = new JButton(res.getString("library"));
 		btnYourLibrary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				layeredPane.removeAll();
@@ -596,7 +601,7 @@ public class menu_glowne_admina {
 		btnYourLibrary.setBounds(10, 129, 165, 23);
 		frame.getContentPane().add(btnYourLibrary);
 		
-		JButton btnUprawnienia = new JButton("UPRAWNIENIA");
+		JButton btnUprawnienia = new JButton(res.getString("permissions"));
 		btnUprawnienia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				layeredPane.removeAll();

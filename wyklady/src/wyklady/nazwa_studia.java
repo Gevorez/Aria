@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 import java.awt.event.ActionEvent;
 
 public class nazwa_studia {
@@ -24,14 +25,15 @@ public class nazwa_studia {
 	    JProgressBar progressBar=new JProgressBar();
 	    JLabel message=new JLabel();//Crating a JLabel for displaying the message
 	    private JTextField nazwa_std;
-	   
+	    static ResourceBundle res;
 	    nazwa_studia()
 	    {
 	    	createGUI();
 	       
 	    }
 	    public void createGUI(){
-	    	
+	    	if(GlobalVariables.jezyk==1)res = ResourceBundle.getBundle("PL");
+			if(GlobalVariables.jezyk==0)res = ResourceBundle.getBundle("EN");
 	    	ImageIcon tlo = new ImageIcon("tlo.png");
 	    	
 	        frame=new JFrame();
@@ -46,13 +48,13 @@ public class nazwa_studia {
 	        frame.getContentPane().add(nazwa_std);
 	        nazwa_std.setColumns(10);
 	        
-	        JLabel lblTwojaNazwaStudia = new JLabel("Twoja nazwa studia:");
+	        JLabel lblTwojaNazwaStudia = new JLabel(res.getString("Studio"));
 	        lblTwojaNazwaStudia.setFont(new Font("Tahoma", Font.PLAIN, 21));
 	        lblTwojaNazwaStudia.setForeground(Color.WHITE);
 	        lblTwojaNazwaStudia.setBounds(187, 26, 218, 43);
 	        frame.getContentPane().add(lblTwojaNazwaStudia);
 	        
-	        JButton btnKliku = new JButton("kliku");
+	        JButton btnKliku = new JButton(res.getString("kliku"));
 	        btnKliku.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent arg0) {
 	        		try {

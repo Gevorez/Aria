@@ -1,6 +1,7 @@
 package wyklady;
 
 import java.sql.*;
+import java.util.ResourceBundle;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.EventQueue;
@@ -28,13 +29,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.border.BevelBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class main {
 
 	 JFrame frame;
 	public static JTextField user;
 	private JPasswordField pass;
-	
+	static ResourceBundle res;
 
 	
 	
@@ -43,6 +46,8 @@ public class main {
 	 * Launch the applicationd
 	 */
 	public static void main(String[] args) {
+		if(GlobalVariables.jezyk==1)res = ResourceBundle.getBundle("PL");
+		if(GlobalVariables.jezyk==0)res = ResourceBundle.getBundle("EN");
 		new splash();
 		user = new JTextField();
 		user.setHorizontalAlignment(SwingConstants.LEFT);
@@ -102,29 +107,62 @@ public class main {
 		frame.setResizable(false);
 		frame.setBackground(Color.BLACK);
 		
+		JButton btnNewButton = new JButton(res.getString("EN"));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(GlobalVariables.jezyk==1) {GlobalVariables.jezyk=0;}
+                else {GlobalVariables.jezyk=1;}
+                final Frame[] frames = Frame.getFrames();
+                if (frames != null)
+                    for (final Frame f : frames)
+                    {
+                        f.dispose();
+                    }
+               		try {
+						new main();
+					} catch (IOException e1) {
+						// TODO Automatycznie wygenerowany blok „catch”
+						e1.printStackTrace();
+					}
+					 String[] errorSoon = new String[1];
+		                main.main(errorSoon);
+				
+				
+               
+			}
+		});
+		btnNewButton.setBounds(1162, 27, 68, 23);
+		frame.getContentPane().add(btnNewButton);
+		
 		
 		frame.getContentPane().add(user);
 		user.setColumns(10);
 		
-		JLabel lblLogin = new JLabel("Login");
+		JLabel lblLogin = new JLabel(res.getString("Login"));
 		lblLogin.setForeground(Color.WHITE);
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblLogin.setBounds(1013, 169, 68, 29);
 		frame.getContentPane().add(lblLogin);
 		
-		JLabel lblPassword = new JLabel("Password");
+		JLabel lblPassword = new JLabel(res.getString("Password"));
 		lblPassword.setForeground(Color.WHITE);
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPassword.setBounds(1013, 233, 88, 29);
 		frame.getContentPane().add(lblPassword);
 		
-		JButton btnForgotPassword = new JButton("FORGOT PASSWORD?");
+		JButton btnForgotPassword = new JButton(res.getString("ForgetPassword"));
 		btnForgotPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				przypomnienie_hasla window = new przypomnienie_hasla();
 				window.frame.setVisible(true);
 			}
 		});
+	    
 		btnForgotPassword.setForeground(Color.WHITE);
 		btnForgotPassword.setFocusPainted(false);
 		btnForgotPassword.setContentAreaFilled(false);
@@ -133,7 +171,7 @@ public class main {
 		frame.getContentPane().add(btnForgotPassword);
 	
 	
-		JButton btnLoginIn = new JButton("Login in");
+		JButton btnLoginIn = new JButton(res.getString("LogIn"));
 		btnLoginIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -192,7 +230,7 @@ public class main {
 					}
 					
 					con.close();
-				} catch(Exception e1){JOptionPane.showMessageDialog(null, "Bledny login lub haslo");}
+				} catch(Exception e1){JOptionPane.showMessageDialog(null, res.getString("wrong"));}
 			
 			}
 		});
@@ -204,7 +242,7 @@ public class main {
 		frame.getContentPane().add(btnLoginIn);
 		
 		
-		JButton btnNewButton_3 = new JButton("REGISTER");
+		JButton btnNewButton_3 = new JButton(res.getString("Register"));
 		btnNewButton_3.setForeground(Color.WHITE);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -319,7 +357,7 @@ public class main {
 						}
 						
 						con.close();
-					} catch(Exception e1){JOptionPane.showMessageDialog(null, "Bledny login lub haslo");}
+					} catch(Exception e1){JOptionPane.showMessageDialog(null, res.getString("wrong"));}
 		
 				}
 			}
@@ -332,5 +370,10 @@ public class main {
 		tlolabel.setBounds(0, 0, 1280, 720);
 		tlolabel.setIcon(tlo);
 		frame.getContentPane().add(tlolabel);
+	}
+
+	protected void setVisible(boolean b) {
+		// TODO Automatycznie wygenerowany zacz¹tek metody
+		
 	}
 }
