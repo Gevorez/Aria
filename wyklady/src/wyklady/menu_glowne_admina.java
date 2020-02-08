@@ -722,12 +722,12 @@ public class menu_glowne_admina {
 					
 					if(rs==1) {
 						
-						JOptionPane.showMessageDialog(null, "Poprawnie zabrales uprawnienia");
+						JOptionPane.showMessageDialog(null, res.getString("Poprawniezabralesuprawnienia"));
 	
 					}
 					
 					else 
-						JOptionPane.showMessageDialog(null, "Zly login, lub probujesz usunac glownego admina");
+						JOptionPane.showMessageDialog(null, res.getString("null"));
 					
 					 
 			       
