@@ -32,7 +32,7 @@ import javax.swing.border.BevelBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class main {
+public class main_white {
 
 	 JFrame frame;
 	public static JTextField user;
@@ -60,7 +60,7 @@ public class main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					main window = new main();
+					main_white window = new main_white();
 					window.frame.setVisible(true);
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/","root","");
@@ -79,7 +79,7 @@ public class main {
 	 * Create the application.
 	 * @throws IOException 
 	 */
-	public main() throws IOException {
+	public main_white() throws IOException {
 		initialize();
 	}
 	
@@ -95,7 +95,7 @@ public class main {
 		//Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 		
 		ImageIcon loginguzik = new ImageIcon("guziczek.png");
-		ImageIcon tlo = new ImageIcon("tlo.png");
+		ImageIcon tlo = new ImageIcon("jasne/tlo_jasne.png");
 		Image ikona = ImageIO.read(new File("logo.png"));
 		
 		
@@ -106,7 +106,6 @@ public class main {
 		frame.setIconImage(ikona);
 		frame.setResizable(false);
 		frame.setBackground(Color.BLACK);
-		
 		
 		JButton btnNewButton = new JButton(res.getString("EN"));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -125,13 +124,13 @@ public class main {
                         f.dispose();
                     }
                		try {
-						new main();
+						new main_white();
 					} catch (IOException e1) {
 						// TODO Automatycznie wygenerowany blok „catch”
 						e1.printStackTrace();
 					}
 					 String[] errorSoon = new String[1];
-		                main.main(errorSoon);
+		                main_white.main(errorSoon);
 				
 				
                
@@ -145,13 +144,13 @@ public class main {
 		user.setColumns(10);
 		
 		JLabel lblLogin = new JLabel(res.getString("Login"));
-		lblLogin.setForeground(Color.WHITE);
+		lblLogin.setForeground(Color.BLACK);
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblLogin.setBounds(1013, 169, 68, 29);
 		frame.getContentPane().add(lblLogin);
 		
 		JLabel lblPassword = new JLabel(res.getString("Password"));
-		lblPassword.setForeground(Color.WHITE);
+		lblPassword.setForeground(Color.BLACK);
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPassword.setBounds(1013, 233, 88, 29);
 		frame.getContentPane().add(lblPassword);
@@ -164,7 +163,7 @@ public class main {
 			}
 		});
 	    
-		btnForgotPassword.setForeground(Color.WHITE);
+		btnForgotPassword.setForeground(Color.BLACK);
 		btnForgotPassword.setFocusPainted(false);
 		btnForgotPassword.setContentAreaFilled(false);
 		btnForgotPassword.setBorderPainted(false);
@@ -244,10 +243,10 @@ public class main {
 		
 		
 		JButton btnNewButton_3 = new JButton(res.getString("Register"));
-		btnNewButton_3.setForeground(Color.WHITE);
+		btnNewButton_3.setForeground(Color.BLACK);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				rejestracja okno = new rejestracja();
+				rejestracja_white okno = new rejestracja_white();
 				okno.setVisible(true);
 	try {
 					
@@ -371,26 +370,7 @@ public class main {
 		tlolabel.setBounds(0, 0, 1280, 720);
 		tlolabel.setIcon(tlo);
 		frame.getContentPane().add(tlolabel);
-		
-		JButton btnKolor = new JButton("kolor");
-		btnKolor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//frame.setVisible(false);
-				try {
-					main_white okno;
-					okno = new main_white();
-					okno.frame.setVisible(true);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			
-			}
-		});
-		btnKolor.setBounds(10, 657, 89, 23);
-		frame.getContentPane().add(btnKolor);
 	}
-		
 
 	protected void setVisible(boolean b) {
 		// TODO Automatycznie wygenerowany zacz¹tek metody
