@@ -97,6 +97,8 @@ public class main {
 
 		ImageIcon loginguzik = new ImageIcon("guziczek.png");
 		ImageIcon tlo = new ImageIcon("tlo.png");
+		ImageIcon sun = new ImageIcon("sun.png");
+		ImageIcon moon = new ImageIcon("moon.png");
 		ImageIcon tlo2 = new ImageIcon("jasne/tlo_jasne.png");
 		Image ikona = ImageIO.read(new File("logo.png"));
 		
@@ -399,6 +401,8 @@ public class main {
 		pass.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
 		frame.getContentPane().add(pass);
 		
+		
+		
 		JLabel tlolabel = new JLabel("");
 		tlolabel.setBounds(0, 0, 1280, 720);
 		tlolabel.setIcon(tlo);
@@ -420,9 +424,41 @@ public class main {
 			
 			}
 		});
-		
-		btnKolor.setBounds(10, 657, 89, 23);
+		btnKolor.setIcon(moon);
+		btnKolor.setBorderPainted(false);
+		btnKolor.setFocusPainted(false);
+		btnKolor.setContentAreaFilled(false);
+		btnKolor.setBounds(156, 583, 80, 80);
+		btnKolor.setBounds(26, 583, 80, 80);
 		frame.getContentPane().add(btnKolor);
+		
+		JLabel tlolabel2 = new JLabel("");
+		tlolabel2.setBounds(0, 0, 1280, 720);
+		tlolabel2.setIcon(tlo);
+		frame.getContentPane().add(tlolabel);
+		
+		JButton Kolor2 = new JButton("kolor2");
+		Kolor2.setIcon(sun);
+		Kolor2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			
+				
+			 
+				tlolabel.setIcon(tlo);
+				
+				lblLogin.setForeground(Color.black);
+				lblPassword.setForeground(Color.black);
+				col=0;
+				
+				
+			
+			}
+		});
+		Kolor2.setBorderPainted(false);
+		Kolor2.setFocusPainted(false);
+		Kolor2.setContentAreaFilled(false);
+		Kolor2.setBounds(156, 583, 80, 80);
+		frame.getContentPane().add(Kolor2);
 	}
 		
 	
