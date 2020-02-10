@@ -72,7 +72,7 @@ public class nazwa_studia {
 						int rs=stmt.executeUpdate(sql);
 						
 						
-						String sql2="create table zakupione_"+main.user.getText()+" (tytul varchar(255),"
+						String sql2="create table if not exists zakupione_"+main.user.getText()+" (tytul varchar(255),"
 								+ "wykonawca varchar(255),"
 								+ "album varchar(255),"
 								+ "data_publikacji varchar(255),"
