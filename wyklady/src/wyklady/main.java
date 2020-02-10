@@ -407,11 +407,11 @@ public class main {
 			
 				
 			 
-				tlolabel.setIcon(tlo2);
+				tlolabel.setIcon(tlo);
 				
-				lblLogin.setForeground(Color.black);
-				lblPassword.setForeground(Color.black);
-				col=1;
+				lblLogin.setForeground(Color.white);
+				lblPassword.setForeground(Color.white);
+				col=0;
 				
 				
 			
@@ -436,11 +436,11 @@ public class main {
 			
 				
 			 
-				tlolabel.setIcon(tlo);
+				tlolabel.setIcon(tlo2);
 				
-				lblLogin.setForeground(Color.white);
-				lblPassword.setForeground(Color.white);
-				col=0;
+				lblLogin.setForeground(Color.black);
+				lblPassword.setForeground(Color.black);
+				col=1;
 				
 				
 			
