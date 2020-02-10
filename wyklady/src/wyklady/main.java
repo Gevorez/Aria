@@ -438,8 +438,8 @@ public class main {
 			 
 				tlolabel.setIcon(tlo);
 				
-				lblLogin.setForeground(Color.black);
-				lblPassword.setForeground(Color.black);
+				lblLogin.setForeground(Color.white);
+				lblPassword.setForeground(Color.white);
 				col=0;
 				
 				
