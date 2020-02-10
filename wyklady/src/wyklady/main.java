@@ -411,6 +411,8 @@ public class main {
 				
 				lblLogin.setForeground(Color.white);
 				lblPassword.setForeground(Color.white);
+				btnForgotPassword.setForeground(Color.white);
+				btnNewButton_3.setForeground(Color.white);
 				col=0;
 				
 				
@@ -440,6 +442,8 @@ public class main {
 				
 				lblLogin.setForeground(Color.black);
 				lblPassword.setForeground(Color.black);
+				btnForgotPassword.setForeground(Color.black);
+				btnNewButton_3.setForeground(Color.black);
 				col=1;
 				
 				
