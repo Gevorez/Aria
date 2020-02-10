@@ -44,7 +44,7 @@ public class main {
 	
 
 	/**
-	 * Launch the applicationd
+	 * Launch the applicationdc
 	 */
 	public static void main(String[] args) {
 		if(GlobalVariables.jezyk==1)res = ResourceBundle.getBundle("PL");
