@@ -18,6 +18,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.awt.event.ActionEvent;
 
+
 public class nazwa_studia {
 	  JFrame frame;//Creating object of JFrame
 	  JLabel image=new JLabel(new ImageIcon("tlo.png"));
@@ -83,6 +84,7 @@ public class nazwa_studia {
 								+ "PRIMARY KEY (id))"; 
 						int rs2 =stmt.executeUpdate(sql2);
 						
+					
 						frame.setVisible(false);
 						menu_glowne window2 = new menu_glowne();
 						window2.frame.setVisible(true);

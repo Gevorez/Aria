@@ -34,7 +34,7 @@ import java.awt.event.MouseEvent;
 
 public class main_white {
 
-	 JFrame frame;
+	 public JFrame frame;
 	public static JTextField user;
 	private JPasswordField pass;
 	static ResourceBundle res;
@@ -372,8 +372,5 @@ public class main_white {
 		frame.getContentPane().add(tlolabel);
 	}
 
-	protected void setVisible(boolean b) {
-		// TODO Automatycznie wygenerowany zacz¹tek metody
-		
-	}
+
 }

@@ -117,8 +117,8 @@ public class menu_glowne_admina_white {
 			
 				
 				try {
-					main_white window;
-					window = new main_white();
+					main window;
+					window = new main();
 					window.frame.setVisible(true);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
