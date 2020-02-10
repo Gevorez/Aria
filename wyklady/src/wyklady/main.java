@@ -365,17 +365,26 @@ public class main {
 							
 						if(nazwa_studia.isEmpty()) {
 							frame.setVisible(false);
-
+							if(col==0) {
 							nazwa_studia window2 = new nazwa_studia();
-							window2.frame.setVisible(true);
+							window2.frame.setVisible(true);}
+							else {
+								nazwa_studia_white window2 = new nazwa_studia_white();
+								window2.frame.setVisible(true);
+							}
 							
 													}
 						else 
 						{
 							
 							frame.setVisible(false);
+							if(col==0) {
 							menu_glowne window = new menu_glowne();
-							window.frame.setVisible(true);
+							window.frame.setVisible(true);}
+							else {
+								menu_glowne_white window = new menu_glowne_white();
+								window.frame.setVisible(true);
+							}
 						}
 						
 						}
