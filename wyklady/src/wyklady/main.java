@@ -365,6 +365,7 @@ public class main {
 							
 						if(nazwa_studia.isEmpty()) {
 							frame.setVisible(false);
+
 							nazwa_studia window2 = new nazwa_studia();
 							window2.frame.setVisible(true);
 							
