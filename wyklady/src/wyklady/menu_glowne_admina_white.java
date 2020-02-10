@@ -39,7 +39,7 @@ import java.awt.event.MouseEvent;
 
 
 
-public class menu_glowne_admina {
+public class menu_glowne_admina_white {
 
 	JFrame frame;
 	private JTextField tytu;
@@ -60,7 +60,7 @@ public class menu_glowne_admina {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					menu_glowne_admina window = new menu_glowne_admina();
+					menu_glowne_admina_white window = new menu_glowne_admina_white();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -73,7 +73,7 @@ public class menu_glowne_admina {
 	 * Create the application
 	 */
 	
-	public menu_glowne_admina() throws IOException {
+	public menu_glowne_admina_white() throws IOException {
 		if(GlobalVariables.jezyk==1)res = ResourceBundle.getBundle("PL");
 		if(GlobalVariables.jezyk==0)res = ResourceBundle.getBundle("EN");
 		initialize();
@@ -91,7 +91,7 @@ public class menu_glowne_admina {
 		//thbeawfubewhfuhbewhbffewhbju
 		
 		Image ikona1 = ImageIO.read(new File("logo.png"));
-		ImageIcon tlo = new ImageIcon("tlo.png");
+		ImageIcon tlo = new ImageIcon("jasne/tlo_jasne.png");
 		ImageIcon logo2 = new ImageIcon("logo2.png");
 		ImageIcon studio_guziczek = new ImageIcon("studio_guziczek.png");
 		ImageIcon lib_guziczek = new ImageIcon("lib_guziczek.png"); 
@@ -182,7 +182,7 @@ public class menu_glowne_admina {
 		
 		JPanel STUDIO = new JPanel();
 		layeredPane.add(STUDIO, "name_68613709652399");
-		STUDIO.setBackground(Color.BLACK);
+		STUDIO.setBackground(Color.LIGHT_GRAY);
 		STUDIO.setOpaque(true);
 		STUDIO.setLayout(null);
 		
@@ -223,22 +223,22 @@ public class menu_glowne_admina {
 		data_publi.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 10));
 		
 		JLabel lblTytu = new JLabel(res.getString("title"));
-		lblTytu.setForeground(Color.WHITE);
+		lblTytu.setForeground(Color.BLACK);
 		lblTytu.setBounds(52, 203, 65, 23);
 		STUDIO.add(lblTytu);
 		
 		JLabel lblWykonawca = new JLabel(res.getString("Performer"));
-		lblWykonawca.setForeground(Color.WHITE);
+		lblWykonawca.setForeground(Color.BLACK);
 		lblWykonawca.setBounds(52, 237, 112, 34);
 		STUDIO.add(lblWykonawca);
 		
 		JLabel lblAlbum = new JLabel("ALBUM");
-		lblAlbum.setForeground(Color.WHITE);
+		lblAlbum.setForeground(Color.BLACK);
 		lblAlbum.setBounds(52, 282, 46, 14);
 		STUDIO.add(lblAlbum);
 		
 		JLabel lblDatapublikacji = new JLabel(res.getString("Data"));
-		lblDatapublikacji.setForeground(Color.WHITE);
+		lblDatapublikacji.setForeground(Color.BLACK);
 		lblDatapublikacji.setBounds(52, 322, 112, 14);
 		STUDIO.add(lblDatapublikacji);
 		
@@ -343,37 +343,37 @@ public class menu_glowne_admina {
 		
 		JPanel BIBLIOTEKA = new JPanel();
 		layeredPane.add(BIBLIOTEKA, "name_68702683888800");
-		BIBLIOTEKA.setBackground(Color.BLACK);
+		BIBLIOTEKA.setBackground(Color.LIGHT_GRAY);
 		BIBLIOTEKA.setOpaque(true);
 		BIBLIOTEKA.setLayout(null);
 		
 		JLabel label = new JLabel("Tytu\u0142");
-		label.setForeground(Color.WHITE);
+		label.setForeground(Color.BLACK);
 		label.setBounds(522, 23, 65, 23);
 		label.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 11));
 		BIBLIOTEKA.add(label);
 		
 		JLabel label_1 = new JLabel("Wykonawca");
-		label_1.setForeground(Color.WHITE);
+		label_1.setForeground(Color.BLACK);
 		label_1.setBounds(359, 17, 112, 34);
 		label_1.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 11));
 		BIBLIOTEKA.add(label_1);
 		
 		JLabel label_2 = new JLabel("Album");
-		label_2.setForeground(Color.WHITE);
+		label_2.setForeground(Color.BLACK);
 		label_2.setBounds(207, 27, 46, 14);
 		label_2.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 11));
 		BIBLIOTEKA.add(label_2);
 		
 		JLabel lblDataPublikacji = new JLabel("Data publikacji");
-		lblDataPublikacji.setForeground(Color.WHITE);
+		lblDataPublikacji.setForeground(Color.BLACK);
 		lblDataPublikacji.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 11));
 		lblDataPublikacji.setBounds(692, 27, 98, 14);
 		BIBLIOTEKA.add(lblDataPublikacji);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBackground(Color.BLACK);
-		textArea.setForeground(Color.WHITE);
+		textArea.setBackground(Color.LIGHT_GRAY);
+		textArea.setForeground(Color.BLACK);
 		textArea.setBounds(196, 51, 721, 325);
 		BIBLIOTEKA.add(textArea);
 		usun = new JTextField();
@@ -444,62 +444,64 @@ public class menu_glowne_admina {
 		
 		JLabel lblPodajTytulUsuwanego = new JLabel(res.getString("Podaj"));
 		lblPodajTytulUsuwanego.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblPodajTytulUsuwanego.setForeground(Color.WHITE);
+		lblPodajTytulUsuwanego.setForeground(Color.BLACK);
 		lblPodajTytulUsuwanego.setBounds(20, 561, 257, 23);
 		BIBLIOTEKA.add(lblPodajTytulUsuwanego);
 
 		
-		textArea2.setBackground(Color.BLACK);
-		textArea2.setForeground(Color.WHITE);
+		textArea2.setBackground(Color.LIGHT_GRAY);
+		textArea2.setForeground(Color.BLACK);
 		textArea2.setBounds(471, 27, 449, 46);
 		textArea2.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 30));
 		STUDIO.add(textArea2);
 		
 		JLabel lblWitajWStudiu = new JLabel(res.getString("Welcome"));
-		lblWitajWStudiu.setForeground(Color.WHITE);
+		lblWitajWStudiu.setForeground(Color.BLACK);
 		lblWitajWStudiu.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 10));
 		lblWitajWStudiu.setBounds(525, 11, 98, 14);
 		STUDIO.add(lblWitajWStudiu);
 		
 		JLabel lblDodajUtwrDo = new JLabel(res.getString("DodajUtwor"));
 		lblDodajUtwrDo.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
-		lblDodajUtwrDo.setForeground(Color.WHITE);
+		lblDodajUtwrDo.setForeground(Color.BLACK);
 		lblDodajUtwrDo.setBounds(52, 158, 294, 14);
 		STUDIO.add(lblDodajUtwrDo);
 		
 		JLabel lblZmienNazweSwojego = new JLabel(res.getString("ZmienNazwe"));
 		lblZmienNazweSwojego.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
-		lblZmienNazweSwojego.setForeground(Color.WHITE);
+		lblZmienNazweSwojego.setForeground(Color.BLACK);
 		lblZmienNazweSwojego.setBounds(52, 448, 328, 14);
 		STUDIO.add(lblZmienNazweSwojego);
 		
 		JPanel UPRAWNIENIA = new JPanel();
-		UPRAWNIENIA.setBackground(Color.BLACK);
+		UPRAWNIENIA.setBackground(Color.LIGHT_GRAY);
 		layeredPane.add(UPRAWNIENIA, "name_483368143025700");
 		UPRAWNIENIA.setLayout(null);
 		
 		JTextArea textArea_1 = new JTextArea();
 		textArea_1.setEditable(false);
 		textArea_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
-		textArea_1.setBackground(Color.BLACK);
-		textArea_1.setForeground(Color.WHITE);
+		textArea_1.setBackground(Color.LIGHT_GRAY);
+		textArea_1.setForeground(Color.BLACK);
 		textArea_1.setBounds(83, 110, 946, 263);
 		UPRAWNIENIA.add(textArea_1);
 		
 		JLabel lblListaAktualnychUytkownik = new JLabel("LISTA AKTUALNYCH U\u017BYTKOWNIK\u00D3W");
 		lblListaAktualnychUytkownik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblListaAktualnychUytkownik.setForeground(Color.WHITE);
+		lblListaAktualnychUytkownik.setForeground(Color.BLACK);
 		lblListaAktualnychUytkownik.setBounds(438, 51, 347, 14);
 		UPRAWNIENIA.add(lblListaAktualnychUytkownik);
 		
 		textField = new JTextField();
+		textField.setForeground(Color.WHITE);
+		textField.setBackground(Color.BLACK);
 		textField.setBounds(810, 529, 86, 20);
 		UPRAWNIENIA.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblDajAdminaDla = new JLabel("DAJ ADMINA DLA (WPISZ LOGIN)");
 		lblDajAdminaDla.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
-		lblDajAdminaDla.setForeground(Color.WHITE);
+		lblDajAdminaDla.setForeground(Color.BLACK);
 		lblDajAdminaDla.setBounds(624, 531, 176, 14);
 		UPRAWNIENIA.add(lblDajAdminaDla);
 		
@@ -686,12 +688,14 @@ public class menu_glowne_admina {
 		UPRAWNIENIA.add(btnZatwierd);
 		
 		JLabel lblZabierzAdminawpisz = new JLabel("ZABIERZ ADMINA (WPISZ LOGIN)");
-		lblZabierzAdminawpisz.setForeground(Color.WHITE);
+		lblZabierzAdminawpisz.setForeground(Color.BLACK);
 		lblZabierzAdminawpisz.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		lblZabierzAdminawpisz.setBounds(30, 531, 176, 14);
 		UPRAWNIENIA.add(lblZabierzAdminawpisz);
 		
 		textField_1 = new JTextField();
+		textField_1.setForeground(Color.WHITE);
+		textField_1.setBackground(Color.BLACK);
 		textField_1.setColumns(10);
 		textField_1.setBounds(240, 529, 86, 20);
 		UPRAWNIENIA.add(textField_1);

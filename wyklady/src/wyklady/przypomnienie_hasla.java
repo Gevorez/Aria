@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
@@ -28,11 +29,12 @@ public class przypomnienie_hasla {
 	private JTextField pomoc;
 	private JPasswordField password;
 	private JTextField login;
-
+	static ResourceBundle res;
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -49,6 +51,8 @@ public class przypomnienie_hasla {
 	 * Create the application.
 	 */
 	public przypomnienie_hasla() {
+		if(GlobalVariables.jezyk==1)res = ResourceBundle.getBundle("PL");
+		if(GlobalVariables.jezyk==0)res = ResourceBundle.getBundle("EN");
 		initialize();
 	}
 
@@ -82,13 +86,13 @@ public class przypomnienie_hasla {
 		layeredPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Wpisz nowe haslo");
+		JLabel lblNewLabel = new JLabel(res.getString("enter"));
 		lblNewLabel.setBackground(Color.BLACK);
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setBounds(10, 11, 276, 26);
 		panel.add(lblNewLabel);
 		
-		JButton zmianka = new JButton("Zmien");
+		JButton zmianka = new JButton(res.getString("change"));
 		zmianka.setForeground(Color.WHITE);
 		zmianka.setBackground(Color.BLACK);
 		zmianka.addActionListener(new ActionListener() {
@@ -109,7 +113,7 @@ public class przypomnienie_hasla {
 						
 						int rs=stmt.executeUpdate(sql);
 						if(rs==1) {
-							JOptionPane.showMessageDialog(null, "haslo zmienione");
+							JOptionPane.showMessageDialog(null, res.getString("pa"));
 							password.setText(null);
 						}
 						
@@ -130,13 +134,13 @@ public class przypomnienie_hasla {
 		panel.add(password);
 		
 		
-		JLabel lblPrzypomnienieHasla = new JLabel("Podaj login i odpowiedz na pytanie pomocnicze aby zmienic haslo");
+		JLabel lblPrzypomnienieHasla = new JLabel(res.getString("po"));
 		lblPrzypomnienieHasla.setForeground(Color.WHITE);
 		lblPrzypomnienieHasla.setBounds(10, 0, 476, 74);
 		lblPrzypomnienieHasla.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 15));
 		frame.getContentPane().add(lblPrzypomnienieHasla);
 		login = new JTextField();
-		JButton btnPrzypomnij = new JButton("Zmien");
+		JButton btnPrzypomnij = new JButton(res.getString("change"));
 		btnPrzypomnij.setBounds(170, 198, 121, 21);
 		btnPrzypomnij.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -167,7 +171,7 @@ public class przypomnienie_hasla {
 						
 						con.close();
 						}
-					 catch(Exception e1){JOptionPane.showMessageDialog(null, "B³êdna odpowiedz");}
+					 catch(Exception e1){JOptionPane.showMessageDialog(null, res.getString("WrongAnswer"));}
 			}
 		});
 		frame.getContentPane().add(btnPrzypomnij);
@@ -185,7 +189,7 @@ public class przypomnienie_hasla {
 		lblLogin.setBounds(21, 107, 46, 14);
 		frame.getContentPane().add(lblLogin);
 		
-		JLabel lblOdpowiedz = new JLabel("Odpowiedz");
+		JLabel lblOdpowiedz = new JLabel(res.getString("Answer"));
 		lblOdpowiedz.setForeground(Color.WHITE);
 		lblOdpowiedz.setBounds(21, 157, 64, 14);
 		frame.getContentPane().add(lblOdpowiedz);

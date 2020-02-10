@@ -7,7 +7,6 @@ import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.*;
 
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -32,15 +31,15 @@ import java.awt.event.KeyEvent;
 import javax.swing.border.BevelBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import wyklady.rejestracja;
-public class main {
 
-	 JFrame frame;
+public class main_white {
+
+	 public JFrame frame;
 	public static JTextField user;
 	private JPasswordField pass;
 	static ResourceBundle res;
 
-	int col=0;
+	
 	
 
 	/**
@@ -61,7 +60,7 @@ public class main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					main window = new main();
+					main_white window = new main_white();
 					window.frame.setVisible(true);
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/","root","");
@@ -80,7 +79,7 @@ public class main {
 	 * Create the application.
 	 * @throws IOException 
 	 */
-	public main() throws IOException {
+	public main_white() throws IOException {
 		initialize();
 	}
 	
@@ -94,12 +93,9 @@ public class main {
 		//PRÃ“BUJE ZMIENIÃ† KURSOR NA GUZIKACH - KAMIL
 		//Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
 		//Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
-
+		
 		ImageIcon loginguzik = new ImageIcon("guziczek.png");
-		ImageIcon tlo = new ImageIcon("tlo.png");
-		ImageIcon sun = new ImageIcon("sun.png");
-		ImageIcon moon = new ImageIcon("moon.png");
-		ImageIcon tlo2 = new ImageIcon("jasne/tlo_jasne.png");
+		ImageIcon tlo = new ImageIcon("jasne/tlo_jasne.png");
 		Image ikona = ImageIO.read(new File("logo.png"));
 		
 		
@@ -110,7 +106,6 @@ public class main {
 		frame.setIconImage(ikona);
 		frame.setResizable(false);
 		frame.setBackground(Color.BLACK);
-		
 		
 		JButton btnNewButton = new JButton(res.getString("EN"));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -129,13 +124,13 @@ public class main {
                         f.dispose();
                     }
                		try {
-						new main();
+						new main_white();
 					} catch (IOException e1) {
 						// TODO Automatycznie wygenerowany blok „catch”
 						e1.printStackTrace();
 					}
 					 String[] errorSoon = new String[1];
-		                main.main(errorSoon);
+		                main_white.main(errorSoon);
 				
 				
                
@@ -149,13 +144,13 @@ public class main {
 		user.setColumns(10);
 		
 		JLabel lblLogin = new JLabel(res.getString("Login"));
-		lblLogin.setForeground(Color.WHITE);
+		lblLogin.setForeground(Color.BLACK);
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblLogin.setBounds(1013, 169, 68, 29);
 		frame.getContentPane().add(lblLogin);
 		
 		JLabel lblPassword = new JLabel(res.getString("Password"));
-		lblPassword.setForeground(Color.WHITE);
+		lblPassword.setForeground(Color.BLACK);
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPassword.setBounds(1013, 233, 88, 29);
 		frame.getContentPane().add(lblPassword);
@@ -168,7 +163,7 @@ public class main {
 			}
 		});
 	    
-		btnForgotPassword.setForeground(Color.WHITE);
+		btnForgotPassword.setForeground(Color.BLACK);
 		btnForgotPassword.setFocusPainted(false);
 		btnForgotPassword.setContentAreaFilled(false);
 		btnForgotPassword.setBorderPainted(false);
@@ -199,14 +194,9 @@ public class main {
 						String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
 						ResultSet rs=stmt.executeQuery(sql);
 						frame.setVisible(false);
-						if(col==0) {
-						menu_glowne_admina window = new menu_glowne_admina();
+						menu_glowne_admina_white window = new menu_glowne_admina_white();
 						window.frame.setVisible(true);
-						}
-						else {
-							menu_glowne_admina_white window = new menu_glowne_admina_white();
-							window.frame.setVisible(true);
-						}
+						
 					}
 					else {
 						
@@ -225,26 +215,16 @@ public class main {
 						
 					if(nazwa_studia.isEmpty()) {
 						frame.setVisible(false);
-						if(col==0) {
-						nazwa_studia window2 = new nazwa_studia();
-						window2.frame.setVisible(true);}
-						else {
-							nazwa_studia_white window2 = new nazwa_studia_white();
-							window2.frame.setVisible(true);
-						}
+						nazwa_studia_white window2 = new nazwa_studia_white();
+						window2.frame.setVisible(true);
 						
 												}
 					else 
 					{
-							
+						
 						frame.setVisible(false);
-						if(col==0) {
-						menu_glowne window = new menu_glowne();
-						window.frame.setVisible(true);}
-						else {
-							menu_glowne_white window = new menu_glowne_white();
-							window.frame.setVisible(true);
-						}
+						menu_glowne_white window = new menu_glowne_white();
+						window.frame.setVisible(true);
 					}
 					
 					}
@@ -260,19 +240,14 @@ public class main {
 		btnLoginIn.setFocusPainted(false);
 		btnLoginIn.setContentAreaFilled(false);
 		frame.getContentPane().add(btnLoginIn);
-
 		
+	
 		JButton btnNewButton_3 = new JButton(res.getString("Register"));
-		btnNewButton_3.setForeground(Color.WHITE);
+		btnNewButton_3.setForeground(Color.BLACK);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(col==0) {
-				rejestracja okno = new rejestracja();
-				okno.setVisible(true);}
-				else {
-					rejestracja_white okno2 = new rejestracja_white();
-					okno2.setVisible(true);
-				}
+				rejestracja_white okno = new rejestracja_white();
+				okno.setVisible(true);
 	try {
 					
 					
@@ -346,7 +321,7 @@ public class main {
 							String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
 							ResultSet rs=stmt.executeQuery(sql);
 							frame.setVisible(false);
-							menu_glowne_admina window = new menu_glowne_admina();
+							menu_glowne_admina_white window = new menu_glowne_admina_white();
 							window.frame.setVisible(true);
 							
 						}
@@ -367,26 +342,16 @@ public class main {
 							
 						if(nazwa_studia.isEmpty()) {
 							frame.setVisible(false);
-							if(col==0) {
 							nazwa_studia window2 = new nazwa_studia();
-							window2.frame.setVisible(true);}
-							else {
-								nazwa_studia_white window2 = new nazwa_studia_white();
-								window2.frame.setVisible(true);
-							}
+							window2.frame.setVisible(true);
 							
 													}
 						else 
 						{
 							
 							frame.setVisible(false);
-							if(col==0) {
 							menu_glowne window = new menu_glowne();
-							window.frame.setVisible(true);}
-							else {
-								menu_glowne_white window = new menu_glowne_white();
-								window.frame.setVisible(true);
-							}
+							window.frame.setVisible(true);
 						}
 						
 						}
@@ -400,74 +365,12 @@ public class main {
 		pass.setBounds(1013, 262, 210, 29);
 		pass.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
 		frame.getContentPane().add(pass);
+		
 		JLabel tlolabel = new JLabel("");
-		JButton btnKolor = new JButton("kolor");
-		btnKolor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			
-				
-			 
-				tlolabel.setIcon(tlo);
-				
-				lblLogin.setForeground(Color.white);
-				lblPassword.setForeground(Color.white);
-				btnForgotPassword.setForeground(Color.white);
-				btnNewButton_3.setForeground(Color.white);
-				col=0;
-				
-				
-			
-			}
-		});
-		btnKolor.setIcon(moon);
-		btnKolor.setBorderPainted(false);
-		btnKolor.setFocusPainted(false);
-		btnKolor.setContentAreaFilled(false);
-		btnKolor.setBounds(156, 583, 80, 80);
-		btnKolor.setBounds(26, 583, 80, 80);
-		frame.getContentPane().add(btnKolor);
-	
-		JLabel tlolabel2 = new JLabel("");
-		tlolabel2.setBounds(0, 0, 1280, 720);
-		tlolabel2.setIcon(tlo);
-		
-		JButton Kolor2 = new JButton("kolor2");
-		Kolor2.setIcon(sun);
-		Kolor2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			
-				
-			 
-				tlolabel.setIcon(tlo2);
-				
-				lblLogin.setForeground(Color.black);
-				lblPassword.setForeground(Color.black);
-				btnForgotPassword.setForeground(Color.black);
-				btnNewButton_3.setForeground(Color.black);
-				col=1;
-				
-				
-			
-			}
-		});
-		Kolor2.setBorderPainted(false);
-		Kolor2.setFocusPainted(false);
-		Kolor2.setContentAreaFilled(false);
-		Kolor2.setBounds(156, 583, 80, 80);
-		frame.getContentPane().add(Kolor2);
-		
-		
-		
-		
 		tlolabel.setBounds(0, 0, 1280, 720);
 		tlolabel.setIcon(tlo);
 		frame.getContentPane().add(tlolabel);
-		frame.getContentPane().add(tlolabel);
 	}
-		
-	
-	protected void setVisible(boolean b) {
-		// TODO Automatycznie wygenerowany zacz¹tek metody
-		
-	}
+
+
 }

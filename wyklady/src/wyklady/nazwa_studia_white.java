@@ -1,7 +1,7 @@
 package wyklady;
 
 import java.awt.Color;
-import wyklady.main;
+import wyklady.main_white;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,8 +18,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.awt.event.ActionEvent;
 
-
-public class nazwa_studia {
+public class nazwa_studia_white {
 	  JFrame frame;//Creating object of JFrame
 	  JLabel image=new JLabel(new ImageIcon("tlo.png"));
 	  JLabel text=new JLabel("TUTORIALS FIELD");
@@ -27,7 +26,7 @@ public class nazwa_studia {
 	    JLabel message=new JLabel();//Crating a JLabel for displaying the message
 	    private JTextField nazwa_std;
 	    static ResourceBundle res;
-	    nazwa_studia()
+	    nazwa_studia_white()
 	    {
 	    	createGUI();
 	       
@@ -35,7 +34,7 @@ public class nazwa_studia {
 	    public void createGUI(){
 	    	if(GlobalVariables.jezyk==1)res = ResourceBundle.getBundle("PL");
 			if(GlobalVariables.jezyk==0)res = ResourceBundle.getBundle("EN");
-	    	ImageIcon tlo = new ImageIcon("tlo.png");
+	    	ImageIcon tlo = new ImageIcon("jasne/tlo_jasne.png");
 	    	
 	        frame=new JFrame();
 	        frame.getContentPane().setLayout(null);
@@ -75,7 +74,7 @@ public class nazwa_studia {
 						int rs=stmt.executeUpdate(sql);
 						
 						
-						String sql2="create table if not exists zakupione_"+main.user.getText()+" (tytul varchar(255),"
+						String sql2="create table zakupione_"+main.user.getText()+" (tytul varchar(255),"
 								+ "wykonawca varchar(255),"
 								+ "album varchar(255),"
 								+ "data_publikacji varchar(255),"
@@ -84,9 +83,8 @@ public class nazwa_studia {
 								+ "PRIMARY KEY (id))"; 
 						int rs2 =stmt.executeUpdate(sql2);
 						
-					
 						frame.setVisible(false);
-						menu_glowne window2 = new menu_glowne();
+						menu_glowne_white window2 = new menu_glowne_white();
 						window2.frame.setVisible(true);
 						
 						}

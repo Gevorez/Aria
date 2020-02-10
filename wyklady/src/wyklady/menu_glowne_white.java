@@ -38,10 +38,10 @@ import javax.swing.JPopupMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import wyklady.main;
+import wyklady.main_white;
 
 
-public class menu_glowne {
+public class menu_glowne_white {
 
 	JFrame frame;
 	private JTextField usun;
@@ -55,7 +55,7 @@ public class menu_glowne {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					menu_glowne window = new menu_glowne();
+					menu_glowne_white window = new menu_glowne_white();
 					window.frame.setVisible(true);
 					
 				} catch (Exception e) {
@@ -69,7 +69,7 @@ public class menu_glowne {
 	 * Create the application
 	 */
 	
-	public menu_glowne() throws IOException {
+	public menu_glowne_white() throws IOException {
 		if(GlobalVariables.jezyk==1)res = ResourceBundle.getBundle("PL");
 		if(GlobalVariables.jezyk==0)res = ResourceBundle.getBundle("EN");
 		initialize();
@@ -87,7 +87,7 @@ public class menu_glowne {
 		//thbeawfubewhfuhbewhbffewhbju
 		
 		Image ikona1 = ImageIO.read(new File("logo.png"));
-		ImageIcon tlo = new ImageIcon("tlo.png");
+		ImageIcon tlo = new ImageIcon("jasne/tlo_jasne.png");
 		ImageIcon logo2 = new ImageIcon("logo2.png");
 		ImageIcon studio_guziczek = new ImageIcon("studio_guziczek.png");
 		ImageIcon lib_guziczek = new ImageIcon("lib_guziczek.png"); 
@@ -194,7 +194,7 @@ public class menu_glowne {
 		
 		JPanel SKLEP = new JPanel();
 		layeredPane.add(SKLEP, "name_68648280148399");
-		SKLEP.setBackground(Color.BLACK);
+		SKLEP.setBackground(Color.LIGHT_GRAY);
 		SKLEP.setOpaque(true);
 		SKLEP.setLayout(null);
 		
@@ -204,7 +204,7 @@ public class menu_glowne {
 		SKLEP.add(textArea_1);
 		
 		JLabel lblStanKonta = new JLabel(res.getString("STANKONTA"));
-		lblStanKonta.setForeground(Color.WHITE);
+		lblStanKonta.setForeground(Color.BLACK);
 		lblStanKonta.setBounds(961, 21, 92, 14);
 		SKLEP.add(lblStanKonta);
 		
@@ -299,79 +299,79 @@ public class menu_glowne {
 		
 		JLabel lblShop = new JLabel(res.getString("shop"));
 		lblShop.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 33));
-		lblShop.setForeground(Color.WHITE);
+		lblShop.setForeground(Color.BLACK);
 		lblShop.setBounds(55, 46, 134, 71);
 		SKLEP.add(lblShop);
 		
 		JLabel lblNirvana = new JLabel("Nirvana");
 		lblNirvana.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
-		lblNirvana.setForeground(Color.WHITE);
+		lblNirvana.setForeground(Color.BLACK);
 		lblNirvana.setBounds(84, 302, 120, 14);
 		SKLEP.add(lblNirvana);
 		
 		JLabel lblMetallica = new JLabel("Metallica");
-		lblMetallica.setForeground(Color.WHITE);
+		lblMetallica.setForeground(Color.BLACK);
 		lblMetallica.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		lblMetallica.setBounds(440, 303, 120, 14);
 		SKLEP.add(lblMetallica);
 		
 		JLabel lblDaftPunk = new JLabel("Daft Punk");
-		lblDaftPunk.setForeground(Color.WHITE);
+		lblDaftPunk.setForeground(Color.BLACK);
 		lblDaftPunk.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		lblDaftPunk.setBounds(798, 302, 120, 14);
 		SKLEP.add(lblDaftPunk);
 		
 		JLabel lblBeatles = new JLabel("The Beatles");
-		lblBeatles.setForeground(Color.WHITE);
+		lblBeatles.setForeground(Color.BLACK);
 		lblBeatles.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		lblBeatles.setBounds(84, 512, 120, 14);
 		SKLEP.add(lblBeatles);
 		
 		JLabel lblGreenDay = new JLabel("Green Day");
-		lblGreenDay.setForeground(Color.WHITE);
+		lblGreenDay.setForeground(Color.BLACK);
 		lblGreenDay.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		lblGreenDay.setBounds(440, 512, 120, 14);
 		SKLEP.add(lblGreenDay);
 		
 		JLabel lblinne = new JLabel(res.getString("other"));
-		lblinne.setForeground(Color.WHITE);
+		lblinne.setForeground(Color.BLACK);
 		lblinne.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		lblinne.setBounds(798, 513, 120, 14);
 		SKLEP.add(lblinne);
 		
 		JLabel lblDwdw = new JLabel("NEVERMIND");
 		lblDwdw.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
-		lblDwdw.setForeground(Color.WHITE);
+		lblDwdw.setForeground(Color.BLACK);
 		lblDwdw.setBounds(94, 319, 95, 14);
 		SKLEP.add(lblDwdw);
 		
 		JLabel lblMasterOfPuppets = new JLabel("MASTER OF PUPPETS");
-		lblMasterOfPuppets.setForeground(Color.WHITE);
+		lblMasterOfPuppets.setForeground(Color.BLACK);
 		lblMasterOfPuppets.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		lblMasterOfPuppets.setBounds(450, 320, 126, 14);
 		SKLEP.add(lblMasterOfPuppets);
 		
 		JLabel lblRandomAccessMemories = new JLabel("RANDOM ACCESS MEMORIES");
-		lblRandomAccessMemories.setForeground(Color.WHITE);
+		lblRandomAccessMemories.setForeground(Color.BLACK);
 		lblRandomAccessMemories.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		lblRandomAccessMemories.setBounds(808, 320, 177, 14);
 		SKLEP.add(lblRandomAccessMemories);
 		
 		JLabel lblAbbeyRoad = new JLabel("ABBEY ROAD");
-		lblAbbeyRoad.setForeground(Color.WHITE);
+		lblAbbeyRoad.setForeground(Color.BLACK);
 		lblAbbeyRoad.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		lblAbbeyRoad.setBounds(94, 531, 177, 14);
 		SKLEP.add(lblAbbeyRoad);
 		
 		JLabel lblAmericanIdiot = new JLabel("AMERICAN IDIOT");
-		lblAmericanIdiot.setForeground(Color.WHITE);
+		lblAmericanIdiot.setForeground(Color.BLACK);
 		lblAmericanIdiot.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
 		lblAmericanIdiot.setBounds(450, 532, 177, 14);
 		SKLEP.add(lblAmericanIdiot);
 		
 		JPanel STUDIO = new JPanel();
 		layeredPane.add(STUDIO, "name_68613709652399");
-		STUDIO.setBackground(Color.BLACK);
+		STUDIO.setBackground(Color.LIGHT_GRAY);
 		STUDIO.setOpaque(true);
 		STUDIO.setLayout(null);
 		
@@ -439,33 +439,33 @@ public class menu_glowne {
 		
 		JPanel BIBLIOTEKA = new JPanel();
 		layeredPane.add(BIBLIOTEKA, "name_68702683888800");
-		BIBLIOTEKA.setBackground(Color.BLACK);
+		BIBLIOTEKA.setBackground(Color.LIGHT_GRAY);
 		BIBLIOTEKA.setOpaque(true);
 		BIBLIOTEKA.setLayout(null);
 		
 		JLabel label = new JLabel(res.getString("title"));
-		label.setForeground(Color.WHITE);
+		label.setForeground(Color.BLACK);
 		label.setBounds(522, 23, 65, 23);
 		BIBLIOTEKA.add(label);
 		
 		JLabel label_1 = new JLabel(res.getString("performer"));
-		label_1.setForeground(Color.WHITE);
+		label_1.setForeground(Color.BLACK);
 		label_1.setBounds(359, 17, 112, 34);
 		BIBLIOTEKA.add(label_1);
 		
 		JLabel label_2 = new JLabel("Album");
-		label_2.setForeground(Color.WHITE);
+		label_2.setForeground(Color.BLACK);
 		label_2.setBounds(207, 27, 46, 14);
 		BIBLIOTEKA.add(label_2);
 		
 		JLabel label_3 = new JLabel(res.getString("Data"));
-		label_3.setForeground(Color.WHITE);
+		label_3.setForeground(Color.BLACK);
 		label_3.setBounds(692, 27, 98, 14);
 		BIBLIOTEKA.add(label_3);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBackground(Color.BLACK);
-		textArea.setForeground(Color.WHITE);
+		textArea.setBackground(Color.LIGHT_GRAY);
+		textArea.setForeground(Color.BLACK);
 		textArea.setBounds(196, 51, 721, 325);
 		BIBLIOTEKA.add(textArea);
 		
@@ -481,6 +481,7 @@ public class menu_glowne {
 		usun.setColumns(10);
 	
 		JButton btnUsun = new JButton(res.getString("usun"));
+		btnUsun.setForeground(Color.WHITE);
 		btnUsun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -559,8 +560,8 @@ public class menu_glowne {
 		frame.getContentPane().add(btnHome);
 
 		
-		textArea2.setBackground(Color.BLACK);
-		textArea2.setForeground(Color.WHITE);
+		textArea2.setBackground(Color.LIGHT_GRAY);
+		textArea2.setForeground(Color.BLACK);
 		textArea2.setBounds(471, 27, 449, 46);
 		textArea2.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 30));
 		STUDIO.add(textArea2);
@@ -668,7 +669,7 @@ public class menu_glowne {
 		
 		JLabel lblZmienNazweSwojego = new JLabel(res.getString("ZmienNazwe"));
 		lblZmienNazweSwojego.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
-		lblZmienNazweSwojego.setForeground(Color.WHITE);
+		lblZmienNazweSwojego.setForeground(Color.BLACK);
 		lblZmienNazweSwojego.setBounds(52, 448, 328, 14);
 		STUDIO.add(lblZmienNazweSwojego);
 		

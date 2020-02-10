@@ -43,7 +43,7 @@ import javax.swing.JComboBox;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
-public class rejestracja extends JFrame {
+public class rejestracja_white extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField imie;
@@ -66,7 +66,7 @@ public class rejestracja extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					rejestracja frame = new rejestracja();
+					rejestracja_white frame = new rejestracja_white();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -77,12 +77,12 @@ public class rejestracja extends JFrame {
 	
 
 	
-	public rejestracja() {
+	public rejestracja_white() {
 		if(GlobalVariables.jezyk==1)res = ResourceBundle.getBundle("PL");
 		if(GlobalVariables.jezyk==0)res = ResourceBundle.getBundle("EN");
 		
 		
-		ImageIcon rejtlo = new ImageIcon("rej_tlo.png");
+		ImageIcon rejtlo = new ImageIcon("jasne/rej_tlo_jasne.png");
 		
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -93,7 +93,7 @@ public class rejestracja extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblUser = new JLabel("User");
-		lblUser.setForeground(Color.WHITE);
+		lblUser.setForeground(Color.BLACK);
 		lblUser.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblUser.setBounds(10, 10, 52, 21);
 		contentPane.add(lblUser);
@@ -148,37 +148,37 @@ public class rejestracja extends JFrame {
 		contentPane.add(haslo);
 		
 		JLabel lblName = new JLabel(res.getString("Name"));
-		lblName.setForeground(Color.WHITE);
+		lblName.setForeground(Color.BLACK);
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblName.setBounds(10, 47, 68, 21);
 		contentPane.add(lblName);
 		
 		JLabel lblSurname = new JLabel(res.getString("Surname"));
-		lblSurname.setForeground(Color.WHITE);
+		lblSurname.setForeground(Color.BLACK);
 		lblSurname.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblSurname.setBounds(10, 97, 97, 21);
 		contentPane.add(lblSurname);
 		
 		JLabel lblEmail = new JLabel("E-mail");
-		lblEmail.setForeground(Color.WHITE);
+		lblEmail.setForeground(Color.BLACK);
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblEmail.setBounds(10, 149, 97, 21);
 		contentPane.add(lblEmail);
 		
 		JLabel lblPhoneNumber = new JLabel(res.getString("Phonenumber"));
-		lblPhoneNumber.setForeground(Color.WHITE);
+		lblPhoneNumber.setForeground(Color.BLACK);
 		lblPhoneNumber.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPhoneNumber.setBounds(10, 201, 147, 21);
 		contentPane.add(lblPhoneNumber);
 		
 		JLabel lblLogin = new JLabel("Login");
-		lblLogin.setForeground(Color.WHITE);
+		lblLogin.setForeground(Color.BLACK);
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblLogin.setBounds(10, 238, 97, 31);
 		contentPane.add(lblLogin);
 		
 		JLabel lblPassword = new JLabel(res.getString("Password"));
-		lblPassword.setForeground(Color.WHITE);
+		lblPassword.setForeground(Color.BLACK);
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPassword.setBounds(10, 298, 97, 19);
 		contentPane.add(lblPassword);
@@ -191,7 +191,7 @@ public class rejestracja extends JFrame {
 		pomocnicze = new JTextField();
 		pytan_pomoc = new JTextField();
 		JLabel lblPasswordStrength = new JLabel(res.getString("PasswordStrength"));
-		lblPasswordStrength.setForeground(Color.WHITE);
+		lblPasswordStrength.setForeground(Color.BLACK);
 		lblPasswordStrength.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPasswordStrength.setBounds(10, 349, 184, 21);
 		contentPane.add(lblPasswordStrength);
@@ -210,7 +210,7 @@ public class rejestracja extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JLabel lblPyranie = new JLabel(res.getString("AuxiliaryQuestion"));
-		lblPyranie.setForeground(Color.WHITE);
+		lblPyranie.setForeground(Color.BLACK);
 		lblPyranie.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblPyranie.setBounds(10, 385, 253, 21);
 		contentPane.add(lblPyranie);
@@ -227,7 +227,7 @@ public class rejestracja extends JFrame {
 		pytan_pomoc.setColumns(10);
 		
 		JLabel label = new JLabel(res.getString("AnswerAuxiliaryQuestion"));
-		label.setForeground(Color.WHITE);
+		label.setForeground(Color.BLACK);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		label.setBounds(10, 445, 253, 21);
 		contentPane.add(label);
@@ -251,7 +251,7 @@ public class rejestracja extends JFrame {
 		contentPane.add(btnRodo);
 		
 		JLabel lblIAcceptThe = new JLabel(res.getString("IAcceptTheTermsAndCnditionsOf"));
-		lblIAcceptThe.setForeground(Color.WHITE);
+		lblIAcceptThe.setForeground(Color.BLACK);
 		lblIAcceptThe.setBounds(10, 590, 253, 14);
 		contentPane.add(lblIAcceptThe);
 		
