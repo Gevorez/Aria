@@ -400,14 +400,7 @@ public class main {
 		pass.setBounds(1013, 262, 210, 29);
 		pass.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.DARK_GRAY, Color.DARK_GRAY, null));
 		frame.getContentPane().add(pass);
-		
-		
-		
 		JLabel tlolabel = new JLabel("");
-		tlolabel.setBounds(0, 0, 1280, 720);
-		tlolabel.setIcon(tlo);
-		frame.getContentPane().add(tlolabel);
-		
 		JButton btnKolor = new JButton("kolor");
 		btnKolor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -431,11 +424,10 @@ public class main {
 		btnKolor.setBounds(156, 583, 80, 80);
 		btnKolor.setBounds(26, 583, 80, 80);
 		frame.getContentPane().add(btnKolor);
-		
+	
 		JLabel tlolabel2 = new JLabel("");
 		tlolabel2.setBounds(0, 0, 1280, 720);
 		tlolabel2.setIcon(tlo);
-		frame.getContentPane().add(tlolabel);
 		
 		JButton Kolor2 = new JButton("kolor2");
 		Kolor2.setIcon(sun);
@@ -459,6 +451,14 @@ public class main {
 		Kolor2.setContentAreaFilled(false);
 		Kolor2.setBounds(156, 583, 80, 80);
 		frame.getContentPane().add(Kolor2);
+		
+		
+		
+		
+		tlolabel.setBounds(0, 0, 1280, 720);
+		tlolabel.setIcon(tlo);
+		frame.getContentPane().add(tlolabel);
+		frame.getContentPane().add(tlolabel);
 	}
 		
 	
