@@ -304,7 +304,7 @@ public class menu_glowne_admina_white {
 						
 						String sql="Update login "
 								+ "set nazwa_studia='"+zmiana.getText()+"'"
-										+ "where Login='"+main_white.user.getText()+"'";
+										+ "where Login='"+main.user.getText()+"'";
 						
 						
 						
@@ -523,7 +523,7 @@ public class menu_glowne_admina_white {
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
 				
-					String sql2="Select nazwa_studia from login where  Login='"+main_white.user.getText()+"'";
+					String sql2="Select nazwa_studia from login where  Login='"+main.user.getText()+"'";
 					ResultSet rs2=stmt.executeQuery(sql2);
 					rs2.next();
 					

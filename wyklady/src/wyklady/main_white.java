@@ -241,7 +241,7 @@ public class main_white {
 		btnLoginIn.setContentAreaFilled(false);
 		frame.getContentPane().add(btnLoginIn);
 		
-		//s
+	
 		JButton btnNewButton_3 = new JButton(res.getString("Register"));
 		btnNewButton_3.setForeground(Color.BLACK);
 		btnNewButton_3.addActionListener(new ActionListener() {

@@ -70,11 +70,11 @@ public class nazwa_studia_white {
 						else {
 						String sql="Update login "
 								+ "set nazwa_studia='"+nazwa_std.getText()+"'"
-										+ "where Login='"+main_white.user.getText()+"'";               
+										+ "where Login='"+main.user.getText()+"'";               
 						int rs=stmt.executeUpdate(sql);
 						
 						
-						String sql2="create table zakupione_"+main_white.user.getText()+" (tytul varchar(255),"
+						String sql2="create table zakupione_"+main.user.getText()+" (tytul varchar(255),"
 								+ "wykonawca varchar(255),"
 								+ "album varchar(255),"
 								+ "data_publikacji varchar(255),"

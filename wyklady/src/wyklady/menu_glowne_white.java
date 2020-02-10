@@ -400,7 +400,7 @@ public class menu_glowne_white {
 						
 						String sql="Update login "
 								+ "set nazwa_studia='"+zmiana.getText()+"'"
-										+ "where Login='"+main_white.user.getText()+"'";
+										+ "where Login='"+main.user.getText()+"'";
 						
 						
 						
@@ -488,14 +488,14 @@ public class menu_glowne_white {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
-					String sql="DELETE FROM zakupione_"+main_white.user.getText()+" WHERE id ="
+					String sql="DELETE FROM zakupione_"+main.user.getText()+" WHERE id ="
 							+ " ("+usun.getText()+")";
 							//ss
 					int rs=stmt.executeUpdate(sql);
 					if(rs==1) {
 						JOptionPane.showMessageDialog(null, "utwor zostal usuniety");
 					textArea.setText(null);
-					String sql2="Select tytul,wykonawca,album,data_publikacji from zakupione_"+main_white.user.getText()+"";
+					String sql2="Select tytul,wykonawca,album,data_publikacji from zakupione_"+main.user.getText()+"";
 					ResultSet rs2=stmt.executeQuery(sql2);
 					int i=0;
 						
@@ -579,7 +579,7 @@ public class menu_glowne_white {
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
 				
-					String sql2="Select nazwa_studia from login where  Login='"+main_white.user.getText()+"'";
+					String sql2="Select nazwa_studia from login where  Login='"+main.user.getText()+"'";
 					ResultSet rs2=stmt.executeQuery(sql2);
 					rs2.next();
 					
@@ -627,12 +627,12 @@ public class menu_glowne_white {
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost/wypozyczalnia","root","");
 					Statement stmt=con.createStatement();
 
-					String sql="Select nazwa_studia from login where  Login='"+main_white.user.getText()+"'";
+					String sql="Select nazwa_studia from login where  Login='"+main.user.getText()+"'";
 					ResultSet rs3=stmt.executeQuery(sql);
 					rs3.next();
 					String nazwa_studia = rs3.getString("nazwa_studia");
 					
-					String sql2="Select tytul,wykonawca,album,data_publikacji,id from zakupione_"+main_white.user.getText()+"";
+					String sql2="Select tytul,wykonawca,album,data_publikacji,id from zakupione_"+main.user.getText()+"";
 					ResultSet rs2=stmt.executeQuery(sql2);
 					int i=0;
 						
