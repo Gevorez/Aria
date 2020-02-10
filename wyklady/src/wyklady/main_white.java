@@ -194,7 +194,7 @@ public class main_white {
 						String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
 						ResultSet rs=stmt.executeQuery(sql);
 						frame.setVisible(false);
-						menu_glowne_admina window = new menu_glowne_admina();
+						menu_glowne_admina_white window = new menu_glowne_admina_white();
 						window.frame.setVisible(true);
 						
 					}
@@ -215,7 +215,7 @@ public class main_white {
 						
 					if(nazwa_studia.isEmpty()) {
 						frame.setVisible(false);
-						nazwa_studia window2 = new nazwa_studia();
+						nazwa_studia_white window2 = new nazwa_studia_white();
 						window2.frame.setVisible(true);
 						
 												}
@@ -223,7 +223,7 @@ public class main_white {
 					{
 						
 						frame.setVisible(false);
-						menu_glowne window = new menu_glowne();
+						menu_glowne_white window = new menu_glowne_white();
 						window.frame.setVisible(true);
 					}
 					
@@ -321,7 +321,7 @@ public class main_white {
 							String sql="Select Login, Haslo from login where Login='"+user.getText()+"'and Haslo=SHA1('"+xd+ "')";
 							ResultSet rs=stmt.executeQuery(sql);
 							frame.setVisible(false);
-							menu_glowne_admina window = new menu_glowne_admina();
+							menu_glowne_admina_white window = new menu_glowne_admina_white();
 							window.frame.setVisible(true);
 							
 						}
